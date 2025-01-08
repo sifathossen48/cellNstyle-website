@@ -1,0 +1,1783 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Repair Something Else | CELLNSTYLE</title>
+    <link rel="stylesheet" href="asset/css/style.css" />
+
+    <!-- EXTERNAL CSS LINK -->
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/bs-brain@2.0.4/components/navbars/navbar-1/assets/css/navbar-1.css"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      data-purpose="Layout StyleSheet"
+      title="Web Awesome"
+      href="/css/app-wa-09b459cf485d4b1f3304947240314c05.css?vsn=d"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-duotone-solid.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-thin.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-solid.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-regular.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-light.css"
+    />
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Carousel Templete -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+      integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css"
+      integrity="sha512-OTcub78R3msOCtY3Tc6FzeDJ8N9qvQn1Ph49ou13xgA9VsH9+LRxoFU6EqLhW4+PKRfU+/HReXmSZXHEkpYoOA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body class="d-flex flex-column h-100">
+    <!-- <div class="preloader" id="preloader-active">
+        <div id="loader"></div>
+    </div> -->
+
+    <header class="headerSection fixed-top" style="background: #231f20">
+      <!-- Navbar 1 - Bootstrap Brain Component -->
+      <nav
+        class="navbar navbar-expand-lg bsb-navbar bsb-navbar-hover bsb-navbar-caret"
+      >
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+            <img
+              src="./asset/images/blackBGlogo.png"
+              style="
+                width: clamp(
+                  8.3125rem,
+                  8.008928571428571rem + 1.5178571428571428vw,
+                  9.375rem
+                );
+              "
+              alt=""
+            />
+            <!-- <h4 class="m-0" style="font-weight: 600;">CELL<i style="color: var(--primaryColor); font-weight: 700;">N</i>STYLE</h4> -->
+          </a>
+          <button
+            class="navbar-toggler border-0"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="#ffffff"
+              class="bi bi-list"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+              />
+            </svg>
+          </button>
+          <div
+            class="offcanvas offcanvas-end me-auto"
+            style="background: #231f20"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">
+                Menu
+              </h5>
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul
+                class="navbar-nav justify-content-center flex-grow-1 gap-xl-4"
+              >
+                <li class="nav-item">
+                  <a class="nav-link text-nowrap" href="./index.html">Home</a>
+                </li>
+                <li class="nav-item dropdown has-megamenu">
+                  <a
+                    class="nav-link text-nowrap dropdown-toggle"
+                    href="#!"
+                    id="servicesDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    >Company</a
+                  >
+                  <ul
+                    class="dropdown-menu border bsb-zoomIn megamenu smallMegaMenu"
+                    aria-labelledby="servicesDropdown"
+                  >
+                    <li>
+                      <a class="dropdown-item" href="./franchise.html"
+                        >Franchise</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="./career.html">Career</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="./contact.html">Contact</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown has-megamenu">
+                  <a
+                    class="nav-link text-nowrap dropdown-toggle"
+                    href="#!"
+                    id="servicesDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    >Repair Service</a
+                  >
+                  <ul
+                    class="dropdown-menu border-0 shadow-sm bsb-zoomIn megamenu"
+                    aria-labelledby="servicesDropdown"
+                  >
+                    <div>
+                      <div class="row">
+                        <div class="col-12 col-md-12 col-lg-4">
+                          <img
+                            class="nav-repair-icon"
+                            src="asset/images/icons/repair-tools-svgrepo-com.svg"
+                            alt=""
+                          />
+                          <h5>What can we fix for you?</h5>
+                          <p class="pt-3">
+                            Select the device that needs fixing, and let our
+                            certified technicians handle the rest.
+                          </p>
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-8">
+                          <div class="text-center">
+                            <div
+                              class="row row-cols-2 row-cols-lg-3 g-2 g-lg-3"
+                            >
+                              <div class="col">
+                                <a href="./repair.html">
+                                  <div
+                                    class="pt-3 border rounded-2 text-dark h-100 nav-c-card"
+                                  >
+                                    <img
+                                      class="dropdown-categories-img"
+                                      src="asset/images/categories-images/iphone-nav-grid.png"
+                                      alt=""
+                                    />
+                                    <p class="nav-c-text">Phone</p>
+                                  </div>
+                                </a>
+                              </div>
+                              <div class="col">
+                                <a href="./repair.html">
+                                  <div
+                                    class="pt-3 border rounded-2 text-dark h-100 nav-c-card"
+                                  >
+                                    <img
+                                      class="dropdown-categories-img"
+                                      src="asset/images/categories-images/ipad-nav-grid.svg"
+                                      alt=""
+                                    />
+                                    <p class="nav-c-text">Tab</p>
+                                  </div>
+                                </a>
+                              </div>
+                              <div class="col">
+                                <a href="./repair.html">
+                                  <div
+                                    class="pt-3 border rounded-2 text-dark h-100 nav-c-card"
+                                  >
+                                    <img
+                                      class="dropdown-categories-img"
+                                      src="asset/images/categories-images/laptop-nav-grid.svg"
+                                      alt=""
+                                    />
+                                    <p class="nav-c-text">Computer</p>
+                                  </div>
+                                </a>
+                              </div>
+                              <div class="col">
+                                <a href="./repair.html">
+                                  <div
+                                    class="pt-3 border rounded-2 text-dark h-100 nav-c-card"
+                                  >
+                                    <img
+                                      class="dropdown-categories-img"
+                                      src="asset/images/categories-images/game-console-nav-grid.svg"
+                                      alt=""
+                                    />
+                                    <p class="nav-c-text">Console</p>
+                                  </div>
+                                </a>
+                              </div>
+                              <div class="col">
+                                <a href="./repair.html">
+                                  <div
+                                    class="pt-3 border rounded-2 text-dark h-100 nav-c-card"
+                                  >
+                                    <img
+                                      class="dropdown-categories-img"
+                                      src="asset/images/categories-images/headset.jpg"
+                                      alt=""
+                                    />
+                                    <p class="nav-c-text">Headset</p>
+                                  </div>
+                                </a>
+                              </div>
+                              <div class="col">
+                                <a href="./somethingElse.html">
+                                  <div
+                                    class="pt-3 border rounded-2 text-dark h-100 nav-c-card"
+                                  >
+                                    <img
+                                      class="dropdown-categories-img"
+                                      src="asset/images/categories-images/home-appliances.png"
+                                      alt=""
+                                    />
+                                    <p class="nav-c-text">Something else</p>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link text-nowrap" href="./products.html"
+                    >Accessories</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-nowrap" href="./sell.html">Sell</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-nowrap" href="./blogs.html">Blogs</a>
+                </li>
+              </ul>
+
+              <li class="nav-item book-li">
+                <a
+                  class="nav-link text-nowrap text-center book-repair-btn"
+                  href=""
+                  >CALL NOW</a
+                >
+              </li>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-shrink-0">
+      <!-- Main Content start -->
+
+      <section class="container" style="padding-block: 6rem">
+        <div class="serviceDetails d-flex flex-column flex-md-row">
+          <div class="serviceSelection">
+            <form action="#" method="get" class="d-flex flex-column gap-5">
+              <div class="DeviceProblem flex-column gap-3">
+                <h1 class="section-title text-start m-0">
+                  What's wrong with your device?
+                </h1>
+                <p class="section-subtext m-0 mb-3">
+                    Identify your device's issues from the options below to help us provide 
+                    the best repair service. Choose at least one to ensure we address your 
+                    device's specific needs. We've got you covered!
+                </p>
+
+                <div class="DeviceProblemWrapper">
+                  <div
+                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
+                    style="border: 1px solid black"
+                  >
+                    <input
+                      class="problem form-check-input p-2"
+                      type="checkbox"
+                      name="problem"
+                      value="BrokenScreen"
+                      id="BrokenScreen"
+                    />
+                    <label
+                      class="form-check-label py-3 w-100"
+                      for="BrokenScreen"
+                    >
+                      Broken Screen
+                    </label>
+                  </div>
+                  <div
+                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
+                    style="border: 1px solid black"
+                  >
+                    <input
+                      class="problem form-check-input p-2"
+                      type="checkbox"
+                      name="problem"
+                      value="WiFiIssue"
+                      id="WiFiIssue"
+                    />
+                    <label class="form-check-label py-3 w-100" for="WiFiIssue">
+                      WiFi Issue
+                    </label>
+                  </div>
+                  <div
+                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
+                    style="border: 1px solid black"
+                  >
+                    <input
+                      class="problem form-check-input p-2"
+                      type="checkbox"
+                      name="problem"
+                      value="DataRecoveryAndBackup"
+                      id="DataRecoveryAndBackup"
+                    />
+                    <label
+                      class="form-check-label py-3 w-100"
+                      for="DataRecoveryAndBackup"
+                    >
+                      Data Recovery & Backup
+                    </label>
+                  </div>
+                  <div
+                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
+                    style="border: 1px solid black"
+                  >
+                    <input
+                      class="problem form-check-input p-2"
+                      type="checkbox"
+                      name="problem"
+                      value="DataTransfer"
+                      id="DataTransfer"
+                    />
+                    <label
+                      class="form-check-label py-3 w-100"
+                      for="DataTransfer"
+                    >
+                      Data Transfer
+                    </label>
+                  </div>
+                  <div
+                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
+                    style="border: 1px solid black"
+                  >
+                    <input
+                      class="problem form-check-input p-2"
+                      type="checkbox"
+                      name="problem"
+                      value="BluetoothOrPairingIssue"
+                      id="BluetoothOrPairingIssue"
+                    />
+                    <label
+                      class="form-check-label py-3 w-100"
+                      for="BluetoothOrPairingIssue"
+                    >
+                      Bluetooth Or Pairing Issue
+                    </label>
+                  </div>
+                  <div
+                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
+                    style="border: 1px solid black"
+                  >
+                    <input
+                      class="problem form-check-input p-2"
+                      type="checkbox"
+                      name="problem"
+                      value="WaterDamage"
+                      id="WaterDamage"
+                    />
+                    <label
+                      class="form-check-label py-3 w-100"
+                      for="WaterDamage"
+                    >
+                      Water Damage
+                    </label>
+                  </div>
+                  <div
+                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
+                    style="border: 1px solid black"
+                  >
+                    <input
+                      class="problem form-check-input p-2"
+                      type="checkbox"
+                      name="problem"
+                      value="ShortBatteryLife"
+                      id="ShortBatteryLife"
+                    />
+                    <label
+                      class="form-check-label py-3 w-100"
+                      for="ShortBatteryLife"
+                    >
+                      Short Battery Life
+                    </label>
+                  </div>
+                  <div
+                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
+                    style="border: 1px solid black"
+                  >
+                    <input
+                      class="problem form-check-input p-2"
+                      type="checkbox"
+                      name="problem"
+                      value="notCharging"
+                      id="notCharging"
+                    />
+                    <label
+                      class="form-check-label py-3 w-100"
+                      for="notCharging"
+                    >
+                      Not Charging
+                    </label>
+                  </div>
+                  <div
+                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
+                    style="border: 1px solid black"
+                  >
+                    <input
+                      class="problem form-check-input p-2"
+                      type="checkbox"
+                      name="problem"
+                      value="Cleaning"
+                      id="Cleaning"
+                    />
+                    <label class="form-check-label py-3 w-100" for="Cleaning">
+                      Cleaning
+                    </label>
+                  </div>
+                  <div
+                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
+                    style="border: 1px solid black"
+                  >
+                    <input
+                      class="problem form-check-input p-2"
+                      type="checkbox"
+                      name="problem"
+                      value="FactoryReset"
+                      id="FactoryReset"
+                    />
+                    <label
+                      class="form-check-label py-3 w-100"
+                      for="FactoryReset"
+                    >
+                      Factory Reset
+                    </label>
+                  </div>
+                  <div
+                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
+                    style="border: 1px solid black"
+                  >
+                    <input
+                      class="problem form-check-input p-2"
+                      type="checkbox"
+                      name="problem"
+                      value="BackHousingOrCover"
+                      id="BackHousingOrCover"
+                    />
+                    <label
+                      class="form-check-label py-3 w-100"
+                      for="BackHousingOrCover"
+                    >
+                      Back Housing/Cover
+                    </label>
+                  </div>
+                  <div
+                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
+                    style="border: 1px solid black"
+                  >
+                    <input
+                      class="problem form-check-input p-2"
+                      type="checkbox"
+                      name="problem"
+                      value="BackCameraDoesNotWork"
+                      id="BackCameraDoesNotWork"
+                    />
+                    <label
+                      class="form-check-label py-3 w-100"
+                      for="BackCameraDoesNotWork"
+                    >
+                      Back Camera Doesn't Work
+                    </label>
+                  </div>
+                  <div
+                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
+                    style="border: 1px solid black"
+                  >
+                    <input
+                      class="problem form-check-input p-2"
+                      type="checkbox"
+                      name="problem"
+                      value="doNotknowOrOther"
+                      id="doNotknowOrOther"
+                    />
+                    <label
+                      class="form-check-label py-3 w-100"
+                      for="doNotknowOrOther"
+                    >
+                      I don't know / Other
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-floating">
+                  <textarea
+                    class="problemDispriction form-control"
+                    rows="8"
+                    name="problemDispriction"
+                    id="problemDispriction"
+                    style="height: auto"
+                    placeholder="Describe the issue (optional)"
+                  ></textarea>
+                  <label for="problemDispriction"
+                    >Describe the issue (optional)</label
+                  >
+                </div>
+              </div>
+
+              <div class="method flex-column gap-3">
+                <h1 class="section-title">
+                  How Do you want to get the services?
+                </h1>
+
+                <div
+                  class=""
+                  style="
+                    display: grid;
+                    gap: 1rem;
+                    grid-template-columns: repeat(3, 1fr);
+                  "
+                >
+                  <label
+                    onclick="toogleMethods()"
+                    class="serviceReciveMethodWrapper d-flex flex-column flex-sm-row gap-2 align-items-center py-3 justify-content-center rounded-2"
+                  >
+                    <input
+                      type="radio"
+                      name="serviceReciveMethod"
+                      value="visitStore"
+                      id="serviceReciveMethod"
+                      class="serviceReciveMethod d-none"
+                      required
+                      checked
+                    />
+                    <i class="fa-duotone fa-solid fa-store"></i>
+                    Visit Store
+                  </label>
+                  <label
+                    onclick="toogleMethods()"
+                    class="serviceReciveMethodWrapper d-flex flex-column flex-sm-row gap-2 align-items-center py-3 justify-content-center rounded-2"
+                  >
+                    <input
+                      type="radio"
+                      name="serviceReciveMethod"
+                      value="mail"
+                      id="serviceReciveMethod"
+                      class="serviceReciveMethod d-none"
+                      required
+                    />
+                    <i class="fa-sharp-duotone fa-solid fa-mailbox-flag-up"></i>
+                    Mail in
+                  </label>
+                  <label
+                    onclick="toogleMethods()"
+                    class="serviceReciveMethodWrapper d-flex flex-column flex-sm-row gap-2 align-items-center py-3 justify-content-center rounded-2"
+                  >
+                    <input
+                      type="radio"
+                      name="serviceReciveMethod"
+                      value="comeToMe"
+                      id="serviceReciveMethod"
+                      class="serviceReciveMethod d-none"
+                      required
+                    />
+                    <i class="fa-duotone fa-solid fa-truck"></i>
+                    Come to me
+                  </label>
+                </div>
+
+                <div
+                  class="serviceReciveMethodDetails visitStore mt-4 d-flex flex-column gap-3"
+                >
+                  <h1 class="section-title text-start mb-2">
+                    From which store you want to get the service?
+                  </h1>
+
+                  <div
+                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
+                    style="border: 1px solid black"
+                  >
+                    <input
+                      class="store form-check-input p-2"
+                      type="radio"
+                      name="store"
+                      value="Store1"
+                      id="store1"
+                      required
+                    />
+                    <label class="form-check-label py-3 w-100" for="store1">
+                      <h5>Store 1</h5>
+                      <div class="d-flex gap-2 align-items-center">
+                        <i
+                          class="fa-duotone fa-solid fa-map-location-dot"
+                          style="color: var(--primaryColor)"
+                        ></i>
+                        <span>2201 S Interstate 35, Denton, TX 76205</span>
+                      </div>
+                    </label>
+                  </div>
+
+                  <div
+                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
+                    style="border: 1px solid black"
+                  >
+                    <input
+                      class="store form-check-input p-2"
+                      type="radio"
+                      name="store"
+                      value="Store2"
+                      id="store2"
+                      required
+                    />
+                    <label class="form-check-label py-3 w-100" for="store2">
+                      <h5>Store 2</h5>
+                      <div class="d-flex gap-2 align-items-center">
+                        <i
+                          class="fa-duotone fa-solid fa-map-location-dot"
+                          style="color: var(--primaryColor)"
+                        ></i>
+                        <span>26615 US-380 #140, Aubrey, TX 76227</span>
+                      </div>
+                    </label>
+                  </div>
+
+                  <div
+                    class="mt-4 serviceReciveMethodDetails visitStore d-flex flex-column gap-4"
+                  >
+                    <h1 class="section-title text-start m-0">
+                      What time works best for you?
+                    </h1>
+
+                    <div class="d-flex flex-column gap-2">
+                      <h5 style="color: var(--primaryColor)">Choose a date</h5>
+
+                      <div class="d-flex flex-wrap gap-3">
+                        <label
+                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black"
+                        >
+                          <input
+                            class="date opacity-0 position-absolute"
+                            type="radio"
+                            name="date"
+                            value="sep9"
+                            required
+                          />
+                          <div class="w-100 p-4">
+                            <h5>Mon</h5>
+                            <div class="d-flex gap-2 align-items-center">
+                              <span>sep 9</span>
+                            </div>
+                          </div>
+                        </label>
+                        <label
+                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black"
+                        >
+                          <input
+                            class="date opacity-0 position-absolute"
+                            type="radio"
+                            name="date"
+                            value="sep10"
+                            required
+                          />
+                          <div class="w-100 p-4">
+                            <h5>Tue</h5>
+                            <div class="d-flex gap-2 align-items-center">
+                              <span>sep 10</span>
+                            </div>
+                          </div>
+                        </label>
+                        <label
+                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black"
+                        >
+                          <input
+                            class="date opacity-0 position-absolute"
+                            type="radio"
+                            name="date"
+                            value="sep11"
+                            required
+                          />
+                          <div class="w-100 p-4">
+                            <h5>Wed</h5>
+                            <div class="d-flex gap-2 align-items-center">
+                              <span>sep11</span>
+                            </div>
+                          </div>
+                        </label>
+                        <label
+                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black"
+                        >
+                          <input
+                            class="date opacity-0 position-absolute"
+                            type="radio"
+                            name="date"
+                            value="sep12"
+                            required
+                          />
+                          <div class="w-100 p-4">
+                            <h5>Thu</h5>
+                            <div class="d-flex gap-2 align-items-center">
+                              <span>sep 12</span>
+                            </div>
+                          </div>
+                        </label>
+                        <label
+                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black"
+                        >
+                          <input
+                            class="date opacity-0 position-absolute"
+                            type="radio"
+                            name="date"
+                            value="sep13"
+                            required
+                          />
+                          <div class="w-100 p-4">
+                            <h5>Fri</h5>
+                            <div class="d-flex gap-2 align-items-center">
+                              <span>sep 13</span>
+                            </div>
+                          </div>
+                        </label>
+                        <label
+                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black"
+                        >
+                          <input
+                            class="date opacity-0 position-absolute"
+                            type="radio"
+                            name="date"
+                            value="sep14"
+                            required
+                          />
+                          <div class="w-100 p-4">
+                            <h5>Sat</h5>
+                            <div class="d-flex gap-2 align-items-center">
+                              <span>sep 14</span>
+                            </div>
+                          </div>
+                        </label>
+                        <label
+                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black"
+                        >
+                          <input
+                            class="date opacity-0 position-absolute"
+                            type="radio"
+                            name="date"
+                            value="sep15"
+                            required
+                          />
+                          <div class="w-100 p-4">
+                            <h5>Sun</h5>
+                            <div class="d-flex gap-2 align-items-center">
+                              <span>sep 15</span>
+                            </div>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-column gap-2">
+                      <h5 style="color: var(--primaryColor)">
+                        Choose a preferred time window on
+                        <b>Mon, September 9</b>
+                      </h5>
+
+                      <div class="d-flex flex-wrap gap-3">
+                        <label
+                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black"
+                        >
+                          <input
+                            class="time opacity-0 position-absolute"
+                            type="radio"
+                            name="time"
+                            value="12am-2am"
+                            required
+                          />
+                          <div class="w-100 px-3 px-md-4 py-2">12am-2am</div>
+                        </label>
+                        <label
+                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black"
+                        >
+                          <input
+                            class="time opacity-0 position-absolute"
+                            type="radio"
+                            name="time"
+                            value="2am-4am"
+                            required
+                          />
+                          <div class="w-100 px-3 px-md-4 py-2">2am-4am</div>
+                        </label>
+                        <label
+                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black"
+                        >
+                          <input
+                            class="time opacity-0 position-absolute"
+                            type="radio"
+                            name="time"
+                            value="4am-6am"
+                            required
+                          />
+                          <div class="w-100 px-3 px-md-4 py-2">4am-6am</div>
+                        </label>
+                        <label
+                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black"
+                        >
+                          <input
+                            class="time opacity-0 position-absolute"
+                            type="radio"
+                            name="time"
+                            value="6am-8am"
+                            required
+                          />
+                          <div class="w-100 px-3 px-md-4 py-2">6am-8am</div>
+                        </label>
+                        <label
+                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black"
+                        >
+                          <input
+                            class="time opacity-0 position-absolute"
+                            type="radio"
+                            name="time"
+                            value="8am-10am"
+                            required
+                          />
+                          <div class="w-100 px-3 px-md-4 py-2">8am-10am</div>
+                        </label>
+                        <label
+                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black"
+                        >
+                          <input
+                            class="time opacity-0 position-absolute"
+                            type="radio"
+                            name="time"
+                            value="10am-12am"
+                            required
+                          />
+                          <div class="w-100 px-3 px-md-4 py-2">10am-12am</div>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="serviceReciveMethodDetails mail mt-4 d-flex flex-column gap-2"
+                >
+                  <h1 class="section-title text-start mb-2">
+                    Mail in your device
+                  </h1>
+                  <h5 class="m-0">Enter your shipping address</h5>
+                  <p>
+                    We'll provide a free label. We'll call you with a quote once
+                    we get your device, then send it back in less than a week.
+                  </p>
+
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="streetAddress"
+                      placeholder="Street address"
+                      required
+                    />
+                    <label
+                      for="streetAddress"
+                      class="d-flex align-items-center gap-2"
+                    >
+                      <i
+                        class="fa-duotone fa-solid fa-map-location-dot"
+                        style="color: var(--primaryColor)"
+                      ></i>
+                      <span>Street address</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div
+                  class="serviceReciveMethodDetails comeToMe mt-4 d-flex flex-column gap-2"
+                >
+                  <h1 class="section-title text-start mb-2">We come to you</h1>
+                  <h5 class="m-0">Where should we meet you?</h5>
+                  <p>
+                    We'll come to your home, work, or anywhere else. Heads up:
+                    there's a $30 convenience fee.
+                  </p>
+
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="streetAddress"
+                      placeholder="Street address"
+                      required
+                    />
+                    <label
+                      for="streetAddress"
+                      class="d-flex align-items-center gap-2"
+                    >
+                      <i
+                        class="fa-duotone fa-solid fa-map-location-dot"
+                        style="color: var(--primaryColor)"
+                      ></i>
+                      <span>Street address</span>
+                    </label>
+                  </div>
+
+                  <div
+                    class="mt-4 serviceReciveMethodDetails visitStore d-flex flex-column gap-4"
+                  >
+                    <h1 class="section-title text-start m-0">
+                      What time works best for you?
+                    </h1>
+
+                    <div class="d-flex flex-column gap-2">
+                      <h5 style="color: var(--primaryColor)">Choose a date</h5>
+
+                      <div class="d-flex flex-wrap gap-3">
+                        <label
+                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black"
+                        >
+                          <input
+                            class="date opacity-0 position-absolute"
+                            type="radio"
+                            name="date"
+                            value="sep9"
+                            required
+                          />
+                          <div class="w-100 p-4">
+                            <h5>Mon</h5>
+                            <div class="d-flex gap-2 align-items-center">
+                              <span>sep 9</span>
+                            </div>
+                          </div>
+                        </label>
+                        <label
+                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black"
+                        >
+                          <input
+                            class="date opacity-0 position-absolute"
+                            type="radio"
+                            name="date"
+                            value="sep10"
+                            required
+                          />
+                          <div class="w-100 p-4">
+                            <h5>Tue</h5>
+                            <div class="d-flex gap-2 align-items-center">
+                              <span>sep 10</span>
+                            </div>
+                          </div>
+                        </label>
+                        <label
+                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black"
+                        >
+                          <input
+                            class="date opacity-0 position-absolute"
+                            type="radio"
+                            name="date"
+                            value="sep11"
+                            required
+                          />
+                          <div class="w-100 p-4">
+                            <h5>Wed</h5>
+                            <div class="d-flex gap-2 align-items-center">
+                              <span>sep11</span>
+                            </div>
+                          </div>
+                        </label>
+                        <label
+                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black"
+                        >
+                          <input
+                            class="date opacity-0 position-absolute"
+                            type="radio"
+                            name="date"
+                            value="sep12"
+                            required
+                          />
+                          <div class="w-100 p-4">
+                            <h5>Thu</h5>
+                            <div class="d-flex gap-2 align-items-center">
+                              <span>sep 12</span>
+                            </div>
+                          </div>
+                        </label>
+                        <label
+                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black"
+                        >
+                          <input
+                            class="date opacity-0 position-absolute"
+                            type="radio"
+                            name="date"
+                            value="sep13"
+                            required
+                          />
+                          <div class="w-100 p-4">
+                            <h5>Fri</h5>
+                            <div class="d-flex gap-2 align-items-center">
+                              <span>sep 13</span>
+                            </div>
+                          </div>
+                        </label>
+                        <label
+                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black"
+                        >
+                          <input
+                            class="date opacity-0 position-absolute"
+                            type="radio"
+                            name="date"
+                            value="sep14"
+                            required
+                          />
+                          <div class="w-100 p-4">
+                            <h5>Sat</h5>
+                            <div class="d-flex gap-2 align-items-center">
+                              <span>sep 14</span>
+                            </div>
+                          </div>
+                        </label>
+                        <label
+                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black"
+                        >
+                          <input
+                            class="date opacity-0 position-absolute"
+                            type="radio"
+                            name="date"
+                            value="sep15"
+                            required
+                          />
+                          <div class="w-100 p-4">
+                            <h5>Sun</h5>
+                            <div class="d-flex gap-2 align-items-center">
+                              <span>sep 15</span>
+                            </div>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-column gap-2">
+                      <h5 style="color: var(--primaryColor)">
+                        Choose a preferred time window on
+                        <b>Mon, September 9</b>
+                      </h5>
+
+                      <div class="d-flex flex-wrap gap-3">
+                        <label
+                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black"
+                        >
+                          <input
+                            class="time opacity-0 position-absolute"
+                            type="radio"
+                            name="time"
+                            value="12am-2am"
+                            required
+                          />
+                          <div class="w-100 px-3 px-md-4 py-2">12am-2am</div>
+                        </label>
+                        <label
+                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black"
+                        >
+                          <input
+                            class="time opacity-0 position-absolute"
+                            type="radio"
+                            name="time"
+                            value="2am-4am"
+                            required
+                          />
+                          <div class="w-100 px-3 px-md-4 py-2">2am-4am</div>
+                        </label>
+                        <label
+                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black"
+                        >
+                          <input
+                            class="time opacity-0 position-absolute"
+                            type="radio"
+                            name="time"
+                            value="4am-6am"
+                            required
+                          />
+                          <div class="w-100 px-3 px-md-4 py-2">4am-6am</div>
+                        </label>
+                        <label
+                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black"
+                        >
+                          <input
+                            class="time opacity-0 position-absolute"
+                            type="radio"
+                            name="time"
+                            value="6am-8am"
+                            required
+                          />
+                          <div class="w-100 px-3 px-md-4 py-2">6am-8am</div>
+                        </label>
+                        <label
+                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black"
+                        >
+                          <input
+                            class="time opacity-0 position-absolute"
+                            type="radio"
+                            name="time"
+                            value="8am-10am"
+                            required
+                          />
+                          <div class="w-100 px-3 px-md-4 py-2">8am-10am</div>
+                        </label>
+                        <label
+                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black"
+                        >
+                          <input
+                            class="time opacity-0 position-absolute"
+                            type="radio"
+                            name="time"
+                            value="10am-12am"
+                            required
+                          />
+                          <div class="w-100 px-3 px-md-4 py-2">10am-12am</div>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="customerInfo flex-column gap-3">
+                <h1 class="section-title text-start m-0">
+                  Enter your contact info
+                </h1>
+                <p class="section-subtext m-0 mb-3">
+                  This'll speed up check-in when you get here.
+                </p>
+
+                <div class="d-flex flex-column flex-sm-row gap-3">
+                  <div class="form-floating w-100">
+                    <input
+                      type="text"
+                      class="customerFirstName form-control"
+                      id="customerFirstName"
+                      name="customerFirstName"
+                      placeholder="First Name"
+                      required
+                    />
+                    <label for="customerFirstName">First Name</label>
+                  </div>
+                  <div class="form-floating w-100">
+                    <input
+                      type="text"
+                      class="customerLastName form-control"
+                      id="customerLastName"
+                      name="customerLastName"
+                      placeholder="Last Name"
+                      required
+                    />
+                    <label for="customerLastName">Last Name</label>
+                  </div>
+                </div>
+
+                <div class="form-floating">
+                  <input
+                    type="email"
+                    class="customerEmail form-control"
+                    id="customerEmail"
+                    name="customerEmail"
+                    placeholder="Email"
+                    required
+                  />
+                  <label for="customerEmail">Email address</label>
+                </div>
+
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="customerPhone form-control"
+                    id="customerPhone"
+                    name="customerPhone"
+                    placeholder="Phone Numder"
+                    required
+                  />
+                  <label for="customerPhone">Phone number to reach you</label>
+                </div>
+              </div>
+
+              <div class="termsConditon form-check align-items-center gap-2">
+                <input
+                  class="termsAndConditions form-check-input p-2"
+                  type="checkbox"
+                  value="termsAndConditions"
+                  id="termsAndConditions"
+                  required
+                />
+                <label class="form-check-label" for="termsAndConditions">
+                  Agree to
+                  <a
+                    href="./termsConditions.html"
+                    style="color: var(--primaryColor) !important"
+                    >Terms & Conditions</a
+                  >
+                </label>
+              </div>
+
+              <div class="formButtons d-flex justify-content-end gap-3">
+                <button
+                  type="reset"
+                  class="text-center py-2 px-4 rounded-2 resetBtn"
+                  style="background-color: transparent"
+                >
+                  Reset
+                </button>
+                <button
+                  type="submit"
+                  class="carousel-inner-btn py-2 rounded-2 submitButton"
+                >
+                  Submit
+                </button>
+                <button
+                  type="submit"
+                  class="carousel-inner-btn py-2 rounded-2 nextButton"
+                >
+                  Next
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="serviceSummary d-flex flex-column gap-4 pt-5 pt-md-0">
+            <div
+              class="d-flex flex-column gap-3 p-3 rounded-2"
+              style="background: var(--primaryColor); color: white"
+            >
+              <!-- <p class="p-3 mb-0 rounded-2" style="background: var(--primaryColor); color: white;">
+                            Repair costs depend on the device type and the nature of the issue. After diagnosing the problem, we will inform you of the final cost either by phone or discuss in-store.
+                        </p> -->
+
+              <i
+                class="fa-duotone fa-solid fa-quote-left"
+                style="font-size: 1.5rem"
+              ></i>
+              <p class="m-0">
+                There's no need to book an appointment—feel free to visit our
+                store whenever it suits you!
+              </p>
+              <i
+                class="fa-duotone fa-solid fa-quote-right text-end"
+                style="font-size: 1.5rem"
+              ></i>
+
+              <!-- <p class="p-3 mb-0 rounded-2" style="background: var(--primaryColor); color: white;">
+                            There's no need to book an appointment—feel free to visit our store whenever it suits you!
+                        </p> -->
+            </div>
+
+            <div>
+              <h5>Phone</h5>
+              <div class="d-flex flex-wrap gap-3 align-items-center">
+                <img
+                  src="./asset/images/categories-images/mobile.webp"
+                  alt="Device Image"
+                  style="width: 70px; aspect-ratio: 3/2"
+                  class=""
+                />
+                <div class="">
+                  <p class="mb-1">iPhone 15 Pro Max</p>
+                  <div class="d-flex flex-wrap gap-2">
+                    <b>Broken Screen</b>
+                    <b>Short Battery Life</b>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="d-flex flex-column gap-3 py-4"
+              style="border-block: 2px solid var(--accentColor)"
+            >
+              <h5>Visit Store</h5>
+              <div class="d-flex gap-3 align-items-center">
+                <i
+                  class="fa-duotone fa-solid fa-map-location-dot"
+                  style="font-size: 1rem"
+                ></i>
+                <div class="">
+                  <h6 style="color: var(--primaryColor)">
+                    Your chosen location
+                  </h6>
+                  <p class="m-0">2201 S Interstate 35, Denton, TX 76205</p>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 align-items-center">
+                <i
+                  class="fa-duotone fa-solid fa-calendar-clock"
+                  style="font-size: 1rem"
+                ></i>
+                <div class="">
+                  <h6 style="color: var(--primaryColor)">Date and time</h6>
+                  <b>12am-2am</b>
+                  <p class="m-0">Mon, sep 9, 2024</p>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 align-items-center">
+                <i
+                  class="fa-duotone fa-solid fa-messages"
+                  style="font-size: 1rem"
+                ></i>
+                <div class="">
+                  <h6 style="color: var(--primaryColor)">Contact details</h6>
+                  <b>emonhassan895@gmail.com</b>
+                  <p class="m-0">213-876-5432</p>
+                </div>
+              </div>
+              <div class="d-flex gap-3 align-items-center">
+                <i
+                  class="fa-duotone fa-solid fa-hexagon-exclamation"
+                  style="font-size: 1.3rem"
+                ></i>
+                <b class="" style="color: var(--primaryColor)">
+                  Repair costs depend on the device type and the nature of the
+                  issue. After diagnosing the problem, we will inform you of the
+                  final cost either by phone or discuss in-store.
+                </b>
+              </div>
+            </div>
+
+            <div class="">
+              <h5 class="mb-3">About our Repairs</h5>
+              <div
+                class="hide-scrollbar d-flex gap-4 justify-content-between pb-4 slider"
+                style="
+                  overflow-x: auto;
+                  overflow-y: visible;
+                  scroll-snap-type: x proximity;
+                "
+              >
+                <div
+                  class="card sliderCard rounded-3 firstCard"
+                  style="scroll-snap-align: start; background: #f7791e"
+                >
+                  <div class="card-body d-flex gap-3 align-items-center">
+                    <i
+                      class="fa-duotone fa-solid fa-gauge-max"
+                      style="font-size: 3rem"
+                    ></i>
+                    <div class="d-flex flex-column gap-3">
+                      <h5 class="card-title m-0">Instant Repair</h5>
+                      <p>
+                        We offer same-day repairs, so you won't have to be
+                        without your device for long.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="card sliderCard rounded-3"
+                  style="scroll-snap-align: start; background: #ff5758"
+                >
+                  <div class="card-body d-flex gap-3 align-items-center">
+                    <i
+                      class="fa-duotone fa-solid fa-hand-holding-circle-dollar"
+                      style="font-size: 3rem"
+                    ></i>
+                    <div class="d-flex flex-column gap-3">
+                      <h5 class="card-title m-0">Affordable Pricing</h5>
+                      <p>
+                        Our repair services are priced competitively, ensuring
+                        you get quality without breaking the bank.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="card sliderCard rounded-3"
+                  style="scroll-snap-align: start; background: #acc157"
+                >
+                  <div class="card-body d-flex gap-3 align-items-center">
+                    <i
+                      class="fa-duotone fa-solid fa-user-doctor"
+                      style="font-size: 3rem"
+                    ></i>
+                    <div class="d-flex flex-column gap-3">
+                      <h5 class="card-title m-0">Expert Technicians</h5>
+                      <p>
+                        Our certified technicians are skilled in handling all
+                        types of repairs, ensuring your device is fixed right.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="card sliderCard rounded-3"
+                  style="scroll-snap-align: start; background: #b36fcb"
+                >
+                  <div class="card-body d-flex gap-3 align-items-center">
+                    <i
+                      class="fa-duotone fa-solid fa-shield-check"
+                      style="font-size: 3rem"
+                    ></i>
+                    <div class="d-flex flex-column gap-3">
+                      <h5 class="card-title m-0">Special Warranty</h5>
+                      <p>
+                        Enjoy peace of mind with our special warranty, covering
+                        all repairs and ensuring top-notch service.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="card sliderCard rounded-3"
+                  style="scroll-snap-align: start; background: #d9c616"
+                >
+                  <div class="card-body d-flex gap-3 align-items-center">
+                    <i
+                      class="fa-duotone fa-solid fa-award"
+                      style="font-size: 3rem"
+                    ></i>
+                    <div class="d-flex flex-column gap-3">
+                      <h5 class="card-title m-0">Genuine Spare Parts</h5>
+                      <p>
+                        We use only genuine parts for every repair, ensuring the
+                        longevity and performance of your device.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="card sliderCard rounded-3"
+                  style="scroll-snap-align: start; background: #2abd76"
+                >
+                  <div class="card-body d-flex gap-3 align-items-center">
+                    <i
+                      class="fa-duotone fa-solid fa-magnifying-glass-plus"
+                      style="font-size: 3rem"
+                    ></i>
+                    <div class="d-flex flex-column gap-3">
+                      <h5 class="card-title m-0">Free Diagnostic Service</h5>
+                      <p>
+                        We provide a free diagnostic service to identify the
+                        problem, so you know exactly what your device needs.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="heroNextPreBtn justify-content-center mx-auto"
+                style="width: fit-content"
+              >
+                <i
+                  class="fa-solid fa-angle-left sliderPrevButton slider-control-btn"
+                  style="padding: 10px 25px"
+                  type="button"
+                ></i>
+                <i
+                  class="fa-solid fa-angle-right sliderNextButton slider-control-btn"
+                  style="padding: 10px 25px"
+                  type="button"
+                ></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Content End -->
+
+      <!-- Floating Social Media Start -->
+
+      <section>
+        <div class="floating-social-media">
+          <p>
+            <a
+              class="floating-icon"
+              href="mailto:info@cellnstyle.com"
+              target="_blank"
+              ><i class="fa-solid fa-envelope"></i
+            ></a>
+          </p>
+          <p>
+            <a
+              class="floating-icon"
+              href="https://wa.me/19403809094?text=Hello%2C%20I%20need%20assistance%20with%20my%20device%20repair."
+              target="_blank"
+              ><i class="icon-1 fa-brands fa-whatsapp"></i
+            ></a>
+          </p>
+
+          <p>
+            <a
+              class="floating-icon"
+              href="https://www.facebook.com/share/AoSuLDqoyHDixcSX/?mibextid=wwXIfr"
+              target="_blank"
+              ><i
+                style="padding-left: 2px"
+                class="icon-2 fa-brands fa-facebook-f"
+              ></i
+            ></a>
+          </p>
+          <!-- <p><a class="floating-icon" href=""><i class="icon-3 fa-brands fa-instagram"></i></a></p> -->
+          <p>
+            <a class="floating-icon" href=""
+              ><i class="icon-4 fa-brands fa-youtube"></i
+            ></a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Floating Social Media End -->
+    </main>
+
+    <!-----Footer Start------------->
+
+    <footer class="footer text-white" style="background: rgb(35, 31, 32)">
+      <div class="container py-5">
+        <div class="row row-cols-1 row-cols-lg-2 gap-5 gap-lg-0">
+          <div class="position-relative overflow-hidden">
+            <img
+              src="./asset/images/usa.svg"
+              alt=""
+              class="w-100 h-100 position-absolute"
+              style="z-index: 2; opacity: 0.15; transform: scale(1.3)"
+            />
+            <div
+              class="d-flex position-relative flex-column gap-3"
+              style="z-index: 10"
+            >
+              <!-- <h4 class="m-0" style="font-weight: 600;">CELL<i style="color: var(--primaryColor); font-weight: 700;">N</i>STYLE</h4> -->
+              <h4 style="font-weight: 600">Our Stores</h4>
+              <p class="footerSubtext">
+                Visit one of our locations for quick and reliable repair
+                services. We're here to help with all your device needs!
+              </p>
+
+              <!-- <a href="mailto:cellnstyle888@gmail.com" target="_blank" class="d-flex gap-2 align-items-center">
+                                <i class="fa-duotone fa-solid fa-envelope" style="color: var(--primaryColor);"></i>
+                                <span>cellnstyle888@gmail.com</span>
+                            </a> -->
+
+              <div class="d-flex position-relative flex-column gap-5">
+                <div class="d-flex flex-column gap-2">
+                  <h5>Store In Denton Area</h5>
+                  <a
+                    href="http://maps.apple.com/?q=Cell+n+Style,+2201+S+Interstate+35,+Denton,+TX+76205,+United+States"
+                    target="_blank"
+                    class="d-flex gap-2 align-items-center"
+                  >
+                    <i
+                      class="fa-duotone fa-solid fa-map-location-dot"
+                      style="color: var(--primaryColor)"
+                    ></i>
+                    <span>2201 S Interstate 35, Denton, TX 76205</span>
+                  </a>
+                  <a
+                    href="tel:+19403809094"
+                    class="d-flex gap-2 align-items-center"
+                  >
+                    <i
+                      class="fa-duotone fa-solid fa-phone-arrow-up-right"
+                      style="color: var(--primaryColor)"
+                    ></i>
+                    <span>940-380-9094</span>
+                  </a>
+                </div>
+                <div class="d-flex flex-column gap-2">
+                  <h5>Store In Aubrey & Little Elm Area</h5>
+                  <a
+                    href="http://maps.apple.com/?q=Cell+n+Style+Cell+Phone+%26+Computer+Repair+at+Aubrey,+26615+US-380+%23140,+Aubrey,+TX+76227,+United+States"
+                    target="_blank"
+                    class="d-flex gap-2 align-items-center"
+                  >
+                    <i
+                      class="fa-duotone fa-solid fa-map-location-dot"
+                      style="color: var(--primaryColor)"
+                    ></i>
+                    <span>26615 US-380 #140, Aubrey, TX 76227</span>
+                  </a>
+                  <a
+                    href="tel:+19729779115"
+                    class="d-flex gap-2 align-items-center"
+                  >
+                    <i
+                      class="fa-duotone fa-solid fa-phone-arrow-up-right"
+                      style="color: var(--primaryColor)"
+                    ></i>
+                    <span>972-977-9115</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="position-relative">
+            <div
+              class="row row-cols-1 row-cols-md-2 gap-4 gap-sm-0 justify-content-between"
+            >
+              <div class="d-flex flex-column gap-3" style="width: fit-content">
+                <h4 style="font-weight: 600">Repair Services</h4>
+                <div class="d-flex flex-column gap-3">
+                  <a href="./repair.html">Phone</a>
+                  <a href="./repair.html">Tab</a>
+                  <a href="./repair.html">Computer</a>
+                  <a href="./repair.html">Console</a>
+                  <a href="./repair.html">Headset</a>
+                  <a href="./somethingElse.html">Something else</a>
+                </div>
+              </div>
+
+              <div class="d-flex flex-column gap-3" style="width: fit-content">
+                <h4 style="font-weight: 600">Important Links</h4>
+                <div class="d-flex flex-column gap-3">
+                  <a href="./termsConditions.html">Terms & Conditions</a>
+                  <a href="./privacyPolicy.html">Privacy Policy</a>
+                  <a href="./products.html">Accessories</a>
+                  <a href="./sell.html">Sell</a>
+                  <a href="./career.html">Career</a>
+                  <a href="./contact.html">Contact</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div
+          class="copyrights text-center border-top pt-3"
+          style="border-color: var(--accentColor) !important"
+        >
+          @ <span id="autodate"></span> - CALLNSTYLE.
+        </div>
+        <div class="text-end">
+          <p>
+            Develop By - <br />
+            <a target="_blank" href="https://www.ositsltd.com/">
+              <img
+                style="width: 30px; margin-right: 5px"
+                src="https://www.ositsltd.com/media/logo/logo_K6FFJzc.png"
+                alt=""
+              />
+              OS IT Solutions Ltd.</a
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-------Footer End------------->
+
+    <!-- JS EXTERNAL & INTERNAL LINK -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="asset/js/main.js" defer></script>
+    <script src="asset/js/index.js" defer></script>
+    <script src="asset/js/repair.js" defer></script>
+    <script src="asset/js/products.js" defer></script>
+    <script src="asset/js/searchFilter.js" defer></script>
+    <script src="asset/js/productDetails.js" defer></script>
+    <script src="asset/js/cart.js" defer></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+      integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </body>
+</html>

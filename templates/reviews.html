@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reviews | CELLNSTYLE</title>
+    <link rel="stylesheet" href="asset/css/firstStyle.css" />
+
+    <!-- EXTERNAL CSS LINK -->
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/bs-brain@2.0.4/components/navbars/navbar-1/assets/css/navbar-1.css"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      data-purpose="Layout StyleSheet"
+      title="Web Awesome"
+      href="/css/app-wa-09b459cf485d4b1f3304947240314c05.css?vsn=d"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-duotone-solid.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-thin.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-solid.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-regular.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-light.css"
+    />
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Carousel Templete -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+      integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css"
+      integrity="sha512-OTcub78R3msOCtY3Tc6FzeDJ8N9qvQn1Ph49ou13xgA9VsH9+LRxoFU6EqLhW4+PKRfU+/HReXmSZXHEkpYoOA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body class="d-flex flex-column h-100">
+    <!-- <div class="preloader" id="preloader-active">
+        <div id="loader"></div>
+    </div> -->
+
+    <header class="headerSection fixed-top" style="background: #231f20">
+      <!-- Navbar 1 - Bootstrap Brain Component -->
+      <nav
+        class="navbar navbar-expand-lg bsb-navbar bsb-navbar-hover bsb-navbar-caret"
+      >
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+            <img
+              src="./asset/images/blackBGlogo.png"
+              style="
+                width: clamp(
+                  8.3125rem,
+                  8.008928571428571rem + 1.5178571428571428vw,
+                  9.375rem
+                );
+              "
+              alt=""
+            />
+            <!-- <h4 class="m-0" style="font-weight: 600;">CELL<i style="color: var(--primaryColor); font-weight: 700;">N</i>STYLE</h4> -->
+          </a>
+          <button
+            class="navbar-toggler border-0"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="#ffffff"
+              class="bi bi-list"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+              />
+            </svg>
+          </button>
+          <div
+            class="offcanvas offcanvas-end me-auto"
+            style="background: #231f20"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">
+                Menu
+              </h5>
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul
+                class="navbar-nav justify-content-center flex-grow-1 gap-xl-4"
+              >
+                <li class="nav-item">
+                  <a class="nav-link text-nowrap" href="./index.html">Home</a>
+                </li>
+                <li class="nav-item dropdown has-megamenu">
+                  <a
+                    class="nav-link text-nowrap dropdown-toggle"
+                    href="#!"
+                    id="servicesDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    >Company</a
+                  >
+                  <ul
+                    class="dropdown-menu border bsb-zoomIn megamenu smallMegaMenu"
+                    aria-labelledby="servicesDropdown"
+                  >
+                    <li>
+                      <a class="dropdown-item" href="./franchise.html"
+                        >Franchise</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="./career.html">Career</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="./contact.html">Contact</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown has-megamenu">
+                  <a
+                    class="nav-link text-nowrap dropdown-toggle"
+                    href="#!"
+                    id="servicesDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    >Repair Service</a
+                  >
+                  <ul
+                    class="dropdown-menu border-0 shadow-sm bsb-zoomIn megamenu"
+                    aria-labelledby="servicesDropdown"
+                  >
+                    <div>
+                      <div class="row">
+                        <div class="col-12 col-md-12 col-lg-4">
+                          <img
+                            class="nav-repair-icon"
+                            src="asset/images/icons/repair-tools-svgrepo-com.svg"
+                            alt=""
+                          />
+                          <h5>What can we fix for you?</h5>
+                          <p class="pt-3">
+                            Select the device that needs fixing, and let our
+                            certified technicians handle the rest.
+                          </p>
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-8">
+                          <div class="text-center">
+                            <div
+                              class="row row-cols-2 row-cols-lg-3 g-2 g-lg-3"
+                            >
+                              <div class="col">
+                                <a href="./repair.html">
+                                  <div
+                                    class="pt-3 border rounded-2 text-dark h-100 nav-c-card"
+                                  >
+                                    <img
+                                      class="dropdown-categories-img"
+                                      src="asset/images/categories-images/iphone-nav-grid.png"
+                                      alt=""
+                                    />
+                                    <p class="nav-c-text">Phone</p>
+                                  </div>
+                                </a>
+                              </div>
+                              <div class="col">
+                                <a href="./repair.html">
+                                  <div
+                                    class="pt-3 border rounded-2 text-dark h-100 nav-c-card"
+                                  >
+                                    <img
+                                      class="dropdown-categories-img"
+                                      src="asset/images/categories-images/ipad-nav-grid.svg"
+                                      alt=""
+                                    />
+                                    <p class="nav-c-text">Tab</p>
+                                  </div>
+                                </a>
+                              </div>
+                              <div class="col">
+                                <a href="./repair.html">
+                                  <div
+                                    class="pt-3 border rounded-2 text-dark h-100 nav-c-card"
+                                  >
+                                    <img
+                                      class="dropdown-categories-img"
+                                      src="asset/images/categories-images/laptop-nav-grid.svg"
+                                      alt=""
+                                    />
+                                    <p class="nav-c-text">Computer</p>
+                                  </div>
+                                </a>
+                              </div>
+                              <div class="col">
+                                <a href="./repair.html">
+                                  <div
+                                    class="pt-3 border rounded-2 text-dark h-100 nav-c-card"
+                                  >
+                                    <img
+                                      class="dropdown-categories-img"
+                                      src="asset/images/categories-images/game-console-nav-grid.svg"
+                                      alt=""
+                                    />
+                                    <p class="nav-c-text">Console</p>
+                                  </div>
+                                </a>
+                              </div>
+                              <div class="col">
+                                <a href="./repair.html">
+                                  <div
+                                    class="pt-3 border rounded-2 text-dark h-100 nav-c-card"
+                                  >
+                                    <img
+                                      class="dropdown-categories-img"
+                                      src="asset/images/categories-images/headset.jpg"
+                                      alt=""
+                                    />
+                                    <p class="nav-c-text">Headset</p>
+                                  </div>
+                                </a>
+                              </div>
+                              <div class="col">
+                                <a href="./somethingElse.html">
+                                  <div
+                                    class="pt-3 border rounded-2 text-dark h-100 nav-c-card"
+                                  >
+                                    <img
+                                      class="dropdown-categories-img"
+                                      src="asset/images/categories-images/home-appliances.png"
+                                      alt=""
+                                    />
+                                    <p class="nav-c-text">Something else</p>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link text-nowrap" href="./products.html"
+                    >Accessories</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-nowrap" href="./sell.html">Sell</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-nowrap" href="./blogs.html">Blogs</a>
+                </li>
+              </ul>
+
+              <li class="nav-item book-li">
+                <a
+                  class="nav-link text-nowrap text-center book-repair-btn"
+                  href=""
+                  >CALL NOW</a
+                >
+              </li>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-shrink-0">
+      <!-- Main Content Start -->
+
+      <!-- Review section start-->
+
+      <section class="container my-5" style="padding-block: 3rem">
+        <h1 class="section-title">Customer Reviews</h1>
+        <p class="text-center section-subtext mt-3">
+          See what our satisfied customers have to say about our fast and
+          reliable repair services. Also feel free to share your own experience
+          with our services. Your experience matters to us!
+        </p>
+
+        <!-- Button trigger modal -->
+        <div class="text-center pt-3">
+          <button
+            class="carousel-inner-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            Leave A Review →
+          </button>
+        </div>
+
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content d-flex flex-column gap-4 p-3">
+              <div class="modal-header p-0 justify-content-end border-0">
+                <i
+                  class="fa-duotone fa-solid fa-circle-xmark"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                  style="color: var(--primaryColor); font-size: 2rem"
+                ></i>
+              </div>
+
+              <form action="#" method="get" class="d-flex flex-column gap-3">
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Name..."
+                  required
+                />
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Email..."
+                  required
+                />
+                <textarea
+                  name="review"
+                  id=""
+                  cols=""
+                  rows="8"
+                  placeholder="Write your review here ..."
+                  required
+                ></textarea>
+
+                <div class="d-flex justify-content-end gap-3">
+                  <button
+                    type="reset"
+                    class="text-center py-2 px-4 rounded-2 resetBtn"
+                    style="background-color: transparent"
+                  >
+                    Reset
+                  </button>
+                  <button
+                    type="submit"
+                    class="carousel-inner-btn py-2 rounded-2"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 pt-5 pb-4 align-items-center"
+        >
+          <div class="col">
+            <div
+              class="card border-0 rounded-3 gap-3 p-3"
+              style="background: var(--secondaryColor)"
+            >
+              <div class="d-flex flex-column flex-lg-row gap-3">
+                <div
+                  class="rounded-5"
+                  style="
+                    width: 2.5rem;
+                    aspect-ratio: 1/1;
+                    background: url(./asset/images/blog/blogImage1.jpg);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                  "
+                ></div>
+                <div class="">
+                  <h6 class="mb-1" style="font-weight: 600">Lendy Queen</h6>
+                  <span>queen2bee@gmail.com</span>
+                </div>
+              </div>
+
+              <div class="">
+                <i
+                  class="fa-duotone fa-solid fa-quote-left"
+                  style="color: var(--primaryColor); font-size: 1.5rem"
+                ></i>
+                <p class="m-0">
+                  I had a great experience. The service was quick, and the
+                  repair team was very professional. My phone is performing
+                  perfectly again, and I couldn’t be happier with the results!
+                </p>
+                <i
+                  class="fa-duotone fa-solid fa-quote-right float-end"
+                  style="color: var(--primaryColor); font-size: 1.5rem"
+                ></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div
+              class="card border-0 rounded-3 gap-3 p-3"
+              style="background: var(--secondaryColor)"
+            >
+              <div class="d-flex flex-column flex-lg-row gap-3">
+                <div
+                  class="rounded-5"
+                  style="
+                    width: 2.5rem;
+                    aspect-ratio: 1/1;
+                    background: url(./asset/images/blog/blogImage1.jpg);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                  "
+                ></div>
+                <div class="">
+                  <h6 class="mb-1" style="font-weight: 600">Lendy Queen</h6>
+                  <span>queen2bee@gmail.com</span>
+                </div>
+              </div>
+
+              <div class="">
+                <i
+                  class="fa-duotone fa-solid fa-quote-left"
+                  style="color: var(--primaryColor); font-size: 1.5rem"
+                ></i>
+                <p class="m-0">
+                  The service was absolutely fantastic! My phone was repaired
+                  quickly, and it’s working like brand new. The staff was
+                  extremely helpful, and I’ll definitely be coming back for
+                  future repairs. They even went out of their way to explain the
+                  repair process, which I really appreciated. Best service ever!
+                </p>
+                <i
+                  class="fa-duotone fa-solid fa-quote-right float-end"
+                  style="color: var(--primaryColor); font-size: 1.5rem"
+                ></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div
+              class="card border-0 rounded-3 gap-3 p-3"
+              style="background: var(--secondaryColor)"
+            >
+              <div class="d-flex flex-column flex-lg-row gap-3">
+                <div
+                  class="rounded-5"
+                  style="
+                    width: 2.5rem;
+                    aspect-ratio: 1/1;
+                    background: url(./asset/images/blog/blogImage1.jpg);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                  "
+                ></div>
+                <div class="">
+                  <h6 class="mb-1" style="font-weight: 600">Lendy Queen</h6>
+                  <span>queen2bee@gmail.com</span>
+                </div>
+              </div>
+
+              <div class="">
+                <i
+                  class="fa-duotone fa-solid fa-quote-left"
+                  style="color: var(--primaryColor); font-size: 1.5rem"
+                ></i>
+                <p class="m-0">
+                  Selling my old phone was incredibly easy. Smooth process and
+                  great price!
+                </p>
+                <i
+                  class="fa-duotone fa-solid fa-quote-right float-end"
+                  style="color: var(--primaryColor); font-size: 1.5rem"
+                ></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div
+              class="card d-flex border-0 rounded-3 gap-3 p-3"
+              style="background: var(--secondaryColor)"
+            >
+              <div class="d-flex flex-column flex-lg-row gap-3">
+                <div
+                  class="rounded-5"
+                  style="
+                    width: 2.5rem;
+                    aspect-ratio: 1/1;
+                    background: url(./asset/images/blog/blogImage1.jpg);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                  "
+                ></div>
+                <div class="">
+                  <h6 class="mb-1" style="font-weight: 600">Lendy Queen</h6>
+                  <span>queen2bee@gmail.com</span>
+                </div>
+              </div>
+
+              <div class="">
+                <i
+                  class="fa-duotone fa-solid fa-quote-left"
+                  style="color: var(--primaryColor); font-size: 1.5rem"
+                ></i>
+                <p class="m-0">
+                  The repair was done properly, but the wait time was longer
+                  than expected.
+                </p>
+                <i
+                  class="fa-duotone fa-solid fa-quote-right float-end"
+                  style="color: var(--primaryColor); font-size: 1.5rem"
+                ></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div
+              class="card d-flex border-0 rounded-3 gap-3 p-3"
+              style="background: var(--secondaryColor)"
+            >
+              <div class="d-flex flex-column flex-lg-row gap-3">
+                <div
+                  class="rounded-5"
+                  style="
+                    width: 2.5rem;
+                    aspect-ratio: 1/1;
+                    background: url(./asset/images/blog/blogImage1.jpg);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                  "
+                ></div>
+                <div class="">
+                  <h6 class="mb-1" style="font-weight: 600">Lendy Queen</h6>
+                  <span>queen2bee@gmail.com</span>
+                </div>
+              </div>
+
+              <div class="">
+                <i
+                  class="fa-duotone fa-solid fa-quote-left"
+                  style="color: var(--primaryColor); font-size: 1.5rem"
+                ></i>
+                <p class="m-0">
+                  Top-notch service! I bought high-quality accessories.
+                </p>
+                <i
+                  class="fa-duotone fa-solid fa-quote-right float-end"
+                  style="color: var(--primaryColor); font-size: 1.5rem"
+                ></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div
+              class="card d-flex border-0 rounded-3 gap-3 p-3"
+              style="background: var(--secondaryColor)"
+            >
+              <div class="d-flex flex-column flex-lg-row gap-3">
+                <div
+                  class="rounded-5"
+                  style="
+                    width: 2.5rem;
+                    aspect-ratio: 1/1;
+                    background: url(./asset/images/blog/blogImage1.jpg);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                  "
+                ></div>
+                <div class="">
+                  <h6 class="mb-1" style="font-weight: 600">Lendy Queen</h6>
+                  <span>queen2bee@gmail.com</span>
+                </div>
+              </div>
+
+              <div class="">
+                <i
+                  class="fa-duotone fa-solid fa-quote-left"
+                  style="color: var(--primaryColor); font-size: 1.5rem"
+                ></i>
+                <p class="m-0">
+                  The repair on my tablet was fast, and it's now working
+                  perfectly. The staff was friendly and offered great customer
+                  service. I'll be recommending this place to everyone. The
+                  pricing was fair, and the work was done professionally. Can't
+                  ask for more!
+                </p>
+                <i
+                  class="fa-duotone fa-solid fa-quote-right float-end"
+                  style="color: var(--primaryColor); font-size: 1.5rem"
+                ></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a href="" class="commonBtn text-dark"
+            >More reviews <i class="fa-solid fa-chevron-right c-arrow"></i
+          ></a>
+        </div>
+      </section>
+
+      <!-- Review section end-->
+
+      <!-- Main Content End -->
+
+      <!-- Floating Social Media Start -->
+
+      <section>
+        <div class="floating-social-media">
+          <p>
+            <a
+              class="floating-icon"
+              href="mailto:info@cellnstyle.com"
+              target="_blank"
+              ><i class="fa-solid fa-envelope"></i
+            ></a>
+          </p>
+          <p>
+            <a
+              class="floating-icon"
+              href="https://wa.me/19403809094?text=Hello%2C%20I%20need%20assistance%20with%20my%20device%20repair."
+              target="_blank"
+              ><i class="icon-1 fa-brands fa-whatsapp"></i
+            ></a>
+          </p>
+
+          <p>
+            <a
+              class="floating-icon"
+              href="https://www.facebook.com/share/AoSuLDqoyHDixcSX/?mibextid=wwXIfr"
+              target="_blank"
+              ><i
+                style="padding-left: 2px"
+                class="icon-2 fa-brands fa-facebook-f"
+              ></i
+            ></a>
+          </p>
+          <!-- <p><a class="floating-icon" href=""><i class="icon-3 fa-brands fa-instagram"></i></a></p> -->
+          <p>
+            <a class="floating-icon" href=""
+              ><i class="icon-4 fa-brands fa-youtube"></i
+            ></a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Floating Social Media End -->
+    </main>
+
+    <!-----Footer Start------------->
+
+    <footer class="footer text-white" style="background: rgb(35, 31, 32)">
+      <div class="container py-5">
+        <div class="row row-cols-1 row-cols-lg-2 gap-5 gap-lg-0">
+          <div class="position-relative overflow-hidden">
+            <img
+              src="./asset/images/usa.svg"
+              alt=""
+              class="w-100 h-100 position-absolute"
+              style="z-index: 2; opacity: 0.15; transform: scale(1.3)"
+            />
+            <div
+              class="d-flex position-relative flex-column gap-3"
+              style="z-index: 10"
+            >
+              <!-- <h4 class="m-0" style="font-weight: 600;">CELL<i style="color: var(--primaryColor); font-weight: 700;">N</i>STYLE</h4> -->
+              <h4 style="font-weight: 600">Our Stores</h4>
+              <p class="footerSubtext">
+                Visit one of our locations for quick and reliable repair
+                services. We're here to help with all your device needs!
+              </p>
+
+              <!-- <a href="mailto:cellnstyle888@gmail.com" target="_blank" class="d-flex gap-2 align-items-center">
+                                <i class="fa-duotone fa-solid fa-envelope" style="color: var(--primaryColor);"></i>
+                                <span>cellnstyle888@gmail.com</span>
+                            </a> -->
+
+              <div class="d-flex position-relative flex-column gap-5">
+                <div class="d-flex flex-column gap-2">
+                  <h5>Store In Denton Area</h5>
+                  <a
+                    href="http://maps.apple.com/?q=Cell+n+Style,+2201+S+Interstate+35,+Denton,+TX+76205,+United+States"
+                    target="_blank"
+                    class="d-flex gap-2 align-items-center"
+                  >
+                    <i
+                      class="fa-duotone fa-solid fa-map-location-dot"
+                      style="color: var(--primaryColor)"
+                    ></i>
+                    <span>2201 S Interstate 35, Denton, TX 76205</span>
+                  </a>
+                  <a
+                    href="tel:+19403809094"
+                    class="d-flex gap-2 align-items-center"
+                  >
+                    <i
+                      class="fa-duotone fa-solid fa-phone-arrow-up-right"
+                      style="color: var(--primaryColor)"
+                    ></i>
+                    <span>940-380-9094</span>
+                  </a>
+                </div>
+                <div class="d-flex flex-column gap-2">
+                  <h5>Store In Aubrey & Little Elm Area</h5>
+                  <a
+                    href="http://maps.apple.com/?q=Cell+n+Style+Cell+Phone+%26+Computer+Repair+at+Aubrey,+26615+US-380+%23140,+Aubrey,+TX+76227,+United+States"
+                    target="_blank"
+                    class="d-flex gap-2 align-items-center"
+                  >
+                    <i
+                      class="fa-duotone fa-solid fa-map-location-dot"
+                      style="color: var(--primaryColor)"
+                    ></i>
+                    <span>26615 US-380 #140, Aubrey, TX 76227</span>
+                  </a>
+                  <a
+                    href="tel:+19729779115"
+                    class="d-flex gap-2 align-items-center"
+                  >
+                    <i
+                      class="fa-duotone fa-solid fa-phone-arrow-up-right"
+                      style="color: var(--primaryColor)"
+                    ></i>
+                    <span>972-977-9115</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="position-relative">
+            <div
+              class="row row-cols-1 row-cols-md-2 gap-4 gap-sm-0 justify-content-between"
+            >
+              <div class="d-flex flex-column gap-3" style="width: fit-content">
+                <h4 style="font-weight: 600">Repair Services</h4>
+                <div class="d-flex flex-column gap-3">
+                  <a href="./repair.html">Phone</a>
+                  <a href="./repair.html">Tab</a>
+                  <a href="./repair.html">Computer</a>
+                  <a href="./repair.html">Console</a>
+                  <a href="./repair.html">Headset</a>
+                  <a href="./somethingElse.html">Something else</a>
+                </div>
+              </div>
+
+              <div class="d-flex flex-column gap-3" style="width: fit-content">
+                <h4 style="font-weight: 600">Important Links</h4>
+                <div class="d-flex flex-column gap-3">
+                  <a href="./termsConditions.html">Terms & Conditions</a>
+                  <a href="./privacyPolicy.html">Privacy Policy</a>
+                  <a href="./products.html">Accessories</a>
+                  <a href="./sell.html">Sell</a>
+                  <a href="./career.html">Career</a>
+                  <a href="./contact.html">Contact</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div
+          class="copyrights text-center border-top pt-3"
+          style="border-color: var(--accentColor) !important"
+        >
+          @ <span id="autodate"></span> - CALLNSTYLE.
+        </div>
+        <div class="text-end">
+          <p>
+            Develop By - <br />
+            <a target="_blank" href="https://www.ositsltd.com/">
+              <img
+                style="width: 30px; margin-right: 5px"
+                src="https://www.ositsltd.com/media/logo/logo_K6FFJzc.png"
+                alt=""
+              />
+              OS IT Solutions Ltd.</a
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-------Footer End------------->
+
+    <!-- JS EXTERNAL & INTERNAL LINK -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="asset/js/main.js" defer></script>
+    <script src="asset/js/index.js" defer></script>
+    <script src="asset/js/repair.js" defer></script>
+    <script src="asset/js/products.js" defer></script>
+    <script src="asset/js/searchFilter.js" defer></script>
+    <script src="asset/js/productDetails.js" defer></script>
+    <script src="asset/js/cart.js" defer></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+      integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </body>
+</html>

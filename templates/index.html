@@ -1,0 +1,878 @@
+{% extends "base.html" %}
+{% load static %}
+
+    
+{% block content %}
+
+    <main class="flex-shrink-0">
+
+        <!-- Hero Section Start -->
+
+        <section id="hero-section" class="heroSection" style="margin-top: 3.7rem; background: var(--fontColor);">
+            <div id="carouselExampleIndicators" class="heroWrapper carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner"  style="color: white !important;">
+                  {% for slider in sliders %}
+                    <div class="carousel-item {% if forloop.first %} active {%endif%}" style="padding-block: 4rem; background: url({{slider.image.url}}); background-position: center; background-repeat: no-repeat; background-size: cover;">
+
+                        <div class="row justify-content-center container mx-auto">
+                            <div class="col-12 col-md-8 col-xl-6">
+                                <div class="sliderContent">
+                                    <div class="carousel-content-box d-flex flex-column justify-content-center"  style="min-height: 400px;">
+                                        <h1 class="carousel-title pb-3">
+                                            {{slider.title|safe}}</h1>
+                                        <p class="section-subtext">{{slider.subtitle}}</p>
+                                        <a href="{% if slider.link_type == 'scroll' %}#{{ hero_section.button_link }}{% elif slider.link_type == 'tel' %}tel:{{ slider.button_link }}{% else %}{{ hero_section.button_link }}{% endif %}"><button class="carousel-inner-btn">{{slider.button_text}}</button></a>
+                                        <div class="carousel-btn-box">
+                                            <button class="slider-control-btn bg-transparent border-white text-white" type="button" data-bs-target="#carouselExampleIndicators"
+                                                data-bs-slide="prev">
+                                                <i class="fa-solid fa-chevron-left carousel-control-icon "></i>
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="slider-control-btn bg-transparent border-white text-white" type="button" data-bs-target="#carouselExampleIndicators"
+                                                data-bs-slide="next">
+                                                <i class="fa-solid fa-chevron-right carousel-control-icon "></i>
+                                                <span class="visually-hidden">Next</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                  {% endfor %}
+                 
+
+               
+
+
+
+                </div>
+
+
+
+            </div>
+        </section>
+
+        <!-- Hero Section End -->
+
+
+        <!-- Main Content Start -->
+
+        <!-- Service section start-->
+
+        <section class="container my-5" id="serviceSection">
+
+            <h1 class="section-title">What can we fix for you?</h1>
+            <p class="text-center section-subtext mt-3">Select the device that needs fixing, and let our certified technicians handle
+                the
+                rest.</p>
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-5 g-3 mt-4 justify-content-center">
+              {% for device in devices %}
+                <div class="col">
+                    <a href="{% url 'repair' device.id %}">
+                        <div class="card h-100 categories-box">
+                            <img src="{{device.image.url}}" class="card-img-top categories-images"
+                                alt="...">
+
+                            <div class="card-footer text-center border-0 bg-white">
+                                <p class="commonBtn text-dark mb-0">{{device.name}} <i class="fa-solid fa-chevron-right c-arrow"></i></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+              {% endfor %}
+           
+                {% comment %} <div class="col">
+                    <a href="./somethingElse.html">
+                        <div class="card h-100 categories-box">
+                            <img src="asset/images/categories-images/home-appliances.png"
+                                class="card-img-top categories-images" alt="...">
+
+                            <div class="card-footer text-center border-0 bg-white">
+                                <p class="commonBtn text-dark mb-0">Something else <i class="fa-solid fa-chevron-right c-arrow"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div> {% endcomment %}
+
+
+            </div>
+
+
+
+        </section>
+
+        <!-- Service section ends-->
+
+        <!-- Features section start-->
+
+        <section class="container my-5">
+
+            <h1 class="section-title">Why Choose Us?</h1>
+            <p class="text-center section-subtext mt-3">Join thousands of satisfied customers who trust us for fast, reliable, and affordable repairs. We guarantee quality service and lasting results for all your devices.</p>
+
+            <div
+            class="hide-scrollbar d-flex gap-4 justify-content-between py-4 slider"
+            style="
+            overflow-x: auto;
+            overflow-y: visible;
+            scroll-snap-type: x proximity;
+            "
+          >
+            <div
+              class="card sliderCard rounded-3 firstCard"
+              style="scroll-snap-align: start; background: #f7791e;"
+            >
+              <div class="card-body d-flex gap-3 align-items-center">
+                <i class="fa-duotone fa-solid fa-gauge-max" style="font-size: 3rem"></i>
+                <div class="d-flex flex-column gap-3">
+                    <h5 class="card-title m-0">Instant Repair</h5>
+                    <p>We offer same-day repairs, so you won't have to be without your device for long.</p>
+                </div>
+              </div>
+            </div>
+            <div class="card sliderCard rounded-3" style="scroll-snap-align: start; background: #ff5758;">
+              <div class="card-body d-flex gap-3 align-items-center" >
+                <i class="fa-duotone fa-solid fa-hand-holding-circle-dollar" style="font-size: 3rem"></i>
+                <div class="d-flex flex-column gap-3">
+                    <h5 class="card-title m-0">Affordable Pricing</h5>
+                    <p>Our repair services are priced competitively, ensuring you get quality without breaking the bank.</p>
+                </div>
+              </div>
+            </div>
+            <div class="card sliderCard rounded-3" style="scroll-snap-align: start; background: #acc157;">
+              <div class="card-body d-flex gap-3 align-items-center" >
+                <i class="fa-duotone fa-solid fa-user-doctor" style="font-size: 3rem"></i>
+                  <div class="d-flex flex-column gap-3">
+                    <h5 class="card-title m-0">Expert Technicians</h5>
+                    <p>Our certified technicians are skilled in handling all types of repairs, ensuring your device is fixed right.</p>
+                </div>
+              </div>
+            </div>
+            <div class="card sliderCard rounded-3" style="scroll-snap-align: start; background: #b36fcb;">
+              <div class="card-body d-flex gap-3 align-items-center" >
+                <i class="fa-duotone fa-solid fa-shield-check" style="font-size: 3rem"></i>
+                <div class="d-flex flex-column gap-3">
+                    <h5 class="card-title m-0">Special Warranty</h5>
+                    <p>Enjoy peace of mind with our special warranty, covering all repairs and ensuring top-notch service.</p>
+                </div>
+              </div>
+            </div>
+            <div class="card sliderCard rounded-3" style="scroll-snap-align: start; background: #d9c616;">
+              <div class="card-body d-flex gap-3 align-items-center" >
+                <i class="fa-duotone fa-solid fa-award" style="font-size: 3rem"></i>
+                <div class="d-flex flex-column gap-3">
+                    <h5 class="card-title m-0">Genuine Spare Parts</h5>
+                    <p>We use only genuine parts for every repair, ensuring the longevity and performance of your device.</p>
+                </div>
+              </div>
+            </div>
+            <div class="card sliderCard rounded-3" style="scroll-snap-align: start; background: #2abd76;">
+              <div class="card-body d-flex gap-3 align-items-center" >
+                <i class="fa-duotone fa-solid fa-magnifying-glass-plus" style="font-size: 3rem"></i>
+                <div class="d-flex flex-column gap-3">
+                    <h5 class="card-title m-0">Free Diagnostic Service</h5>
+                    <p>We provide a free diagnostic service to identify the problem, so you know exactly what your device needs.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="heroNextPreBtn justify-content-center mx-auto" style="width: fit-content;">
+            <i class="fa-solid fa-angle-left sliderPrevButton slider-control-btn" style="padding: 10px 25px;" type="button"></i>
+            <i class="fa-solid fa-angle-right sliderNextButton slider-control-btn" style="padding: 10px 25px;" type="button"></i>
+          </div>
+
+
+
+        </section>
+        
+        <!-- Features section end-->
+
+        <!-- Accessories section start-->
+
+        <section class="accessoriesSection py-5" style="background: #231f20; color: white !important;">
+
+            <div class="container">
+                <div class="d-flex flex-column align-items-center flex-md-row justify-content-between gap-2">
+                    <h1 class="section-title text-md-start">Get your <br class="d-none d-md-inline"> Favourite Accessories</h1>
+                    <a href="./products.html" class="carousel-inner-btn m-0">View More Products →</i></a>
+                </div>
+    
+                <div class="px-lg-5 py-4 my-4 rounded-3 accessoriesSliderWrapper">
+    
+                    <div class="d-flex justify-content-between align-items-center gap-3 pb-4 toggleAccesoryType">
+                        <label class="text-center eachAccessoryType pb-1">
+                            Case And Protection
+                            <input type="radio" name="accessoryType" value="caseAndProtection" id="caseAndProtection" checked>
+                        </label>
+                        <label class="text-center eachAccessoryType pb-1">
+                            Battery
+                            <input type="radio" name="accessoryType" value="battery" id="battery">
+                        </label>
+                        <label class="text-center eachAccessoryType pb-1">
+                            Headset And Speaker
+                            <input type="radio" name="accessoryType" value="headsetAndSpeaker" id="headsetAndSpeaker">
+                        </label>
+                        <label class="text-center eachAccessoryType pb-1">
+                            Power and Cable
+                            <input type="radio" name="accessoryType" value="powerAndCable" id="powerAndCable">
+                        </label>
+                    </div>
+        
+        
+                    <div
+                    class="hide-scrollbar d-flex gap-4 justify-content-between slider"
+                    style="
+                    overflow-x: auto;
+                    overflow-y: visible;
+                    scroll-snap-type: x proximity;
+                    "
+                  >
+                    <a href="./productDetails.html"
+                      class="card sliderCard rounded-3 firstCard "
+                      style="scroll-snap-align: start; background: var(--secondaryColor); color: inherit !important;"
+                    >
+                    <img src="./asset/images/accessories/phoneCase.webp" alt="Product Image" style="aspect-ratio: 3/2;" class="rounded-3">
+                      <div class="card-body d-flex gap-3 align-items-center">
+                        <div class="d-flex flex-column gap-3 align-items-center text-center">
+                            <p class="m-0">Xundd Protective Bumper Armor Case for iPhone 7 Plus/8 Plus</p>
+                            <div class="d-flex gap-2">
+                                <h5 class="card-title m-0">20$</h5>
+                                <h6 style="color: var(--primaryColor); text-decoration: line-through;">28$</h6>
+                            </div>
+                            
+                        </div>
+                      </div>
+                    </a>
+        
+                    <a href="./productDetails.html"
+                      class="card sliderCard rounded-3 "
+                      style="scroll-snap-align: start; background: var(--secondaryColor); color: inherit !important;"
+                    >
+                    <img src="./asset/images/accessories/phoneCase.webp" alt="Product Image" style="aspect-ratio: 3/2;" class="rounded-3">
+                      <div class="card-body d-flex gap-3 align-items-center">
+                        <div class="d-flex flex-column gap-3 align-items-center text-center">
+                            <p class="m-0">iPhone 13 Pro Silicone Case | Abyss Blue</p>
+                            <div class="d-flex gap-2">
+                                <h5 class="card-title m-0">20$</h5>
+                                <h6 style="color: var(--primaryColor); text-decoration: line-through;">28$</h6>
+                            </div>
+                            
+                        </div>
+                      </div>
+                    </a>    
+                    
+                    <a href="./productDetails.html"
+                      class="card sliderCard rounded-3 "
+                      style="scroll-snap-align: start; background: var(--secondaryColor); color: inherit !important;"
+                    >
+                    <img src="./asset/images/accessories/phoneCase.webp" alt="Product Image" style="aspect-ratio: 3/2;" class="rounded-3">
+                      <div class="card-body d-flex gap-3 align-items-center">
+                        <div class="d-flex flex-column gap-3 align-items-center text-center">
+                            <p class="m-0">iPhone 13 Pro Max Clear Case MagSafe Supported</p>
+                            <div class="d-flex gap-2">
+                                <h5 class="card-title m-0">20$</h5>
+                                <h6 style="color: var(--primaryColor); text-decoration: line-through;">28$</h6>
+                            </div>
+                            
+                        </div>
+                      </div>
+                    </a>  
+                    
+                    <a href="./productDetails.html"
+                      class="card sliderCard rounded-3 "
+                      style="scroll-snap-align: start; background: var(--secondaryColor); color: inherit !important;"
+                    >
+                    <img src="./asset/images/accessories/phoneCase.webp" alt="Product Image" style="aspect-ratio: 3/2;" class="rounded-3">
+                      <div class="card-body d-flex gap-3 align-items-center">
+                        <div class="d-flex flex-column gap-3 align-items-center text-center">
+                            <p class="m-0">iPhone 7 Plus / 8 Plus Leather Case | Saddle Brown</p>
+                            <div class="d-flex gap-2">
+                                <h5 class="card-title m-0">20$</h5>
+                                <h6 style="color: var(--primaryColor); text-decoration: line-through;">28$</h6>
+                            </div>
+                            
+                        </div>
+                      </div>
+                    </a>  
+        
+                    <a href="./productDetails.html"
+                      class="card sliderCard rounded-3 "
+                      style="scroll-snap-align: start; background: var(--secondaryColor); color: inherit !important;"
+                    >
+                    <img src="./asset/images/accessories/phoneCase.webp" alt="Product Image" style="aspect-ratio: 3/2;" class="rounded-3">
+                      <div class="card-body d-flex gap-3 align-items-center">
+                        <div class="d-flex flex-column gap-3 align-items-center text-center">
+                            <p class="m-0">iPhone 7 Plus / 8 Plus Full Covered Tempered Glass</p>
+                            <div class="d-flex gap-2">
+                                <h5 class="card-title m-0">20$</h5>
+                                <h6 style="color: var(--primaryColor); text-decoration: line-through;">28$</h6>
+                            </div>
+                            
+                        </div>
+                      </div>
+                    </a>  
+        
+                    <a href="./productDetails.html"
+                      class="card sliderCard rounded-3 "
+                      style="scroll-snap-align: start; background: var(--secondaryColor); color: inherit !important;"
+                    >
+                    <img src="./asset/images/accessories/phoneCase.webp" alt="Product Image" style="aspect-ratio: 3/2;" class="rounded-3">
+                      <div class="card-body d-flex gap-3 align-items-center">
+                        <div class="d-flex flex-column gap-3 align-items-center text-center">
+                            <p class="m-0">We offer same-day repairs, so you won't have to be without your device for long.</p>
+                            <div class="d-flex gap-2">
+                                <h5 class="card-title m-0">20$</h5>
+                                <h6 style="color: var(--primaryColor); text-decoration: line-through;">28$</h6>
+                            </div>
+                            
+                        </div>
+                      </div>
+                    </a>  
+        
+                    <a href="./productDetails.html"
+                      class="card sliderCard rounded-3 "
+                      style="scroll-snap-align: start; background: var(--secondaryColor); color: inherit !important;"
+                    >
+                    <img src="./asset/images/accessories/phoneCase.webp" alt="Product Image" style="aspect-ratio: 3/2;" class="rounded-3">
+                      <div class="card-body d-flex gap-3 align-items-center">
+                        <div class="d-flex flex-column gap-3 align-items-center text-center">
+                            <p class="m-0">We offer same-day repairs, so you won't have to be without your device for long.</p>
+                            <div class="d-flex gap-2">
+                                <h5 class="card-title m-0">20$</h5>
+                                <h6 style="color: var(--primaryColor); text-decoration: line-through;">28$</h6>
+                            </div>
+                            
+                        </div>
+                      </div>
+                    </a>  
+    
+                <div class="sliderCard d-flex align-items-center justify-content-start " style="scroll-snap-align: start;" >
+    
+                    <a href="./products.html" class="d-flex gap-2 align-items-center justify-content-center p-3 rounded-3" style="color: var(--primaryColor) !important;">
+                        <h4 class="m-0">MORE</h4>
+                        <i class="fa-duotone fa-solid fa-arrow-right fa-beat" style="font-size: 1rem;"></i>
+                    </a>
+    
+                </div>  
+        
+                  </div>
+    
+                </div>
+    
+    
+              <div class="heroNextPreBtn justify-content-center mx-auto" style="width: fit-content;">
+                <i class="fa-solid fa-angle-left sliderPrevButton slider-control-btn border-white text-white bg-transparent" style="padding: 10px 25px;" type="button"></i>
+                <i class="fa-solid fa-angle-right sliderNextButton slider-control-btn border-white text-white bg-transparent" style="padding: 10px 25px;" type="button"></i>
+              </div>
+            </div>
+
+
+
+        </section>
+        
+        <!-- Accessories section end-->
+
+        <!-- Review section start-->
+
+        <section class="container my-5">
+
+            <h1 class="section-title">Customer Reviews</h1>
+            <p class="text-center section-subtext mt-3">See what our satisfied customers have to say about our fast and reliable repair services. Also feel free to share your own experience with our services. Your experience matters to us!</p>
+
+
+           <div class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 p-4 rounded-2" style="background: #eeeeee;">
+            <div class="d-flex flex-column align-items-center align-items-md-start gap-2">
+                <div class="d-flex flex-column flex-sm-row gap-2 align-items-center">
+                    <img src="./asset/images/google.svg" style="width: 1.5rem;" alt="">
+                    <h4 class="m-0 text-center" style="font-weight: 700;">Excellent on Google</h4>
+                </div>
+                <div class="d-flex flex-column flex-sm-row gap-2 align-items-center">
+                    <div class="d-flex" style="color: var(--primaryColor);">
+                        <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                        <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                        <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                        <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                        <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                    </div>
+                    <p class="m-0"><b>4.9</b> out of 5 based on 263 reviews</p>
+                </div>
+            </div>
+            <!-- <button class="carousel-inner-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Leave A Review →</button> -->
+            <a href="https://search.google.com/local/writereview?placeid=ChIJpfPRYCfLTYYRkYSuMRRapIU" target="_blank" class="carousel-inner-btn">Review Us On Google →</a>
+            <!-- <a href="https://search.google.com/local/writereview?placeid=ChIJSzxiQ083TIYRhMiENo6bF2Q" target="_blank" class="carousel-inner-btn">Review Us On Google →</a> -->
+
+
+           </div>
+
+
+            <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
+
+                <div class="">
+                    <div class="d-flex flex-column gap-4">
+
+                        <div class="card border-0 rounded-3 gap-3 p-3" style="background: var(--secondaryColor);">
+                        
+                                    <a href="https://g.co/kgs/vJ6HPWz" class="d-flex flex-row flex-wrap gap-3" style="width: fit-content;">
+                                        <div class="rounded-5" style="width: 2.5rem; aspect-ratio: 1/1; background: url(./asset/images/blog/blogImage1.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
+                                        <div class="">
+                                            <h6 class="mb-1" style="font-weight: 600;">Víctor Rico</h6>
+                                                <div class="d-flex" style="color: var(--primaryColor);">
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                </div>
+                                        </div>
+                                    </a>
+
+                                    <div class="">
+                                        <i class="fa-duotone fa-solid fa-quote-left" style="color: var(--primaryColor); font-size: 1.5rem;"></i>
+                                        <p class="m-0">Very good service. Good price also. Me and my all friends go there if we need anything for device. There Technician good experience!</p>
+                                        <i class="fa-duotone fa-solid fa-quote-right float-end" style="color: var(--primaryColor); font-size: 1.5rem;"></i>
+                                    </div>
+
+
+                        </div>
+
+                        <div class="card d-none d-md-flex border-0 rounded-3 gap-3 p-3" style="background: var(--secondaryColor);">
+                        
+                                
+                                    <a href="https://g.co/kgs/cvCmjAg" class="d-flex flex-row flex-wrap gap-3" style="width: fit-content;">
+                                        <div class="rounded-5" style="width: 2.5rem; aspect-ratio: 1/1; background: url(./asset/images/blog/blogImage1.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
+                                        <div class="">
+                                            <h6 class="mb-1" style="font-weight: 600;">Jamie H</h6>
+                                                <div class="d-flex" style="color: var(--primaryColor);">
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                </div>
+                                        </div>
+                                    </a>
+
+                                    <div class="">
+                                        <i class="fa-duotone fa-solid fa-quote-left" style="color: var(--primaryColor); font-size: 1.5rem;"></i>
+                                        <p class="m-0">Cell Style did a great job fixing my phone's charging port and service was very fast! We will definitely use them in the future!</p>
+                                        <i class="fa-duotone fa-solid fa-quote-right float-end" style="color: var(--primaryColor); font-size: 1.5rem;"></i>
+                                    </div>
+
+                        </div>
+                        
+                    </div>
+
+                </div>
+
+                <div class="">
+                    <div class="d-flex flex-column gap-4">
+
+                        <div class="card border-0 rounded-3 gap-3 p-3" style="background: var(--secondaryColor);">
+                        
+                                
+                                    <a href="https://g.co/kgs/tvhH7Ww" class="d-flex flex-row flex-wrap gap-3" style="width: fit-content;">
+                                        <div class="rounded-5" style="width: 2.5rem; aspect-ratio: 1/1; background: url(./asset/images/blog/blogImage1.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
+                                        <div class="">
+                                            <h6 class="mb-1" style="font-weight: 600;">Pearl</h6>
+                                                <div class="d-flex" style="color: var(--primaryColor);">
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                </div>
+                                        </div>
+                                    </a>
+
+                                    <div class="">
+                                        <i class="fa-duotone fa-solid fa-quote-left" style="color: var(--primaryColor); font-size: 1.5rem;"></i>
+                                        <p class="m-0">They were quick did it within an hour. The price was affordable and the customer service was extremely professional. The guys were knowledgeable and good at explaining in easy terms. I will be going back to them again in the future.  I break my phone every couple of months, I'm very clumsy, so I know I'll need them again!</p>
+                                        <i class="fa-duotone fa-solid fa-quote-right float-end" style="color: var(--primaryColor); font-size: 1.5rem;"></i>
+                                    </div>
+
+                        </div>
+
+                        <div class="card d-none d-md-flex border-0 rounded-3 gap-3 p-3" style="background: var(--secondaryColor);">
+                        
+                                
+                                    <a href="https://g.co/kgs/MSsKzp1" class="d-flex flex-row flex-wrap gap-3" style="width: fit-content;">
+                                        <div class="rounded-5" style="width: 2.5rem; aspect-ratio: 1/1; background: url(./asset/images/blog/blogImage1.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
+                                        <div class="">
+                                            <h6 class="mb-1" style="font-weight: 600;">Johnathan Allgood</h6>
+                                                <div class="d-flex" style="color: var(--primaryColor);">
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                </div>
+                                        </div>
+                                    </a>
+
+                                    <div class="">
+                                        <i class="fa-duotone fa-solid fa-quote-left" style="color: var(--primaryColor); font-size: 1.5rem;"></i>
+                                        <p class="m-0">Fast a worked with me in my situation, good prices 👍</p>
+                                        <i class="fa-duotone fa-solid fa-quote-right float-end" style="color: var(--primaryColor); font-size: 1.5rem;"></i>
+                                    </div>
+
+                        </div>
+                        
+                    </div>
+
+                </div>
+               
+                <div class="">
+                    <div class="d-flex flex-column gap-4">
+
+                        <div class="card border-0 rounded-3 gap-3 p-3" style="background: var(--secondaryColor);">
+                                
+                                    <a href="https://g.co/kgs/r8Ke7CJ" class="d-flex flex-row flex-wrap gap-3" style="width: fit-content;">
+                                        <div class="rounded-5" style="width: 2.5rem; aspect-ratio: 1/1; background: url(./asset/images/blog/blogImage1.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
+                                        <div class="">
+                                            <h6 class="mb-1" style="font-weight: 600;">CROSSHOPE CLEANING LLC</h6>
+                                                <div class="d-flex" style="color: var(--primaryColor);">
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                </div>
+                                        </div>
+                                    </a>
+
+                                    <div class="">
+                                        <i class="fa-duotone fa-solid fa-quote-left" style="color: var(--primaryColor); font-size: 1.5rem;"></i>
+                                        <p class="m-0">Everyone is about the same price for screen replacements, but they do it fast. Replaced and ready to go in less then an hour.!</p>
+                                        <i class="fa-duotone fa-solid fa-quote-right float-end" style="color: var(--primaryColor); font-size: 1.5rem;"></i>
+                                    </div>
+                                
+                        </div>
+
+                        <div class="card d-none d-md-flex border-0 rounded-3 gap-3 p-3" style="background: var(--secondaryColor);">
+                                
+                                    <a href="https://g.co/kgs/grwZwoA" class="d-flex flex-row flex-wrap gap-3" style="width: fit-content;">
+                                        <div class="rounded-5" style="width: 2.5rem; aspect-ratio: 1/1; background: url(./asset/images/blog/blogImage1.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
+                                        <div class="">
+                                            <h6 class="mb-1" style="font-weight: 600;">Artia Hardy</h6>
+                                                <div class="d-flex" style="color: var(--primaryColor);">
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                    <i class="fa-solid fa-star" style="font-size: 1rem;"></i>
+                                                </div>
+                                        </div>
+                                    </a>
+
+                                    <div class="">
+                                        <i class="fa-duotone fa-solid fa-quote-left" style="color: var(--primaryColor); font-size: 1.5rem;"></i>
+                                        <p class="m-0">My phone cracked in the weirdest way but Mr.Biplob was amazing, had top tier customer service (30minutes for screen repair) and even gave me a discounted price for being a first time customer with them. I would say I'd be back but I hope not for another cracked screen lol but if so he is the guy for the job.</p>
+                                        <i class="fa-duotone fa-solid fa-quote-right float-end" style="color: var(--primaryColor); font-size: 1.5rem;"></i>
+                                    </div>
+                                    
+                        </div>
+                        
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="text-center">
+
+                <a href="https://search.google.com/local/reviews?placeid=ChIJpfPRYCfLTYYRkYSuMRRapIU" target="_blank" class="carousel-inner-btn py-3">View More Google Reviews →</a>
+                <!-- <a href="https://search.google.com/local/reviews?placeid=ChIJSzxiQ083TIYRhMiENo6bF2Q" target="_blank" class="carousel-inner-btn">View More Google Reviews →</a> -->
+                
+
+            </div>
+
+
+        </section>
+        
+        <!-- Review section end-->  
+
+        <!-- Blog section start-->
+
+        <section class="container my-5">
+
+            <h1 class="section-title">Our Latest Blogs</h1>
+            <p class="text-center section-subtext mt-3">Stay informed with the latest tips, trends, and insights on device repair, maintenance, and accessories. Discover how to get the most out of your devices!</p>
+
+                <div class="d-flex flex-column flex-lg-row gap-3 pt-4 pb-5">
+
+                    
+                        <div class="card flex-md-row flex-lg-column rounded-3 gap-3 p-3" style="border: 1px solid var(--accentColor);">
+                            <div class="rounded-3 blogCardImage card-img" style="background: url(./asset/images/blog/blogImage1.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
+                            <div class="d-flex flex-column gap-2">
+                                <div class="d-flex gap-3">
+                                    <div class="d-flex gap-1 align-items-center">
+                                        <i class="fa-duotone fa-solid fa-calendar-days" style="color: var(--primaryColor); font-size: 1rem;"></i>
+                                        <span>July14, 2024</span>
+                                    </div>
+                                    <div class="d-flex gap-1 align-items-center">
+                                        <i class="fa-duotone fa-solid fa-circle-user" style="color: var(--primaryColor); font-size: 1rem;"></i>
+                                        <span>By Admin</span>
+                                    </div>
+                                </div>
+                                <h5>How to Extend the Life of Your Smartphone</h5>
+                                <p>Smartphones are essential, and with proper care, you can extend their lifespan. Discover maintenance tips to help you keep your device running smoothly for years to come.</p>
+                                <a href="./singleBlogs.html" style="color: var(--primaryColor) !important;" class="commonBtn text-dark m-0">Read Blog <i class="fa-solid fa-chevron-right c-arrow"></i></a>
+                            </div>
+                        </div>
+                    
+                        <div class="card flex-md-row flex-lg-column rounded-3 gap-3 p-3" style="border: 1px solid var(--accentColor);">
+                            <div class="rounded-3 blogCardImage card-img" style="background: url(./asset/images/blog/blogImage2.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
+                            <div class="d-flex flex-column gap-2">
+                                <div class="d-flex gap-3">
+                                    <div class="d-flex gap-1 align-items-center">
+                                        <i class="fa-duotone fa-solid fa-calendar-days" style="color: var(--primaryColor); font-size: 1rem;"></i>
+                                        <span>July14, 2024</span>
+                                    </div>
+                                    <div class="d-flex gap-1 align-items-center">
+                                        <i class="fa-duotone fa-solid fa-circle-user" style="color: var(--primaryColor); font-size: 1rem;"></i>
+                                        <span>By Admin</span>
+                                    </div>
+                                </div>
+                                <h5>Top 5 Reasons Your Device Needs Repair</h5>
+                                <p>From accidental drops to internal damage, learn the most common reasons devices break down and how you can prevent these issues from occurring in the first place.</p>
+                                <a href="./singleBlogs.html" style="color: var(--primaryColor) !important;" class="commonBtn text-dark m-0">Read Blog <i class="fa-solid fa-chevron-right c-arrow"></i></a>
+                            </div>
+                        </div>
+                    
+                        <div class="card flex-md-row flex-lg-column rounded-3 gap-3 p-3" style="border: 1px solid var(--accentColor);">
+                            <div class="rounded-3 blogCardImage card-img" style="background: url(./asset/images/blog/blogImage3.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
+                            <div class="d-flex flex-column gap-2">
+                                <div class="d-flex gap-3">
+                                    <div class="d-flex gap-1 align-items-center">
+                                        <i class="fa-duotone fa-solid fa-calendar-days" style="color: var(--primaryColor); font-size: 1rem;"></i>
+                                        <span>July14, 2024</span>
+                                    </div>
+                                    <div class="d-flex gap-1 align-items-center">
+                                        <i class="fa-duotone fa-solid fa-circle-user" style="color: var(--primaryColor); font-size: 1rem;"></i>
+                                        <span>By Admin</span>
+                                    </div>
+                                </div>
+                                <h5>Choosing the Right Accessories for Your Device</h5>
+                                <p>Accessorizing your device is more than just aesthetics. Learn how to choose protective and functional accessories that enhance your device's performance and longevity.</p>
+                                <a href="./singleBlogs.html" style="color: var(--primaryColor) !important;" class="commonBtn text-dark m-0">Read Blog <i class="fa-solid fa-chevron-right c-arrow"></i></a>
+                            </div>
+                        </div>
+                </div>
+            
+            <div class="text-center">
+            <a href="./blogs.html" class="carousel-inner-btn py-3">More Blogs →</a>
+            </div>
+
+
+
+
+
+
+        </section>
+        
+        <!-- Blog section end-->        
+
+        <!-- FAQ Section start-->
+
+        <section class="container my-5">
+
+            <h1 class="section-title">Frequently Asked Questions</h1>
+
+            <div class="py-4">
+                <div class="accordion" id="">
+                    <div class="accordion-item eachFAQ">
+                      <h2 class="accordion-header" id="FAQ1">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#FAQanswer1" aria-expanded="true" aria-controls="FAQanswer1">
+                          What types of devices do you repair?
+                        </button>
+                      </h2>
+                      <div id="FAQanswer1" class="accordion-collapse collapse FAQanswer show" aria-labelledby="FAQ1">
+                        <div class="accordion-body">
+                            We repair a wide range of devices including phones, tablets, laptops, PCs, gaming consoles, and more.                    
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item eachFAQ">
+                      <h2 class="accordion-header" id="FAQ2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#FAQanswer2" aria-expanded="false" aria-controls="FAQanswer2">
+                            How long does a typical repair take?
+                        </button>
+                      </h2>
+                      <div id="FAQanswer2" class="accordion-collapse FAQanswer collapse " aria-labelledby="FAQ2">
+                        <div class="accordion-body">
+                            Most repairs are completed within the same day, but the exact time depends on the complexity of the issue and availability of parts.                    </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item eachFAQ">
+                        <h2 class="accordion-header" id="FAQ3">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#FAQanswer3" aria-expanded="false" aria-controls="FAQanswer3">
+                            Do you offer a warranty on repairs?
+                          </button>
+                        </h2>
+                        <div id="FAQanswer3" class="accordion-collapse FAQanswer collapse " aria-labelledby="FAQ3">
+                          <div class="accordion-body">
+                            Yes, we provide a special warranty on all repairs to ensure your device continues to function properly after service.                    
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item eachFAQ">
+                        <h2 class="accordion-header" id="FAQ4">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#FAQanswer4" aria-expanded="false" aria-controls="FAQanswer4">
+                            What is the cost of repair?
+                          </button>
+                        </h2>
+                        <div id="FAQanswer4" class="accordion-collapse FAQanswer collapse " aria-labelledby="FAQ4">
+                          <div class="accordion-body">
+                            Repair costs depend on the device type and the nature of the issue. Prices are subject to change without prior notice. After diagnosing the problem, we will inform you of the final cost either by phone or discuss in-store.                   
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item eachFAQ">
+                        <h2 class="accordion-header" id="FAQ5">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#FAQanswer5" aria-expanded="false" aria-controls="FAQanswer5">
+                            Do you use original spare parts for repairs?
+                          </button>
+                        </h2>
+                        <div id="FAQanswer5" class="accordion-collapse FAQanswer collapse " aria-labelledby="FAQ5">
+                          <div class="accordion-body">
+                            Yes, we only use genuine, manufacturer-approved spare parts to ensure the best quality and longevity for your device.                        </div>
+                          </div>
+                      </div>
+    
+    
+                </div>
+    
+                <div class="accordion collapse pt-3 moreFAQ" id="moreFAQ">
+                    <div class="accordion-item eachFAQ">
+                        <h2 class="accordion-header" id="FAQ6">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#FAQanswer6" aria-expanded="false" aria-controls="FAQanswer6">
+                            How can I book a repair service?
+                          </button>
+                        </h2>
+                        <div id="FAQanswer6" class="accordion-collapse FAQanswer collapse " aria-labelledby="FAQ6">
+                          <div class="accordion-body">
+                            You can easily book a repair online through our website by selecting the device and service you need, or you can call us directly.                          
+                           </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item eachFAQ">
+                        <h2 class="accordion-header" id="FAQ7">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#FAQanswer7" aria-expanded="false" aria-controls="FAQanswer7">
+                            Can I sell my old device to you?
+                          </button>
+                        </h2>
+                        <div id="FAQanswer7" class="accordion-collapse FAQanswer collapse " aria-labelledby="FAQ7">
+                          <div class="accordion-body">
+                            Absolutely! We offer competitive prices for old devices, whether they're working or not. Simply visit our "Sell Your Device" page to get started. 
+                          </div>                         
+                        </div>
+                      </div>
+                      <div class="accordion-item eachFAQ">
+                        <h2 class="accordion-header" id="FAQ8">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#FAQanswer8" aria-expanded="false" aria-controls="FAQanswer8">
+                            Do you offer free diagnostics?                          
+                          </button>
+                        </h2>
+                        <div id="FAQanswer8" class="accordion-collapse FAQanswer collapse " aria-labelledby="FAQ8">
+                          <div class="accordion-body">
+                            Yes, we provide a free diagnostic service to assess the issue with your device before proceeding with any repairs.
+                          </div>                          
+                        </div>
+                      </div>
+                      <div class="accordion-item eachFAQ">
+                        <h2 class="accordion-header" id="FAQ9">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#FAQanswer9" aria-expanded="false" aria-controls="FAQanswer9">
+                            What payment methods do you accept?
+                          </button>
+                        </h2>
+                        <div id="FAQanswer9" class="accordion-collapse FAQanswer collapse " aria-labelledby="FAQ9">
+                          <div class="accordion-body">
+                            We accept all major payment methods including credit/debit cards, PayPal, and cash in-store.
+                          </div>                         
+                        </div>
+                      </div>
+                      <div class="accordion-item eachFAQ">
+                        <h2 class="accordion-header" id="FAQ10">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#FAQanswer10" aria-expanded="false" aria-controls="FAQanswer10">
+                             What happens if my device can't be repaired?
+                          </button>
+                        </h2>
+                        <div id="FAQanswer10" class="accordion-collapse FAQanswer collapse " aria-labelledby="FAQ10">
+                          <div class="accordion-body">
+                            If we determine that your device is beyond repair, we will notify you immediately and provide alternative solutions, such as purchasing a replacement device or trading in your old one.          
+                          </div>                
+                        </div>
+                      </div>
+                  </div>
+            </div>
+
+
+
+            <div class="text-center moreFAQtogglerWrapper">
+                <p class="text-dark commonBtn collapsed moreFAQtoggler moreFAQshowToggler" data-bs-toggle="collapse" data-bs-target="#moreFAQ" aria-expanded="false" aria-controls="collapseExample">Show more <i class="fa-solid fa-plus c-arrow"></i></p>
+                <p class="text-dark commonBtn collapsed moreFAQtoggler moreFAQcollapseToggler" data-bs-toggle="collapse" data-bs-target="#moreFAQ" aria-expanded="false" aria-controls="collapseExample">Show less <i class="fa-solid fa-minus c-arrow"></i></p>
+            </div>
+
+
+
+
+        </section>
+        <!-- FAQ Section end-->
+
+
+        <!-- Main Content End -->
+
+
+        <!-- Floating Social Media Start -->
+
+        <section>
+            <div class="floating-social-media">
+              <p>
+                <a
+                  class="floating-icon"
+                  href="mailto:info@cellnstyle.com"
+                  target="_blank"
+                  ><i class="fa-solid fa-envelope"></i
+                ></a>
+              </p>
+              <p>
+                <a
+                  class="floating-icon"
+                  href="https://wa.me/19403809094?text=Hello%2C%20I%20need%20assistance%20with%20my%20device%20repair."
+                  target="_blank"
+                  ><i class="icon-1 fa-brands fa-whatsapp"></i
+                ></a>
+              </p>
+    
+              <p>
+                <a
+                  class="floating-icon"
+                  href="https://www.facebook.com/share/AoSuLDqoyHDixcSX/?mibextid=wwXIfr"
+                  target="_blank"
+                  ><i
+                    style="padding-left: 2px"
+                    class="icon-2 fa-brands fa-facebook-f"
+                  ></i
+                ></a>
+              </p>
+              <!-- <p><a class="floating-icon" href=""><i class="icon-3 fa-brands fa-instagram"></i></a></p> -->
+              <p>
+                <a class="floating-icon" href=""
+                  ><i class="icon-4 fa-brands fa-youtube"></i
+                ></a>
+              </p>
+            </div>
+          </section>
+
+        <!-- Floating Social Media End -->
+
+    </main>
+
+{% endblock content %}
+
+
