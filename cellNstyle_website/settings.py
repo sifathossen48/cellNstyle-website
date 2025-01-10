@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',
     'home', # Add the home app to the installed apps
+    'blog', # Add the blog app to the installed apps
 ]
 
 MIDDLEWARE = [
@@ -72,6 +73,13 @@ CKEDITOR_CONFIGS = {
         'extraPlugins': 'font,colorbutton',  
         'height': 100,
         'width': '100%',
+    },
+     'all': {
+        'toolbar': 'full', 
+        'extraPlugins':'embed,embedbase,autoembed,image2,uploadimage', 
+        'allowedContent': True, 
+        'height': 300,
+        'width': 800,
     },
 }
 WSGI_APPLICATION = 'cellNstyle_website.wsgi.application'
