@@ -47,3 +47,22 @@ class Model(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.brand.name})"
+
+class DeviceProblem(models.Model):
+    problem = models.CharField(max_length=100)
+    def __str__(self):
+        return self.problem
+
+class DeviceSell(models.Model):
+    type = models.ForeignKey(Device, on_delete=models.CASCADE)
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
+    model = models.ForeignKey(Model, on_delete=models.CASCADE) 
+    description = models.TextField()
+    customerFirstName = models.CharField(max_length=100)
+    customerLastName = models.CharField(max_length=100)
+    customerEmail = models.EmailField()
+    customerPhone = models.CharField(max_length=15)
+    deviceImages = models.FileField(upload_to="device_images/")
+    submitted_at = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return f"{self.customerFirstName} {self.customerLastName} - {self.type} {self.brand} {self.model}"

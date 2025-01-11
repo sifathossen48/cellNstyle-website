@@ -6,7 +6,7 @@
     <nav class="navbar navbar-expand-lg bsb-navbar bsb-navbar-hover bsb-navbar-caret">
         <div class="container">
             <a class="navbar-brand" href="{% url 'home' %}">
-                <img src="{% static './asset/images/blackBGlogo.png' %}" style="width: clamp(8.3125rem, 8.008928571428571rem + 1.5178571428571428vw, 9.375rem);" alt="">
+                <img src="{{web.site_logo.url}}" style="width: clamp(8.3125rem, 8.008928571428571rem + 1.5178571428571428vw, 9.375rem);" alt="">
                  <!-- <h4 class="m-0" style="font-weight: 600;">CELL<i style="color: var(--primaryColor); font-weight: 700;">N</i>STYLE</h4> -->
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas"
@@ -35,7 +35,7 @@
                                 aria-labelledby="servicesDropdown">
                                 <li><a class="dropdown-item" href="./franchise.html">Franchise</a></li>
                                 <li><a class="dropdown-item" href="./career.html">Career</a></li>
-                                <li><a class="dropdown-item" href="./contact.html">Contact</a></li>
+                                <li><a class="dropdown-item" href="{% url 'contact' %}">Contact</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown has-megamenu">
@@ -56,7 +56,7 @@
                                                 <div class="row row-cols-2 row-cols-lg-3 g-2 g-lg-3">
                                                     {% for device in devices %}
                                                     <div class="col">
-                                                        <a href="./repair.html">
+                                                        <a href="{% url 'repair' device.id %}">
                                                             <div class="pt-3 border rounded-2 text-dark h-100 nav-c-card">
                                                                 <img class="dropdown-categories-img"
                                                                     src="{{ device.image.url }}"
@@ -82,7 +82,7 @@
                             <a class="nav-link text-nowrap" href="./products.html">Accessories</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-nowrap" href="./sell.html">Sell</a>
+                            <a class="nav-link text-nowrap" href="{% url 'device_submission_form' %}">Sell</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-nowrap" href="{% url 'blog' %}">Blogs</a>

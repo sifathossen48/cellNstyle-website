@@ -1,7 +1,6 @@
 {% extends "base.html" %}
-{% load static %}
-
-    
+{% block title %}Repair{% endblock title %}
+{% load static %}  
 {% block content %}
 
     <main class="flex-shrink-0">
@@ -81,234 +80,25 @@
                 </p>
 
                 <div class="DeviceProblemWrapper">
-                  <div
-                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
-                    style="border: 1px solid black"
-                  >
+                  {% for d in device_problems %}
+                  <div class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
+                    style="border: 1px solid black">
                     <input
                       class="problem form-check-input p-2"
                       type="checkbox"
                       name="problem"
-                      value="BrokenScreen"
-                      id="BrokenScreen"
+                      value="{{d.problem}}"
+                      id="{{d.problem}}"
                     />
                     <label
                       class="form-check-label py-3 w-100"
-                      for="BrokenScreen"
+                      for="{{d.problem}}"
                     >
-                      Broken Screen
+                      {{d.problem}}
                     </label>
                   </div>
-                  <div
-                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
-                    style="border: 1px solid black"
-                  >
-                    <input
-                      class="problem form-check-input p-2"
-                      type="checkbox"
-                      name="problem"
-                      value="WiFiIssue"
-                      id="WiFiIssue"
-                    />
-                    <label class="form-check-label py-3 w-100" for="WiFiIssue">
-                      WiFi Issue
-                    </label>
-                  </div>
-                  <div
-                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
-                    style="border: 1px solid black"
-                  >
-                    <input
-                      class="problem form-check-input p-2"
-                      type="checkbox"
-                      name="problem"
-                      value="DataRecoveryAndBackup"
-                      id="DataRecoveryAndBackup"
-                    />
-                    <label
-                      class="form-check-label py-3 w-100"
-                      for="DataRecoveryAndBackup"
-                    >
-                      Data Recovery & Backup
-                    </label>
-                  </div>
-                  <div
-                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
-                    style="border: 1px solid black"
-                  >
-                    <input
-                      class="problem form-check-input p-2"
-                      type="checkbox"
-                      name="problem"
-                      value="DataTransfer"
-                      id="DataTransfer"
-                    />
-                    <label
-                      class="form-check-label py-3 w-100"
-                      for="DataTransfer"
-                    >
-                      Data Transfer
-                    </label>
-                  </div>
-                  <div
-                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
-                    style="border: 1px solid black"
-                  >
-                    <input
-                      class="problem form-check-input p-2"
-                      type="checkbox"
-                      name="problem"
-                      value="BluetoothOrPairingIssue"
-                      id="BluetoothOrPairingIssue"
-                    />
-                    <label
-                      class="form-check-label py-3 w-100"
-                      for="BluetoothOrPairingIssue"
-                    >
-                      Bluetooth Or Pairing Issue
-                    </label>
-                  </div>
-                  <div
-                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
-                    style="border: 1px solid black"
-                  >
-                    <input
-                      class="problem form-check-input p-2"
-                      type="checkbox"
-                      name="problem"
-                      value="WaterDamage"
-                      id="WaterDamage"
-                    />
-                    <label
-                      class="form-check-label py-3 w-100"
-                      for="WaterDamage"
-                    >
-                      Water Damage
-                    </label>
-                  </div>
-                  <div
-                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
-                    style="border: 1px solid black"
-                  >
-                    <input
-                      class="problem form-check-input p-2"
-                      type="checkbox"
-                      name="problem"
-                      value="ShortBatteryLife"
-                      id="ShortBatteryLife"
-                    />
-                    <label
-                      class="form-check-label py-3 w-100"
-                      for="ShortBatteryLife"
-                    >
-                      Short Battery Life
-                    </label>
-                  </div>
-                  <div
-                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
-                    style="border: 1px solid black"
-                  >
-                    <input
-                      class="problem form-check-input p-2"
-                      type="checkbox"
-                      name="problem"
-                      value="notCharging"
-                      id="notCharging"
-                    />
-                    <label
-                      class="form-check-label py-3 w-100"
-                      for="notCharging"
-                    >
-                      Not Charging
-                    </label>
-                  </div>
-                  <div
-                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
-                    style="border: 1px solid black"
-                  >
-                    <input
-                      class="problem form-check-input p-2"
-                      type="checkbox"
-                      name="problem"
-                      value="Cleaning"
-                      id="Cleaning"
-                    />
-                    <label class="form-check-label py-3 w-100" for="Cleaning">
-                      Cleaning
-                    </label>
-                  </div>
-                  <div
-                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
-                    style="border: 1px solid black"
-                  >
-                    <input
-                      class="problem form-check-input p-2"
-                      type="checkbox"
-                      name="problem"
-                      value="FactoryReset"
-                      id="FactoryReset"
-                    />
-                    <label
-                      class="form-check-label py-3 w-100"
-                      for="FactoryReset"
-                    >
-                      Factory Reset
-                    </label>
-                  </div>
-                  <div
-                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
-                    style="border: 1px solid black"
-                  >
-                    <input
-                      class="problem form-check-input p-2"
-                      type="checkbox"
-                      name="problem"
-                      value="BackHousingOrCover"
-                      id="BackHousingOrCover"
-                    />
-                    <label
-                      class="form-check-label py-3 w-100"
-                      for="BackHousingOrCover"
-                    >
-                      Back Housing/Cover
-                    </label>
-                  </div>
-                  <div
-                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
-                    style="border: 1px solid black"
-                  >
-                    <input
-                      class="problem form-check-input p-2"
-                      type="checkbox"
-                      name="problem"
-                      value="BackCameraDoesNotWork"
-                      id="BackCameraDoesNotWork"
-                    />
-                    <label
-                      class="form-check-label py-3 w-100"
-                      for="BackCameraDoesNotWork"
-                    >
-                      Back Camera Doesn't Work
-                    </label>
-                  </div>
-                  <div
-                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
-                    style="border: 1px solid black"
-                  >
-                    <input
-                      class="problem form-check-input p-2"
-                      type="checkbox"
-                      name="problem"
-                      value="doNotknowOrOther"
-                      id="doNotknowOrOther"
-                    />
-                    <label
-                      class="form-check-label py-3 w-100"
-                      for="doNotknowOrOther"
-                    >
-                      I don't know / Other
-                    </label>
-                  </div>
+                  {% endfor %}
+                  
                 </div>
 
                 <div class="form-floating">
@@ -393,11 +183,9 @@
                   <h1 class="section-title text-start mb-2">
                     From which store you want to get the service?
                   </h1>
-
-                  <div
-                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
-                    style="border: 1px solid black"
-                  >
+                  {% for s in store %}
+                  <div class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
+                    style="border: 1px solid black">
                     <input
                       class="store form-check-input p-2"
                       type="radio"
@@ -407,40 +195,19 @@
                       required
                     />
                     <label class="form-check-label py-3 w-100" for="store1">
-                      <h5>Store 1</h5>
+                      <h5>Store {{ forloop.counter }}</h5>
                       <div class="d-flex gap-2 align-items-center">
                         <i
                           class="fa-duotone fa-solid fa-map-location-dot"
                           style="color: var(--primaryColor)"
                         ></i>
-                        <span>2201 S Interstate 35, Denton, TX 76205</span>
+                        <span>{{s.address}}</span>
                       </div>
                     </label>
                   </div>
+                  {% endfor %}
 
-                  <div
-                    class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
-                    style="border: 1px solid black"
-                  >
-                    <input
-                      class="store form-check-input p-2"
-                      type="radio"
-                      name="store"
-                      value="Store2"
-                      id="store2"
-                      required
-                    />
-                    <label class="form-check-label py-3 w-100" for="store2">
-                      <h5>Store 2</h5>
-                      <div class="d-flex gap-2 align-items-center">
-                        <i
-                          class="fa-duotone fa-solid fa-map-location-dot"
-                          style="color: var(--primaryColor)"
-                        ></i>
-                        <span>26615 US-380 #140, Aubrey, TX 76227</span>
-                      </div>
-                    </label>
-                  </div>
+              
 
                   <div
                     class="mt-4 serviceReciveMethodDetails visitStore d-flex flex-column gap-4"
@@ -453,140 +220,35 @@
                       <h5 style="color: var(--primaryColor)">Choose a date</h5>
 
                       <div class="d-flex flex-wrap gap-3">
-                        <label
-                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black"
-                        >
+                        {% for day_info in next_7_days %}
+                        <label class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black">
                           <input
                             class="date opacity-0 position-absolute"
                             type="radio"
                             name="date"
-                            value="sep9"
+                            value="{{ day_info.day }}, {{ day_info.date }}"
                             required
                           />
                           <div class="w-100 p-4">
-                            <h5>Mon</h5>
+                            <h5>{{ day_info.day }}</h5>
                             <div class="d-flex gap-2 align-items-center">
-                              <span>sep 9</span>
+                              <span>{{ day_info.date }}</span>
                             </div>
                           </div>
                         </label>
-                        <label
-                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black"
-                        >
-                          <input
-                            class="date opacity-0 position-absolute"
-                            type="radio"
-                            name="date"
-                            value="sep10"
-                            required
-                          />
-                          <div class="w-100 p-4">
-                            <h5>Tue</h5>
-                            <div class="d-flex gap-2 align-items-center">
-                              <span>sep 10</span>
-                            </div>
-                          </div>
-                        </label>
-                        <label
-                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black"
-                        >
-                          <input
-                            class="date opacity-0 position-absolute"
-                            type="radio"
-                            name="date"
-                            value="sep11"
-                            required
-                          />
-                          <div class="w-100 p-4">
-                            <h5>Wed</h5>
-                            <div class="d-flex gap-2 align-items-center">
-                              <span>sep11</span>
-                            </div>
-                          </div>
-                        </label>
-                        <label
-                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black"
-                        >
-                          <input
-                            class="date opacity-0 position-absolute"
-                            type="radio"
-                            name="date"
-                            value="sep12"
-                            required
-                          />
-                          <div class="w-100 p-4">
-                            <h5>Thu</h5>
-                            <div class="d-flex gap-2 align-items-center">
-                              <span>sep 12</span>
-                            </div>
-                          </div>
-                        </label>
-                        <label
-                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black"
-                        >
-                          <input
-                            class="date opacity-0 position-absolute"
-                            type="radio"
-                            name="date"
-                            value="sep13"
-                            required
-                          />
-                          <div class="w-100 p-4">
-                            <h5>Fri</h5>
-                            <div class="d-flex gap-2 align-items-center">
-                              <span>sep 13</span>
-                            </div>
-                          </div>
-                        </label>
-                        <label
-                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black"
-                        >
-                          <input
-                            class="date opacity-0 position-absolute"
-                            type="radio"
-                            name="date"
-                            value="sep14"
-                            required
-                          />
-                          <div class="w-100 p-4">
-                            <h5>Sat</h5>
-                            <div class="d-flex gap-2 align-items-center">
-                              <span>sep 14</span>
-                            </div>
-                          </div>
-                        </label>
-                        <label
-                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black"
-                        >
-                          <input
-                            class="date opacity-0 position-absolute"
-                            type="radio"
-                            name="date"
-                            value="sep15"
-                            required
-                          />
-                          <div class="w-100 p-4">
-                            <h5>Sun</h5>
-                            <div class="d-flex gap-2 align-items-center">
-                              <span>sep 15</span>
-                            </div>
-                          </div>
-                        </label>
+                        {% endfor %}
+                 
                       </div>
                     </div>
 
                     <div class="d-flex flex-column gap-2">
                       <h5 style="color: var(--primaryColor)">
                         Choose a preferred time window on
-                        <b>Mon, September 9</b>
+                        <b id='selected-date'>{{ next_7_days.0.day }}, {{ next_7_days.0.date }}</b>
                       </h5>
+                   
+                      
 
                       <div class="d-flex flex-wrap gap-3">
                         <label
@@ -746,139 +408,32 @@
                       <h5 style="color: var(--primaryColor)">Choose a date</h5>
 
                       <div class="d-flex flex-wrap gap-3">
-                        <label
-                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black"
-                        >
+                        {% for day_info in next_7_days %}
+                        <label class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black">
                           <input
                             class="date opacity-0 position-absolute"
                             type="radio"
                             name="date"
-                            value="sep9"
+                            value="{{ day_info.day }}, {{ day_info.date }}"
                             required
                           />
                           <div class="w-100 p-4">
-                            <h5>Mon</h5>
+                            <h5>{{ day_info.day }}</h5>
                             <div class="d-flex gap-2 align-items-center">
-                              <span>sep 9</span>
+                              <span>{{ day_info.date }}</span>
                             </div>
                           </div>
                         </label>
-                        <label
-                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black"
-                        >
-                          <input
-                            class="date opacity-0 position-absolute"
-                            type="radio"
-                            name="date"
-                            value="sep10"
-                            required
-                          />
-                          <div class="w-100 p-4">
-                            <h5>Tue</h5>
-                            <div class="d-flex gap-2 align-items-center">
-                              <span>sep 10</span>
-                            </div>
-                          </div>
-                        </label>
-                        <label
-                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black"
-                        >
-                          <input
-                            class="date opacity-0 position-absolute"
-                            type="radio"
-                            name="date"
-                            value="sep11"
-                            required
-                          />
-                          <div class="w-100 p-4">
-                            <h5>Wed</h5>
-                            <div class="d-flex gap-2 align-items-center">
-                              <span>sep11</span>
-                            </div>
-                          </div>
-                        </label>
-                        <label
-                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black"
-                        >
-                          <input
-                            class="date opacity-0 position-absolute"
-                            type="radio"
-                            name="date"
-                            value="sep12"
-                            required
-                          />
-                          <div class="w-100 p-4">
-                            <h5>Thu</h5>
-                            <div class="d-flex gap-2 align-items-center">
-                              <span>sep 12</span>
-                            </div>
-                          </div>
-                        </label>
-                        <label
-                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black"
-                        >
-                          <input
-                            class="date opacity-0 position-absolute"
-                            type="radio"
-                            name="date"
-                            value="sep13"
-                            required
-                          />
-                          <div class="w-100 p-4">
-                            <h5>Fri</h5>
-                            <div class="d-flex gap-2 align-items-center">
-                              <span>sep 13</span>
-                            </div>
-                          </div>
-                        </label>
-                        <label
-                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black"
-                        >
-                          <input
-                            class="date opacity-0 position-absolute"
-                            type="radio"
-                            name="date"
-                            value="sep14"
-                            required
-                          />
-                          <div class="w-100 p-4">
-                            <h5>Sat</h5>
-                            <div class="d-flex gap-2 align-items-center">
-                              <span>sep 14</span>
-                            </div>
-                          </div>
-                        </label>
-                        <label
-                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black"
-                        >
-                          <input
-                            class="date opacity-0 position-absolute"
-                            type="radio"
-                            name="date"
-                            value="sep15"
-                            required
-                          />
-                          <div class="w-100 p-4">
-                            <h5>Sun</h5>
-                            <div class="d-flex gap-2 align-items-center">
-                              <span>sep 15</span>
-                            </div>
-                          </div>
-                        </label>
+                        {% endfor %}
+                      
                       </div>
                     </div>
 
                     <div class="d-flex flex-column gap-2">
                       <h5 style="color: var(--primaryColor)">
                         Choose a preferred time window on
-                        <b>Mon, September 9</b>
+                        <b id="selected-date">{{ next_7_days.0.day }}, {{ next_7_days.0.date }}</b>
                       </h5>
 
                       <div class="d-flex flex-wrap gap-3">
@@ -1097,7 +652,7 @@
               <h5>Phone</h5>
               <div class="d-flex flex-wrap gap-3 align-items-center">
                 <img
-                  src="./asset/images/categories-images/mobile.webp"
+                  src="{% static './asset/images/categories-images/mobile.webp' %}"
                   alt="Device Image"
                   style="width: 70px; aspect-ratio: 3/2"
                   class=""
@@ -1309,46 +864,23 @@
 
       <!-- Floating Social Media Start -->
 
-      <section>
-        <div class="floating-social-media">
-          <p>
-            <a
-              class="floating-icon"
-              href="mailto:info@cellnstyle.com"
-              target="_blank"
-              ><i class="fa-solid fa-envelope"></i
-            ></a>
-          </p>
-          <p>
-            <a
-              class="floating-icon"
-              href="https://wa.me/19403809094?text=Hello%2C%20I%20need%20assistance%20with%20my%20device%20repair."
-              target="_blank"
-              ><i class="icon-1 fa-brands fa-whatsapp"></i
-            ></a>
-          </p>
-
-          <p>
-            <a
-              class="floating-icon"
-              href="https://www.facebook.com/share/AoSuLDqoyHDixcSX/?mibextid=wwXIfr"
-              target="_blank"
-              ><i
-                style="padding-left: 2px"
-                class="icon-2 fa-brands fa-facebook-f"
-              ></i
-            ></a>
-          </p>
-          <!-- <p><a class="floating-icon" href=""><i class="icon-3 fa-brands fa-instagram"></i></a></p> -->
-          <p>
-            <a class="floating-icon" href=""
-              ><i class="icon-4 fa-brands fa-youtube"></i
-            ></a>
-          </p>
-        </div>
-      </section>
+      {% include "socialMedia.html" %}
 
       <!-- Floating Social Media End -->
+      <script>
+        // Select all date radio inputs and the <b> element
+        const dateRadios = document.querySelectorAll('input[name="date"]');
+        const selectedDateElement = document.getElementById('selected-date');
+      
+        // Update the <b> element when a date is selected
+        dateRadios.forEach(radio => {
+          radio.addEventListener('change', () => {
+            if (radio.checked) {
+              selectedDateElement.textContent = radio.value; // Update the text with the selected date
+            }
+          });
+        });
+      </script>
     </main>
 {% endblock %}
  

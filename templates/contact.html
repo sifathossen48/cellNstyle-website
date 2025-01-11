@@ -1,332 +1,7 @@
-<!DOCTYPE html>
-<html lang="en" class="h-100">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact | CELLNSTYLE</title>
-    <link rel="stylesheet" href="asset/css/style.css" />
-
-    <!-- EXTERNAL CSS LINK -->
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/bs-brain@2.0.4/components/navbars/navbar-1/assets/css/navbar-1.css"
-    />
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      data-purpose="Layout StyleSheet"
-      title="Web Awesome"
-      href="/css/app-wa-09b459cf485d4b1f3304947240314c05.css?vsn=d"
-    />
-    <link
-      rel="stylesheet"
-      href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-duotone-solid.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-thin.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-solid.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-regular.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-light.css"
-    />
-    <!-- Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Carousel Templete -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
-      integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css"
-      integrity="sha512-OTcub78R3msOCtY3Tc6FzeDJ8N9qvQn1Ph49ou13xgA9VsH9+LRxoFU6EqLhW4+PKRfU+/HReXmSZXHEkpYoOA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
-
-  <body class="d-flex flex-column h-100">
-    <!-- <div class="preloader" id="preloader-active">
-        <div id="loader"></div>
-    </div> -->
-
-    <header class="headerSection fixed-top" style="background: #231f20">
-      <!-- Navbar 1 - Bootstrap Brain Component -->
-      <nav
-        class="navbar navbar-expand-lg bsb-navbar bsb-navbar-hover bsb-navbar-caret"
-      >
-        <div class="container">
-          <a class="navbar-brand" href="index.html">
-            <img
-              src="./asset/images/blackBGlogo.png"
-              style="
-                width: clamp(
-                  8.3125rem,
-                  8.008928571428571rem + 1.5178571428571428vw,
-                  9.375rem
-                );
-              "
-              alt=""
-            />
-            <!-- <h4 class="m-0" style="font-weight: 600;">CELL<i style="color: var(--primaryColor); font-weight: 700;">N</i>STYLE</h4> -->
-          </a>
-          <button
-            class="navbar-toggler border-0"
-            type="button"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasNavbar"
-            aria-controls="offcanvasNavbar"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="#ffffff"
-              class="bi bi-list"
-              viewBox="0 0 16 16"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
-              />
-            </svg>
-          </button>
-          <div
-            class="offcanvas offcanvas-end me-auto"
-            style="background: #231f20"
-            tabindex="-1"
-            id="offcanvasNavbar"
-            aria-labelledby="offcanvasNavbarLabel"
-          >
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">
-                Menu
-              </h5>
-              <button
-                type="button"
-                class="btn-close btn-close-white"
-                data-bs-dismiss="offcanvas"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="offcanvas-body">
-              <ul
-                class="navbar-nav justify-content-center flex-grow-1 gap-xl-4"
-              >
-                <li class="nav-item">
-                  <a class="nav-link text-nowrap" href="./index.html">Home</a>
-                </li>
-                <li class="nav-item dropdown has-megamenu">
-                  <a
-                    class="nav-link text-nowrap dropdown-toggle"
-                    href="#!"
-                    id="servicesDropdown"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                    >Company</a
-                  >
-                  <ul
-                    class="dropdown-menu border bsb-zoomIn megamenu smallMegaMenu"
-                    aria-labelledby="servicesDropdown"
-                  >
-                    <li>
-                      <a class="dropdown-item" href="./franchise.html"
-                        >Franchise</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="./career.html">Career</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="./contact.html">Contact</a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="nav-item dropdown has-megamenu">
-                  <a
-                    class="nav-link text-nowrap dropdown-toggle"
-                    href="#!"
-                    id="servicesDropdown"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                    >Repair Service</a
-                  >
-                  <ul
-                    class="dropdown-menu border-0 shadow-sm bsb-zoomIn megamenu"
-                    aria-labelledby="servicesDropdown"
-                  >
-                    <div>
-                      <div class="row">
-                        <div class="col-12 col-md-12 col-lg-4">
-                          <img
-                            class="nav-repair-icon"
-                            src="asset/images/icons/repair-tools-svgrepo-com.svg"
-                            alt=""
-                          />
-                          <h5>What can we fix for you?</h5>
-                          <p class="pt-3">
-                            Select the device that needs fixing, and let our
-                            certified technicians handle the rest.
-                          </p>
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-8">
-                          <div class="text-center">
-                            <div
-                              class="row row-cols-2 row-cols-lg-3 g-2 g-lg-3"
-                            >
-                              <div class="col">
-                                <a href="./repair.html">
-                                  <div
-                                    class="pt-3 border rounded-2 text-dark h-100 nav-c-card"
-                                  >
-                                    <img
-                                      class="dropdown-categories-img"
-                                      src="asset/images/categories-images/iphone-nav-grid.png"
-                                      alt=""
-                                    />
-                                    <p class="nav-c-text">Phone</p>
-                                  </div>
-                                </a>
-                              </div>
-                              <div class="col">
-                                <a href="./repair.html">
-                                  <div
-                                    class="pt-3 border rounded-2 text-dark h-100 nav-c-card"
-                                  >
-                                    <img
-                                      class="dropdown-categories-img"
-                                      src="asset/images/categories-images/ipad-nav-grid.svg"
-                                      alt=""
-                                    />
-                                    <p class="nav-c-text">Tab</p>
-                                  </div>
-                                </a>
-                              </div>
-                              <div class="col">
-                                <a href="./repair.html">
-                                  <div
-                                    class="pt-3 border rounded-2 text-dark h-100 nav-c-card"
-                                  >
-                                    <img
-                                      class="dropdown-categories-img"
-                                      src="asset/images/categories-images/laptop-nav-grid.svg"
-                                      alt=""
-                                    />
-                                    <p class="nav-c-text">Computer</p>
-                                  </div>
-                                </a>
-                              </div>
-                              <div class="col">
-                                <a href="./repair.html">
-                                  <div
-                                    class="pt-3 border rounded-2 text-dark h-100 nav-c-card"
-                                  >
-                                    <img
-                                      class="dropdown-categories-img"
-                                      src="asset/images/categories-images/game-console-nav-grid.svg"
-                                      alt=""
-                                    />
-                                    <p class="nav-c-text">Console</p>
-                                  </div>
-                                </a>
-                              </div>
-                              <div class="col">
-                                <a href="./repair.html">
-                                  <div
-                                    class="pt-3 border rounded-2 text-dark h-100 nav-c-card"
-                                  >
-                                    <img
-                                      class="dropdown-categories-img"
-                                      src="asset/images/categories-images/headset.jpg"
-                                      alt=""
-                                    />
-                                    <p class="nav-c-text">Headset</p>
-                                  </div>
-                                </a>
-                              </div>
-                              <div class="col">
-                                <a href="./somethingElse.html">
-                                  <div
-                                    class="pt-3 border rounded-2 text-dark h-100 nav-c-card"
-                                  >
-                                    <img
-                                      class="dropdown-categories-img"
-                                      src="asset/images/categories-images/home-appliances.png"
-                                      alt=""
-                                    />
-                                    <p class="nav-c-text">Something else</p>
-                                  </div>
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </ul>
-                </li>
-
-                <li class="nav-item">
-                  <a class="nav-link text-nowrap" href="./products.html"
-                    >Accessories</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-nowrap" href="./sell.html">Sell</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-nowrap" href="./blogs.html">Blogs</a>
-                </li>
-              </ul>
-
-              <li class="nav-item book-li">
-                <a
-                  class="nav-link text-nowrap text-center book-repair-btn"
-                  href=""
-                  >CALL NOW</a
-                >
-              </li>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </header>
-
+{% extends "base.html" %}
+{% block title %}Contact {% endblock title %}
+{% load static %}
+{% block content %}
     <main class="flex-shrink-0">
       <!-- Main Content Start -->
 
@@ -336,10 +11,11 @@
         class="container d-flex flex-column gap-5"
         style="padding-block: 6rem 3rem"
       >
+      {% for s in store %}
         <div class="d-flex flex-column gap-4 p-0" style="row-gap: 1.5rem">
           <h1 class="text-start">
             Contact Us In
-            <span style="color: var(--primaryColor)">Denton Area</span>
+            <span style="color: var(--primaryColor)">{{s.area}}</span>
           </h1>
 
           <div class="">
@@ -350,19 +26,19 @@
               <div class="d-flex flex-column gap-1">
                 <h6>Address</h6>
                 <a
-                  href="http://maps.apple.com/?q=Cell+n+Style,+2201+S+Interstate+35,+Denton,+TX+76205,+United+States"
+                  href="{{s.google_map_link}}"
                   target="_blank"
-                  >2201 S Interstate 35, Denton, TX 76205</a
+                  >{{s.address}}</a
                 >
               </div>
               <div class="d-flex flex-column gap-1">
                 <h6>Phone</h6>
-                <a href="tel:+19403809094">940-380-9094</a>
+                <a href="tel:{{s.country_code}}{{s.phone_number}}">{{s.phone_number}}</a>
               </div>
               <div class="d-flex flex-column gap-1">
                 <h6>Email</h6>
-                <a href="mailto:cellnstyle888@gmail.com"
-                  >cellnstyle888@gmail.com</a
+                <a href="mailto:{{s.email}}"
+                  >{{s.email}}</a
                 >
               </div>
             </div>
@@ -370,7 +46,7 @@
           <div class="mt-4">
             <iframe
               class="rounded-3 map border"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3338.9111625050787!2d-97.10949262410223!3d33.19020127349386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864dcb2760d1f3a5%3A0x85a45a1431ae8491!2sCell%20n%20Style%20Cellphone%20%26%20Computer%20Repair!5e0!3m2!1sen!2sbd!4v1726746578360!5m2!1sen!2sbd"
+              src="{{s.google_map_iframe_link}}"
               style="border: 0; width: 100%"
               allowfullscreen=""
               loading="lazy"
@@ -379,52 +55,9 @@
             </iframe>
           </div>
         </div>
+      {% endfor %}
 
-        <div class="d-flex flex-column gap-4 p-0" style="row-gap: 1.5rem">
-          <h1 class="text-start">
-            Contact Us In
-            <span style="color: var(--primaryColor)"
-              >Aubrey & Little Elm Area</span
-            >
-          </h1>
-
-          <div class="">
-            <div
-              class="d-flex flex-wrap"
-              style="column-gap: 5rem; row-gap: 2rem"
-            >
-              <div class="d-flex flex-column gap-1">
-                <h6>Address</h6>
-                <a
-                  href="http://maps.apple.com/?q=Cell+n+Style+Cell+Phone+%26+Computer+Repair+at+Aubrey,+26615+US-380+%23140,+Aubrey,+TX+76227,+United+States"
-                  target="_blank"
-                  >26615 US-380 #140, Aubrey, TX 76227</a
-                >
-              </div>
-              <div class="d-flex flex-column gap-1">
-                <h6>Phone</h6>
-                <a href="tel:+19729779115">972-977-9115</a>
-              </div>
-              <div class="d-flex flex-column gap-1">
-                <h6>Email</h6>
-                <a href="mailto:cellnstyle888@gmail.com"
-                  >cellnstyle888@gmail.com</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="mt-4">
-            <iframe
-              class="rounded-3 map border"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3337.683828377037!2d-96.96447202410097!3d33.22238417348073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c374f43623c4b%3A0x64179b8e3684c884!2sCell%20n%20Style%20Cell%20Phone%20%26%20Computer%20Repair%20at%20Aubrey!5e0!3m2!1sen!2sbd!4v1726746864232!5m2!1sen!2sbd"
-              style="border: 0; width: 100%"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            >
-            </iframe>
-          </div>
-        </div>
+      
       </section>
 
       <!-- Terms And Conditions section end-->
@@ -432,212 +65,7 @@
       <!-- Main Content End -->
 
       <!-- Floating Social Media Start -->
-
-      <section>
-        <div class="floating-social-media">
-          <p>
-            <a
-              class="floating-icon"
-              href="mailto:info@cellnstyle.com"
-              target="_blank"
-              ><i class="fa-solid fa-envelope"></i
-            ></a>
-          </p>
-          <p>
-            <a
-              class="floating-icon"
-              href="https://wa.me/19403809094?text=Hello%2C%20I%20need%20assistance%20with%20my%20device%20repair."
-              target="_blank"
-              ><i class="icon-1 fa-brands fa-whatsapp"></i
-            ></a>
-          </p>
-
-          <p>
-            <a
-              class="floating-icon"
-              href="https://www.facebook.com/share/AoSuLDqoyHDixcSX/?mibextid=wwXIfr"
-              target="_blank"
-              ><i
-                style="padding-left: 2px"
-                class="icon-2 fa-brands fa-facebook-f"
-              ></i
-            ></a>
-          </p>
-          <!-- <p><a class="floating-icon" href=""><i class="icon-3 fa-brands fa-instagram"></i></a></p> -->
-          <p>
-            <a class="floating-icon" href=""
-              ><i class="icon-4 fa-brands fa-youtube"></i
-            ></a>
-          </p>
-        </div>
-      </section>
-
+{% include "socialMedia.html" %}
       <!-- Floating Social Media End -->
     </main>
-
-    <!-----Footer Start------------->
-
-    <footer class="footer text-white" style="background: rgb(35, 31, 32)">
-      <div class="container py-5">
-        <div class="row row-cols-1 row-cols-lg-2 gap-5 gap-lg-0">
-          <div class="position-relative overflow-hidden">
-            <img
-              src="./asset/images/usa.svg"
-              alt=""
-              class="w-100 h-100 position-absolute"
-              style="z-index: 2; opacity: 0.15; transform: scale(1.3)"
-            />
-            <div
-              class="d-flex position-relative flex-column gap-3"
-              style="z-index: 10"
-            >
-              <!-- <h4 class="m-0" style="font-weight: 600;">CELL<i style="color: var(--primaryColor); font-weight: 700;">N</i>STYLE</h4> -->
-              <h4 style="font-weight: 600">Our Stores</h4>
-              <p class="footerSubtext">
-                Visit one of our locations for quick and reliable repair
-                services. We're here to help with all your device needs!
-              </p>
-
-              <!-- <a href="mailto:cellnstyle888@gmail.com" target="_blank" class="d-flex gap-2 align-items-center">
-                                <i class="fa-duotone fa-solid fa-envelope" style="color: var(--primaryColor);"></i>
-                                <span>cellnstyle888@gmail.com</span>
-                            </a> -->
-
-              <div class="d-flex position-relative flex-column gap-5">
-                <div class="d-flex flex-column gap-2">
-                  <h5>Store In Denton Area</h5>
-                  <a
-                    href="http://maps.apple.com/?q=Cell+n+Style,+2201+S+Interstate+35,+Denton,+TX+76205,+United+States"
-                    target="_blank"
-                    class="d-flex gap-2 align-items-center"
-                  >
-                    <i
-                      class="fa-duotone fa-solid fa-map-location-dot"
-                      style="color: var(--primaryColor)"
-                    ></i>
-                    <span>2201 S Interstate 35, Denton, TX 76205</span>
-                  </a>
-                  <a
-                    href="tel:+19403809094"
-                    class="d-flex gap-2 align-items-center"
-                  >
-                    <i
-                      class="fa-duotone fa-solid fa-phone-arrow-up-right"
-                      style="color: var(--primaryColor)"
-                    ></i>
-                    <span>940-380-9094</span>
-                  </a>
-                </div>
-                <div class="d-flex flex-column gap-2">
-                  <h5>Store In Aubrey & Little Elm Area</h5>
-                  <a
-                    href="http://maps.apple.com/?q=Cell+n+Style+Cell+Phone+%26+Computer+Repair+at+Aubrey,+26615+US-380+%23140,+Aubrey,+TX+76227,+United+States"
-                    target="_blank"
-                    class="d-flex gap-2 align-items-center"
-                  >
-                    <i
-                      class="fa-duotone fa-solid fa-map-location-dot"
-                      style="color: var(--primaryColor)"
-                    ></i>
-                    <span>26615 US-380 #140, Aubrey, TX 76227</span>
-                  </a>
-                  <a
-                    href="tel:+19729779115"
-                    class="d-flex gap-2 align-items-center"
-                  >
-                    <i
-                      class="fa-duotone fa-solid fa-phone-arrow-up-right"
-                      style="color: var(--primaryColor)"
-                    ></i>
-                    <span>972-977-9115</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="position-relative">
-            <div
-              class="row row-cols-1 row-cols-md-2 gap-4 gap-sm-0 justify-content-between"
-            >
-              <div class="d-flex flex-column gap-3" style="width: fit-content">
-                <h4 style="font-weight: 600">Repair Services</h4>
-                <div class="d-flex flex-column gap-3">
-                  <a href="./repair.html">Phone</a>
-                  <a href="./repair.html">Tab</a>
-                  <a href="./repair.html">Computer</a>
-                  <a href="./repair.html">Console</a>
-                  <a href="./repair.html">Headset</a>
-                  <a href="./somethingElse.html">Something else</a>
-                </div>
-              </div>
-
-              <div class="d-flex flex-column gap-3" style="width: fit-content">
-                <h4 style="font-weight: 600">Important Links</h4>
-                <div class="d-flex flex-column gap-3">
-                  <a href="./termsConditions.html">Terms & Conditions</a>
-                  <a href="./privacyPolicy.html">Privacy Policy</a>
-                  <a href="./products.html">Accessories</a>
-                  <a href="./sell.html">Sell</a>
-                  <a href="./career.html">Career</a>
-                  <a href="./contact.html">Contact</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div
-          class="copyrights text-center border-top pt-3"
-          style="border-color: var(--accentColor) !important"
-        >
-          @ <span id="autodate"></span> - CALLNSTYLE.
-        </div>
-        <div class="text-end">
-          <p>
-            Develop By - <br />
-            <a target="_blank" href="https://www.ositsltd.com/">
-              <img
-                style="width: 30px; margin-right: 5px"
-                src="https://www.ositsltd.com/media/logo/logo_K6FFJzc.png"
-                alt=""
-              />
-              OS IT Solutions Ltd.</a
-            >
-          </p>
-        </div>
-      </div>
-    </footer>
-
-    <!-------Footer End------------->
-
-    <!-- JS EXTERNAL & INTERNAL LINK -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script src="asset/js/main.js" defer></script>
-    <script src="asset/js/index.js" defer></script>
-    <script src="asset/js/repair.js" defer></script>
-    <script src="asset/js/products.js" defer></script>
-    <script src="asset/js/searchFilter.js" defer></script>
-    <script src="asset/js/productDetails.js" defer></script>
-    <script src="asset/js/cart.js" defer></script>
-
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
-      integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-  </body>
-</html>
+{% endblock content %}

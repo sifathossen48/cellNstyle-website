@@ -1,5 +1,6 @@
 
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,6 +31,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'home', # Add the home app to the installed apps
     'blog', # Add the blog app to the installed apps
+    'Website_Settings', # Add the Website_Settings app to the installed apps
 ]
 
 MIDDLEWARE = [
@@ -54,6 +56,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'home.custom.device',
+                'Website_Settings.custom.common', # Add the common context processor
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -135,7 +138,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static', # Path to the static folder
 ]
 MEDIA_URL = '/media/'
-MEDIA_ROOT =  'media' 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
