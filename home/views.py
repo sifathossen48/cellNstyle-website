@@ -16,8 +16,7 @@ class HomeView(TemplateView):
         context['blogs'] = Blog.objects.all().order_by('-date')[:3]
         
         return context
-def device_detail(request, device_id):
-    
+def device_detail(request, device_id): 
     device = get_object_or_404(Device, id=device_id)
     brand = Brand.objects.filter(device=device)
     device_problems = DeviceProblem.objects.all()
