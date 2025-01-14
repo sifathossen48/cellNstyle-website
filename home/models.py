@@ -66,3 +66,26 @@ class DeviceSell(models.Model):
     submitted_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return f"{self.customerFirstName} {self.customerLastName} - {self.type} {self.brand} {self.model}"
+
+class FranchiseSections(models.Model):
+    title = models.CharField(max_length=200)
+    def __str__(self):
+        return self.title
+    @property
+    def get_features(self):
+        return self.features.all()
+    
+class Features(models.Model):
+    section = models.ForeignKey(FranchiseSections, on_delete=models.CASCADE,  related_name="features")
+    title = models.CharField(max_length=100)
+    def __str__(self):
+        return self.title
+class FranchiseContact(models.Model):
+    franchiseApplicantFirstName = models.CharField(max_length=100)
+    franchiseApplicantLastName = models.CharField(max_length=100)
+    franchiseApplicantEmail = models.EmailField(unique=True)
+    franchiseApplicantPhone = models.CharField(max_length=15)
+    franchiseApplicantStreetAddress = models.CharField(max_length=200)
+    aboutFranchiseApplicant = models.TextField()
+    def __str__(self):
+        return self.franchiseApplicantFirstName + " " + self.franchiseApplicantLastName

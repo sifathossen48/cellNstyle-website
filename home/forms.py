@@ -1,5 +1,5 @@
 from django import forms
-from .models import DeviceSell, Device, Brand, Model
+from .models import DeviceSell, Device, Brand, FranchiseContact, Model
 
 class DeviceSellForm(forms.ModelForm):
     class Meta:
@@ -12,9 +12,12 @@ class DeviceSellForm(forms.ModelForm):
         if not email:
             raise forms.ValidationError("Email is required.")
         return email
-    def clean_cv(self):
+    def clean_deviceImages(self):
         deviceImage = self.cleaned_data.get('deviceImages')
         if not deviceImage.name.endswith('.jpg'):
             raise forms.ValidationError("Only JPG files are allowed.")
         return deviceImage
-    
+class FranchiseContactForm(forms.ModelForm):
+    class Meta:
+        model = FranchiseContact
+        fields = '__all__'     

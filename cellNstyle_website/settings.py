@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ckeditor',
+    'ckeditor', 
     'home', # Add the home app to the installed apps
     'blog', # Add the blog app to the installed apps
     'Website_Settings', # Add the Website_Settings app to the installed apps

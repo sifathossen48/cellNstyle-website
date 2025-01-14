@@ -8,4 +8,5 @@ urlpatterns = [
     path('repair/<str:device_id>', views.device_detail, name='repair'),
     path('sell/', views.sell, name='device_submission_form'),
     path('contact/', views.ContactView.as_view(), name='contact'),
+    path('franchise/', views.franchise, name='franchise'),
 ]

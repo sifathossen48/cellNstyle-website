@@ -5,8 +5,8 @@ from django.views.generic import TemplateView
 from django.contrib import messages
 from datetime import datetime, timedelta
 from blog.models import Blog
-from home.forms import DeviceSellForm
-from home.models import Brand, Device, DeviceProblem, DeviceSell, Model, Slider
+from home.forms import DeviceSellForm, FranchiseContactForm
+from home.models import Brand, Device, DeviceProblem, DeviceSell, FranchiseSections, Model, Slider
 # Create your views here.
 class HomeView(TemplateView):
     template_name = 'index.html'
@@ -31,6 +31,7 @@ def device_detail(request, device_id):
         day_of_week = day_date.strftime("%a")
         date = day_date.strftime("%d %B")  
         next_7_days.append({'day': day_of_week, 'date': date})
+    
  
         
     context = {
@@ -73,3 +74,17 @@ def sell(request):
     })
 class ContactView(TemplateView):
     template_name = 'contact.html'
+    
+
+def franchise(request):
+    section = FranchiseSections.objects.all()
+    if request.method == 'POST':
+        form = FranchiseContactForm(request.POST)
+        if form.is_valid():
+            form.save()  # Save the form data to the database
+            messages.success(request, 'Your submission was successful!')
+        else:
+            messages.error(request, 'Invalid! Please try again.')
+    else:
+        form = FranchiseContactForm()
+    return render(request, 'franchise.html',{ 'section': section, 'form': form})
