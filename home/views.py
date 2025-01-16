@@ -9,7 +9,7 @@ import os
 from datetime import datetime, timedelta
 from blog.models import Blog
 from home.forms import DeviceSellForm, FranchiseContactForm
-from home.models import Brand, Device, DeviceProblem, DeviceSell, FranchiseSections, Model, Slider
+from home.models import Brand, Device, DeviceSellImage, DeviceProblem, DeviceSell, FranchiseSections, Model, Slider
 # Create your views here.
 class HomeView(TemplateView):
     template_name = 'index.html'
@@ -46,23 +46,38 @@ def device_detail(request, device_id):
         }
     return render(request, 'repair.html', context=context)
 
-
-
 def sell(request):
-    success_message = None
     brands = Brand.objects.all()
     models = Model.objects.all()
-    devices = Device.objects.all()  
+    devices = Device.objects.all()
 
-    if request.method == "POST" and request.FILES.getlist('deviceImages'):
+    if request.method == "POST":
         form = DeviceSellForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            
-            messages.success(request, "Form submitted successfully!")
+        files = request.FILES.getlist('image')  # Get the list of uploaded files
+        
+        if len(files) > 4:
+            messages.error(request, 'You can upload a maximum of 4 images.')
         else:
-            messages.error(request, 'Invalid! Please try again.')
+                # Validate image formats
+            valid_extensions = ['.jpg', '.jpeg', '.png']
+            invalid_files = [
+                file.name for file in files
+                if os.path.splitext(file.name)[1].lower() not in valid_extensions
+            ]
 
+            if invalid_files:
+                messages.error(request,f"Invalid file format(s): {', '.join(invalid_files)}. Only JPG and PNG files are allowed.")
+            elif form.is_valid():
+                device_sell = form.save()
+            
+                # Save each image to the related model
+                for file in files:
+                    DeviceSellImage.objects.create(device_sell=device_sell, image=file)
+            
+                messages.success(request, "Form submitted successfully!")
+         
+            else:
+                messages.error(request, 'Invalid! Please try again.')
     else:
         form = DeviceSellForm()
 
@@ -70,8 +85,7 @@ def sell(request):
         'form': form,
         'brands': brands,
         'models': models,
-        'devices': devices,  # Include devices in the context
-        'success_message': success_message,
+        'devices': devices,
     })
 class ContactView(TemplateView):
     template_name = 'contact.html'

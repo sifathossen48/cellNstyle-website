@@ -1,15 +1,18 @@
 from django import forms
-from .models import DeviceSell, Device, Brand, FranchiseContact, Model
+from .models import DeviceSellImage, DeviceSell, Device, Brand, FranchiseContact, Model
 
 class DeviceSellForm(forms.ModelForm):
-    deviceImages = forms.ImageField(widget=forms.ClearableFileInput(attrs={'multiple': True}), required=False)
     class Meta:
         model = DeviceSell
-        fields = ['type', 'brand', 'model', 'description', 'customerFirstName', 'customerLastName', 'customerEmail', 'customerPhone', 'deviceImages']
+        fields = "__all__"
 
+class DeviceSellImageForm(forms.ModelForm):
+    image = forms.ImageField(widget=forms.ClearableFileInput(attrs={"multiple":True}))
+    class Meta:
+        model = DeviceSellImage
+        fields = ['image']
 
- 
 class FranchiseContactForm(forms.ModelForm):
     class Meta:
         model = FranchiseContact
-        fields = '__all__'     
+        fields = '__all__' 

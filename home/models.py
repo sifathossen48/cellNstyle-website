@@ -62,10 +62,15 @@ class DeviceSell(models.Model):
     customerLastName = models.CharField(max_length=100)
     customerEmail = models.EmailField()
     customerPhone = models.CharField(max_length=15)
-    deviceImages = models.FileField(upload_to="device_images/")
     submitted_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return f"{self.customerFirstName} {self.customerLastName} - {self.type} {self.brand} {self.model}"
+class DeviceSellImage(models.Model):
+    device_sell = models.ForeignKey(DeviceSell, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to='device_images/')
+    def __str__(self):
+        return f"{self.device_sell.customerFirstName} {self.device_sell.customerLastName}'s device image "
+
 
 class FranchiseSections(models.Model):
     title = models.CharField(max_length=200)
