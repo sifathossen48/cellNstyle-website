@@ -18,13 +18,14 @@
           for phones, tablets, PCs, and more.
         </p>
 
-        <form action="{% url 'device_submission_form' %}" method="POST" class="d-flex flex-column gap-5 mt-5">
-          <h2>
-            {% for message in messages%}
-            {{message}}
-            {% endfor %}
-          </h2>
+        <form action="{% url 'device_submission_form' %}" method="POST" enctype="multipart/form-data" class="d-flex flex-column gap-5 mt-5">
           {% csrf_token %}
+                  <h2>
+                    {% for message in messages%}
+                    {{message}}
+                    {% endfor %}
+                  </h2>
+       
           <div class="d-flex flex-column gap-3">
             <h1 class="section-title text-start m-0">
               What kind of phone is it?
@@ -107,6 +108,7 @@
                   id="deviceImages"
                   placeholder="Describe your device"
                   required
+                
                 />
                 <i
                   class="fa-duotone fa-solid fa-arrow-up-from-bracket"

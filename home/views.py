@@ -3,6 +3,9 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views import View
 from django.views.generic import TemplateView
 from django.contrib import messages
+from django.conf import settings
+import os
+
 from datetime import datetime, timedelta
 from blog.models import Blog
 from home.forms import DeviceSellForm, FranchiseContactForm
@@ -49,26 +52,25 @@ def sell(request):
     success_message = None
     brands = Brand.objects.all()
     models = Model.objects.all()
+    devices = Device.objects.all()  
 
-    if request.method == "POST":
+    if request.method == "POST" and request.FILES.getlist('deviceImages'):
         form = DeviceSellForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request,"Form submitted successfully!") 
+            
+            messages.success(request, "Form submitted successfully!")
         else:
-            messages.error(request,'Invalid! Please try again.')
-
-            # Optionally, redirect to another page after form submission to avoid re-submission
-            return redirect('device_submission_form')  # Redirect to the same form or another page
+            messages.error(request, 'Invalid! Please try again.')
 
     else:
         form = DeviceSellForm()
 
-    # Pass the form and the success message (if any) to the template
     return render(request, 'sell.html', {
         'form': form,
         'brands': brands,
         'models': models,
+        'devices': devices,  # Include devices in the context
         'success_message': success_message,
     })
 class ContactView(TemplateView):

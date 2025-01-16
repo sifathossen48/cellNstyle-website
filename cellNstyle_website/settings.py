@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor', 
     'home', # Add the home app to the installed apps
+    'career', # Add the career app to the installed apps
     'blog', # Add the blog app to the installed apps
     'Website_Settings', # Add the Website_Settings app to the installed apps
 ]

@@ -47,7 +47,7 @@
                                     <div class="row">
                                         <div class="col-12 col-md-12 col-lg-4">
                                             <img class="nav-repair-icon"
-                                                src="asset/images/icons/repair-tools-svgrepo-com.svg" alt="">
+                                                src="{% static 'asset/images/icons/repair-tools-svgrepo-com.svg'%}" alt="">
                                             <h5>What can we fix for you?</h5>
                                             <p class="pt-3">Select the device that needs fixing, and let our certified technicians handle the rest.</p>
                                         </div>
@@ -66,10 +66,7 @@
                                                         </a>
                                                     </div>
                                                     {% endfor %}
-                                                   
-                                                    
-                                                    
-                                                    
+                                                            
                                                 </div>
                                             </div>
                                         </div>
@@ -91,7 +88,7 @@
                     </ul>
 
                     <li class="nav-item book-li">
-                        <a class="nav-link text-nowrap text-center book-repair-btn" href="">CALL NOW</a>
+                        <a class="nav-link text-nowrap text-center book-repair-btn" href="tel:{{web.whatsApp_number}}">CALL NOW</a>
                     </li>
                 </div>
             </div>

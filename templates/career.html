@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% block title %}Career{% endblock %}
 {% load static %}
 {% block content %}
     <main class="flex-shrink-0">
@@ -19,18 +20,19 @@
         </div>
 
         <div class="openingsWrapper gap-3">
+          {% for job in jobs %}
           <div class="eachOpening d-flex flex-column gap-3 px-3 py-5"
             data-bs-toggle="modal"
-            data-bs-target="#technicianApplyForm">
-            <p>Engineering</p>
+            data-bs-target="#{{ job.id }}">
+            <p>{{ job.category.title }}</p>
             <div class="d-flex flex-column gap-2">
-              <h5>Repair Technician</h5>
+              <h5>{{ job.title }}</h5>
               <div class="d-flex gap-2 flex-wrap" style="color: gray">
                 <span class="pe-2" style="border-right: 2px solid gray"
-                  >Onsite</span
+                  >{{ job.work_type }}</span
                 >
                 <span class="pe-2" style="border-right: 2px solid gray"
-                  >Full Time</span
+                  >{{ job.employment_type }}</span
                 >
               </div>
             </div>
@@ -41,7 +43,7 @@
                 class="d-flex gap-1 align-items-center py-1 px-2 rounded-1"
                 style="background: rgb(208, 208, 208); color: var(--fontColor)"
               >
-                <b>$2000 - $4500</b> <span>USD/month</span>
+                <b>${{ job.salary_min }} - ${{ job.salary_max }}</b> <span>USD/month</span>
               </div>
               <div
                 class="d-flex gap-1 align-items-center justify-content-between"
@@ -54,89 +56,17 @@
               </div>
             </div>
           </div>
-          <div class="eachOpening d-flex flex-column gap-3 px-3 py-5"
-            data-bs-toggle="modal"
-            data-bs-target="#serviceRepresentativeApplyForm">
-            <p>Client Relations</p>
-            <div class="d-flex flex-column gap-2">
-              <h5>Customer Service Representative</h5>
-              <div class="d-flex gap-2 flex-wrap" style="color: gray">
-                <span class="pe-2" style="border-right: 2px solid gray"
-                  >Onsite</span
-                >
-                <span class="pe-2" style="border-right: 2px solid gray"
-                  >Part Time</span
-                >
-              </div>
-            </div>
-            <div
-              class="d-flex flex-wrap gap-3 justify-content-between align-items-center mt-4"
-            >
-              <div
-                class="d-flex gap-1 align-items-center py-1 px-2 rounded-1"
-                style="background: rgb(208, 208, 208); color: var(--fontColor)"
-              >
-                <b>$1200 - $1800</b> <span>USD/month</span>
-              </div>
-              <div
-                class="d-flex gap-1 align-items-center justify-content-between"
-              >
-                <h6 class="mb-0">Apply</h6>
-                <i
-                  class="fa-duotone fa-solid fa-arrow-right"
-                  style="transform: rotate(310deg)"
-                ></i>
-              </div>
-            </div>
-          </div>
-          <div class="eachOpening d-flex flex-column gap-3 px-3 py-5"
-            data-bs-toggle="modal"
-            data-bs-target="#salesAssociateApplyForm"
-          >
-            <p>Sales</p>
-            <div class="d-flex flex-column gap-2">
-              <h5>Sales Associate</h5>
-              <div class="d-flex gap-2 flex-wrap" style="color: gray">
-                <span class="pe-2" style="border-right: 2px solid gray"
-                  >Onsite</span
-                >
-                <span class="pe-2" style="border-right: 2px solid gray"
-                  >Full Time</span
-                >
-              </div>
-            </div>
-            <div
-              class="d-flex flex-wrap gap-3 justify-content-between align-items-center mt-4"
-            >
-              <div
-                class="d-flex gap-1 align-items-center py-1 px-2 rounded-1"
-                style="background: rgb(208, 208, 208); color: var(--fontColor)"
-              >
-                <b>$1800 - $3000</b> <span>USD/month</span>
-              </div>
-              <div
-                class="d-flex gap-1 align-items-center justify-content-between"
-              >
-                <h6 class="mb-0">Apply</h6>
-                <i
-                  class="fa-duotone fa-solid fa-arrow-right"
-                  style="transform: rotate(310deg)"
-                ></i>
-              </div>
-            </div>
-          </div>
+          {% endfor %}
+        
         </div>
 
         <!-- Modal -->
-
-        <div
-          class="modal fade"
+        {% for job in jobs %}
+        <div id="{{ job.id }}" class="modal fade"
           style="scrollbar-width: none; -ms-overflow-style: none"
-          id="technicianApplyForm"
           tabindex="-1"
           aria-labelledby="technicianApplyFormLabel"
-          aria-hidden="true"
-        >
+          aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content d-flex flex-column gap-4 p-3">
               <div class="modal-header p-0 justify-content-end border-0">
@@ -148,37 +78,28 @@
                 ></i>
               </div>
 
-              <h4 class="text-center">Repair Technician</h4>
+              <h4 class="text-center">{{job.title}}</h4>
 
               <div class="">
                 <h6>Key Responsibilities:</h6>
                 <ul>
-                  <li>
-                    Diagnose and repair various devices (smartphones, tablets,
-                    PCs, and consoles).
-                  </li>
-                  <li>
-                    Communicate with customers regarding the status and details
-                    of repairs.
-                  </li>
-                  <li>Maintain a clean and organized work environment.</li>
-                  <li>Ensure high-quality service with a quick turnaround.</li>
+                  {{ job.responsibilities|safe }}
                 </ul>
               </div>
 
               <div class="">
                 <h6>Requirements:</h6>
                 <ul>
-                  <li>Previous experience in device repairs.</li>
-                  <li>
-                    Strong attention to detail and problem-solving skills.
-                  </li>
-                  <li>Excellent customer service skills.</li>
-                  <li>Ability to work in a fast-paced environment.</li>
+                  {{ job.requirements|safe }}
                 </ul>
               </div>
 
-              <form action="#" method="get" class="d-flex flex-column gap-3">
+          <form action="{% url 'career' %}" method="POST" enctype="multipart/form-data" class="d-flex flex-column gap-3">
+                 <h2>  {% for message in messages %}
+                        {{ message }}
+                        {% endfor %}
+                </h2>
+                {% csrf_token %}
                 <label class="text-center d-none">
                   <input
                     type="checkbox"
@@ -195,7 +116,7 @@
                       type="text"
                       class="applicantFirstName form-control"
                       id="applicantFirstName"
-                      name="applicantFirstName"
+                      name="first_name"
                       placeholder="First Name"
                       required
                     />
@@ -206,7 +127,7 @@
                       type="text"
                       class="applicantLastName form-control"
                       id="applicantLastName"
-                      name="applicantLastName"
+                      name="last_name"
                       placeholder="Last Name"
                       required
                     />
@@ -219,7 +140,7 @@
                     type="email"
                     class="applicantEmail form-control"
                     id="applicantEmail"
-                    name="applicantEmail"
+                    name="email"
                     placeholder="Email"
                     required
                   />
@@ -231,7 +152,7 @@
                     type="number"
                     class="applicantNumber form-control"
                     id="applicantNumber"
-                    name="applicantNumber"
+                    name="phone_number"
                     placeholder="Phone Numder"
                     required
                   />
@@ -242,7 +163,7 @@
                   <textarea
                     class="applicantMassage form-control"
                     rows="6"
-                    name="applicantMassage"
+                    name="message"
                     id="applicantMassage"
                     style="height: auto"
                     placeholder="What makes you the best fit for this role?"
@@ -263,7 +184,7 @@
                       type="file"
                       class="applicantCV position-absolute opacity-0"
                       style="width: 1px; padding: 0%"
-                      name="applicantCV"
+                      name="cv"
                       id="applicantCV"
                       required
                       required
@@ -276,317 +197,18 @@
                     <!-- <span></span> -->
                   </label>
                 </div>
+                <input type="hidden" name="job" value="{{ job.id }}" />
 
                 <button type="submit" class="carousel-inner-btn py-2 rounded-2">
                   Submit
                 </button>
-              </form>
+          </form>
             </div>
           </div>
         </div>
+        {% endfor %}
 
-        <div
-          class="modal fade"
-          style="scrollbar-width: none; -ms-overflow-style: none"
-          id="serviceRepresentativeApplyForm"
-          tabindex="-1"
-          aria-labelledby="serviceRepresentativeApplyFormLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content d-flex flex-column gap-4 p-3">
-              <div class="modal-header p-0 justify-content-end border-0">
-                <i
-                  class="fa-duotone fa-solid fa-circle-xmark"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                  style="color: var(--primaryColor); font-size: 2rem"
-                ></i>
-              </div>
-
-              <h4 class="text-center">Customer Service Representative</h4>
-
-              <div class="">
-                <h6>Key Responsibilities:</h6>
-                <ul>
-                  <li>
-                    Greet and assist customers in-store and over the phone.
-                  </li>
-                  <li>Manage repair scheduling and customer inquiries.</li>
-                  <li>
-                    Help facilitate the sale of accessories and manage trade-in
-                    services.
-                  </li>
-                  <li>Provide general support to technicians when needed.</li>
-                </ul>
-              </div>
-
-              <div class="">
-                <h6>Requirements:</h6>
-                <ul>
-                  <li>Strong communication and organizational skills.</li>
-                  <li>Prior customer service experience is a plus.</li>
-                  <li>Ability to multi-task and handle customer concerns.</li>
-                  <li>Friendly and professional attitude.</li>
-                </ul>
-              </div>
-
-              <form action="#" method="get" class="d-flex flex-column gap-3">
-                <label class="text-center d-none">
-                  <input
-                    type="checkbox"
-                    name="JobRole"
-                    value="Customer Service Representative"
-                    class=""
-                    checked
-                  />
-                  Customer Service Representative
-                </label>
-                <div class="d-flex flex-column flex-sm-row gap-3">
-                  <div class="form-floating w-100">
-                    <input
-                      type="text"
-                      class="applicantFirstName form-control"
-                      id="applicantFirstName"
-                      name="applicantFirstName"
-                      placeholder="First Name"
-                      required
-                    />
-                    <label for="applicantFirstName">First Name</label>
-                  </div>
-                  <div class="form-floating w-100">
-                    <input
-                      type="text"
-                      class="applicantLastName form-control"
-                      id="applicantLastName"
-                      name="applicantLastName"
-                      placeholder="Last Name"
-                      required
-                    />
-                    <label for="applicantLastName">Last Name</label>
-                  </div>
-                </div>
-
-                <div class="form-floating">
-                  <input
-                    type="email"
-                    class="applicantEmail form-control"
-                    id="applicantEmail"
-                    name="applicantEmail"
-                    placeholder="Email"
-                    required
-                  />
-                  <label for="applicantEmail">Email address</label>
-                </div>
-
-                <div class="form-floating">
-                  <input
-                    type="number"
-                    class="applicantNumber form-control"
-                    id="applicantNumber"
-                    name="applicantNumber"
-                    placeholder="Phone Numder"
-                    required
-                  />
-                  <label for="applicantNumber">Phone number to reach you</label>
-                </div>
-
-                <div class="form-floating">
-                  <textarea
-                    class="applicantMassage form-control"
-                    rows="6"
-                    name="applicantMassage"
-                    id="applicantMassage"
-                    style="height: auto"
-                    placeholder="What makes you the best fit for this role?"
-                  ></textarea>
-                  <label for="applicantMassage"
-                    >What makes you the best fit for this role?</label
-                  >
-                </div>
-
-                <div
-                  class="position-relative rounded-2 inputDeviceImageWrappper mx-auto"
-                  style="width: fit-content"
-                >
-                  <label
-                    class="d-flex flex-column align-items-center gap-2 p-3"
-                  >
-                    <input
-                      type="file"
-                      class="applicantCV position-absolute opacity-0"
-                      style="width: 1px; padding: 0%"
-                      name="applicantCV"
-                      id="applicantCV"
-                      placeholder="Drop your CV"
-                      required
-                    />
-                    <i
-                      class="fa-duotone fa-solid fa-arrow-up-from-bracket"
-                      style="font-size: 1.5rem"
-                    ></i>
-                    <b>Drop your CV</b>
-                    <!-- <span></span> -->
-                  </label>
-                </div>
-
-                <button type="submit" class="carousel-inner-btn py-2 rounded-2">
-                  Submit
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="modal fade"
-          style="scrollbar-width: none; -ms-overflow-style: none"
-          id="salesAssociateApplyForm"
-          tabindex="-1"
-          aria-labelledby="salesAssociateApplyFormLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content d-flex flex-column gap-4 p-3">
-              <div class="modal-header p-0 justify-content-end border-0">
-                <i
-                  class="fa-duotone fa-solid fa-circle-xmark"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                  style="color: var(--primaryColor); font-size: 2rem"
-                ></i>
-              </div>
-
-              <h4 class="text-center">Sales Associate</h4>
-
-              <div class="">
-                <h6>Key Responsibilities:</h6>
-                <ul>
-                  <li>
-                    Assist customers in selecting accessories and products.
-                  </li>
-                  <li>Provide product knowledge and expert recommendations.</li>
-                  <li>Process transactions and manage inventory.</li>
-                  <li>Help customers with device trade-ins.</li>
-                </ul>
-              </div>
-
-              <div class="">
-                <h6>Requirements:</h6>
-                <ul>
-                  <li>Experience in retail or sales is preferred.</li>
-                  <li>Strong communication and sales skills.</li>
-                  <li>Ability to work flexible hours.</li>
-                  <li>Enthusiastic and customer-focused attitude.</li>
-                </ul>
-              </div>
-
-              <form action="#" method="get" class="d-flex flex-column gap-3">
-                <label class="text-center d-none">
-                  <input
-                    type="checkbox"
-                    name="JobRole"
-                    value="Sales Associate"
-                    class=""
-                    checked
-                  />
-                  Sales Associate
-                </label>
-                <div class="d-flex flex-column flex-sm-row gap-3">
-                  <div class="form-floating w-100">
-                    <input
-                      type="text"
-                      class="applicantFirstName form-control"
-                      id="applicantFirstName"
-                      name="applicantFirstName"
-                      placeholder="First Name"
-                      required
-                    />
-                    <label for="applicantFirstName">First Name</label>
-                  </div>
-                  <div class="form-floating w-100">
-                    <input
-                      type="text"
-                      class="applicantLastName form-control"
-                      id="applicantLastName"
-                      name="applicantLastName"
-                      placeholder="Last Name"
-                      required
-                    />
-                    <label for="applicantLastName">Last Name</label>
-                  </div>
-                </div>
-
-                <div class="form-floating">
-                  <input
-                    type="email"
-                    class="applicantEmail form-control"
-                    id="applicantEmail"
-                    name="applicantEmail"
-                    placeholder="Email"
-                    required
-                  />
-                  <label for="applicantEmail">Email address</label>
-                </div>
-
-                <div class="form-floating">
-                  <input
-                    type="number"
-                    class="applicantNumber form-control"
-                    id="applicantNumber"
-                    name="applicantNumber"
-                    placeholder="Phone Numder"
-                    required
-                  />
-                  <label for="applicantNumber">Phone number to reach you</label>
-                </div>
-
-                <div class="form-floating">
-                  <textarea
-                    class="applicantMassage form-control"
-                    rows="6"
-                    name="applicantMassage"
-                    id="applicantMassage"
-                    style="height: auto"
-                    placeholder="What makes you the best fit for this role?"
-                  ></textarea>
-                  <label for="applicantMassage"
-                    >What makes you the best fit for this role?</label
-                  >
-                </div>
-
-                <div
-                  class="position-relative rounded-2 inputDeviceImageWrappper mx-auto"
-                  style="width: fit-content"
-                >
-                  <label
-                    class="d-flex flex-column align-items-center gap-2 p-3"
-                  >
-                    <input
-                      type="file"
-                      class="applicantCV position-absolute opacity-0"
-                      style="width: 1px; padding: 0%"
-                      name="applicantCV"
-                      id="applicantCV"
-                      required
-                      required
-                    />
-                    <i
-                      class="fa-duotone fa-solid fa-arrow-up-from-bracket"
-                      style="font-size: 1.5rem"
-                    ></i>
-                    <b>Drop your CV</b>
-                    <!-- <span></span> -->
-                  </label>
-                </div>
-
-                <button type="submit" class="carousel-inner-btn py-2 rounded-2">
-                  Submit
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
+     
       </section>
 
       <!-- Terms And Conditions section end-->
@@ -599,5 +221,6 @@
 
       <!-- Floating Social Media End -->
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 {% endblock %}
