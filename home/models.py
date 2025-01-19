@@ -1,6 +1,8 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from django.utils.html import strip_tags
+from django.core.exceptions import ValidationError
+from Website_Settings.models import Store
 # Create your models here.
 class Slider(models.Model):
     LINK_TYPE_CHOICES = [
@@ -94,3 +96,70 @@ class FranchiseContact(models.Model):
     aboutFranchiseApplicant = models.TextField()
     def __str__(self):
         return self.franchiseApplicantFirstName + " " + self.franchiseApplicantLastName
+
+class Repair(models.Model):
+    SERVICE_RECEIVE_METHOD_CHOICES = [
+        ('visitStore', 'visitStore'),
+        ('mail', 'mail'),
+        ('comeToMe', 'comeToMe'),
+    ]
+    TIME_CHOICES = [
+        ('12am-2am', '12am-2am'),
+        ('2am-4am', '2am-4am'),
+        ('4am-6am', '4am-6am'),
+        ('6am-8am', '6am-8am'),
+        ('8am-10am', '8am-10am'),
+        ('10am-12am', '10am-12am'),
+    ]
+    device = models.ForeignKey(Device, on_delete=models.CASCADE)
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE, null=True, blank=True)
+    model = models.ForeignKey(Model, on_delete=models.CASCADE, null=True, blank=True)
+    problem = models.ManyToManyField(DeviceProblem)
+    description = models.TextField(null=True, blank=True)
+    serviceReceiveMethod = models.CharField(max_length=50,choices=SERVICE_RECEIVE_METHOD_CHOICES)
+    store = models.ForeignKey(Store, on_delete=models.CASCADE, null=True, blank=True)
+    date = models.CharField(max_length=50,null=True, blank=True)
+    date2 = models.CharField(max_length=50,null=True, blank=True)
+    time = models.CharField(max_length=20,choices=TIME_CHOICES,null=True, blank=True)
+    streetAddress = models.CharField(max_length=200,null=True, blank=True)
+    customerFirstName = models.CharField(max_length=100)
+    customerLastName = models.CharField(max_length=100)
+    customerEmail = models.EmailField()
+    customerPhone = models.CharField(max_length=20)
+    termsAndConditions = models.BooleanField(default=False)
+    
+    
+
+    def __str__(self):
+        return f"{self.customerFirstName} {self.customerLastName} wants repair for {self.device} | {self.brand} | {self.model}"
+    def get_problems(self):
+        return ", ".join([problem.problem for problem in self.problem.all()])
+
+    
+    def clean(self):
+        # Conditional logic based on serviceReceiveMethod
+        if self.serviceReceiveMethod == 'visitStore':
+            if not self.store:
+                raise ValidationError("Store is required when 'Visit Store' is selected.")
+            if self.streetAddress:
+                raise ValidationError("Street Address should be empty when 'Visit Store' is selected.")
+            if not self.date:
+                raise ValidationError("Date is required when 'Visit Store' is selected.")
+            if self.date2:
+                raise ValidationError("Date2 should be empty when 'Visit Store' is selected.")
+        elif self.serviceReceiveMethod == 'mail':
+            if self.date or self.date2 or self.time:
+                raise ValidationError("Date and Time should be empty when 'Mail in' is selected.")
+            if not self.streetAddress:
+                raise ValidationError("Street Address is required when 'Mail in' is selected.")
+            if self.store:
+                raise ValidationError("Store should be empty when 'Mail in' is selected.")
+        elif self.serviceReceiveMethod == 'comeToMe':
+            if not self.streetAddress:
+                raise ValidationError("Street Address is required when 'Come to me' is selected.")
+            if self.store:
+                raise ValidationError("Store should be empty when 'Come to me' is selected.")
+            if not self.date2:
+                    raise ValidationError("Date2 is required when 'Come to me' is selected.")
+            if self.date:
+                raise ValidationError("Date should be empty when 'Come to me' is selected.")

@@ -1,5 +1,8 @@
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.http import JsonResponse
+from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
 from django.views import View
 from django.views.generic import TemplateView
 from django.contrib import messages
@@ -7,8 +10,9 @@ from django.conf import settings
 import os
 
 from datetime import datetime, timedelta
+from Website_Settings.models import Store
 from blog.models import Blog
-from home.forms import DeviceSellForm, FranchiseContactForm
+from home.forms import DeviceSellForm, FranchiseContactForm, RepairForm
 from home.models import Brand, Device, DeviceSellImage, DeviceProblem, DeviceSell, FranchiseSections, Model, Slider
 # Create your views here.
 class HomeView(TemplateView):
@@ -16,8 +20,7 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['sliders'] = Slider.objects.all()
-        context['blogs'] = Blog.objects.all().order_by('-date')[:3]
-        
+        context['blogs'] = Blog.objects.all().order_by('-date')[:3]  
         return context
 def device_detail(request, device_id): 
     device = get_object_or_404(Device, id=device_id)
@@ -33,11 +36,8 @@ def device_detail(request, device_id):
         day_of_week = day_date.strftime("%a")
         date = day_date.strftime("%d %B")  
         next_7_days.append({'day': day_of_week, 'date': date})
-    
- 
-        
-    context = {
-      
+          
+    context = {  
         'device': device,
         'brand': brand,
         'has_brands': has_brands,
@@ -45,7 +45,31 @@ def device_detail(request, device_id):
         'next_7_days': next_7_days,
         }
     return render(request, 'repair.html', context=context)
+@csrf_exempt  # Only use this if not using `csrf_token` in frontend
+def repair_form_submit(request):
+    if request.method == 'POST':
+        form = RepairForm(request.POST)
+        if form.is_valid():
+            repair_instance = form.save(commit=False)
+            
+            # Additional logic for handling specific fields
+            if repair_instance.serviceReceiveMethod == 'Visit Store' and not repair_instance.store:
+                # Assign a default store if none is provided
+                repair_instance.store = Store.objects.first()
 
+            repair_instance.save()
+            selected_problems = form.cleaned_data['problem']
+            if selected_problems:
+                repair_instance.problem.set(selected_problems)  # Associate selected problems with the repair
+            # Finally, save the changes (including the Many-to-Many relationship)
+            repair_instance.save()
+            messages.success(request,"Form Submitted Successfully")
+            
+        else:
+            messages.error(request,"Invalid! Please Try Again.")
+    else:
+        form = RepairForm
+    return render(request, 'repair.html', {'form': form})
 def sell(request):
     brands = Brand.objects.all()
     models = Model.objects.all()
@@ -54,9 +78,9 @@ def sell(request):
     if request.method == "POST":
         form = DeviceSellForm(request.POST, request.FILES)
         files = request.FILES.getlist('image')  # Get the list of uploaded files
-        
+
         if len(files) > 4:
-            messages.error(request, 'You can upload a maximum of 4 images.')
+            messages.error(request, 'Invalid! You can upload a maximum of 4 images.')
         else:
                 # Validate image formats
             valid_extensions = ['.jpg', '.jpeg', '.png']
@@ -69,13 +93,10 @@ def sell(request):
                 messages.error(request,f"Invalid file format(s): {', '.join(invalid_files)}. Only JPG and PNG files are allowed.")
             elif form.is_valid():
                 device_sell = form.save()
-            
                 # Save each image to the related model
                 for file in files:
                     DeviceSellImage.objects.create(device_sell=device_sell, image=file)
-            
                 messages.success(request, "Form submitted successfully!")
-         
             else:
                 messages.error(request, 'Invalid! Please try again.')
     else:

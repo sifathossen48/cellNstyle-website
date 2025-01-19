@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from home.models import Brand, Device, DeviceSellImage, DeviceProblem, Features, FranchiseContact, FranchiseSections, Model, Slider, DeviceSell
+from home.forms import RepairForm
+from home.models import Brand, Device, DeviceSellImage, DeviceProblem, Features, FranchiseContact, FranchiseSections, Model, Repair, Slider, DeviceSell
 
 # Register your models here.
 admin.site.register(Slider)
@@ -13,3 +14,4 @@ admin.site.register(Features)
 admin.site.register(FranchiseContact)
 admin.site.register(DeviceSell)
 admin.site.register(DeviceSellImage)
+admin.site.register(Repair)

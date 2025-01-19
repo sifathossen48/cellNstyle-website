@@ -9,7 +9,15 @@
       <section class="container" style="padding-block: 6rem">
         <div class="serviceDetails d-flex flex-column flex-md-row">
           <div class="serviceSelection" style="overflow-x: hidden;">
-            <form action="#" method="get" class="d-flex flex-column gap-5">
+            <form action="{% url 'repair_submit' %}" method="POST" class="d-flex flex-column gap-5">
+             {% csrf_token %}
+          
+                 <h2> {% for message in messages %}
+                        {{message}}
+                      {% endfor %}</h2>
+                    
+              <input type="hidden" name="device" value="{{ device.id }}" />
+           
               {% if has_brands %}
               <div class="deviceBrandModel d-flex flex-column gap-3">
                 <h1 class="section-title text-start m-0">
@@ -53,7 +61,7 @@
                           {% for m in b.get_models.all %}
                           <option value="{{m.id}}">{{m.name}}</option>
                           {% empty %}
-                            <option value="">No Model Found</option>
+                            <option value="1">No Model Found</option>
                           {% endfor %}
                       {% endfor %}
                    
@@ -87,7 +95,7 @@
                       class="problem form-check-input p-2"
                       type="checkbox"
                       name="problem"
-                      value="{{d.problem}}"
+                      value="{{d.id}}"
                       id="{{d.problem}}"
                     />
                     <label
@@ -105,7 +113,7 @@
                   <textarea
                     class="problemDispriction form-control"
                     rows="8"
-                    name="problemDispriction"
+                    name="description"
                     id="problemDispriction"
                     style="height: auto"
                     placeholder="Describe the issue (optional)"
@@ -121,21 +129,17 @@
                   How Do you want to get the services?
                 </h1>
 
-                <div
-                  class=""
+                <div class=""
                   style="
                     display: grid;
                     gap: 1rem;
                     grid-template-columns: repeat(3, 1fr);
-                  "
-                >
-                  <label
-                    onclick="toogleMethods()"
-                    class="serviceReciveMethodWrapper d-flex flex-column flex-sm-row gap-2 align-items-center py-3 justify-content-center rounded-2"
-                  >
+                  ">
+                  <label onclick="toogleMethods()"
+                    class="serviceReciveMethodWrapper d-flex flex-column flex-sm-row gap-2 align-items-center py-3 justify-content-center rounded-2">
                     <input
                       type="radio"
-                      name="serviceReciveMethod"
+                      name="serviceReceiveMethod"
                       value="visitStore"
                       id="serviceReciveMethod"
                       class="serviceReciveMethod d-none"
@@ -145,13 +149,11 @@
                     <i class="fa-duotone fa-solid fa-store"></i>
                     Visit Store
                   </label>
-                  <label
-                    onclick="toogleMethods()"
-                    class="serviceReciveMethodWrapper d-flex flex-column flex-sm-row gap-2 align-items-center py-3 justify-content-center rounded-2"
-                  >
+                  <label onclick="toogleMethods()"
+                    class="serviceReciveMethodWrapper d-flex flex-column flex-sm-row gap-2 align-items-center py-3 justify-content-center rounded-2">
                     <input
                       type="radio"
-                      name="serviceReciveMethod"
+                      name="serviceReceiveMethod"
                       value="mail"
                       id="serviceReciveMethod"
                       class="serviceReciveMethod d-none"
@@ -160,13 +162,11 @@
                     <i class="fa-sharp-duotone fa-solid fa-mailbox-flag-up"></i>
                     Mail in
                   </label>
-                  <label
-                    onclick="toogleMethods()"
-                    class="serviceReciveMethodWrapper d-flex flex-column flex-sm-row gap-2 align-items-center py-3 justify-content-center rounded-2"
-                  >
+                  <label onclick="toogleMethods()"
+                    class="serviceReciveMethodWrapper d-flex flex-column flex-sm-row gap-2 align-items-center py-3 justify-content-center rounded-2">
                     <input
                       type="radio"
-                      name="serviceReciveMethod"
+                      name="serviceReceiveMethod"
                       value="comeToMe"
                       id="serviceReciveMethod"
                       class="serviceReciveMethod d-none"
@@ -190,7 +190,7 @@
                       class="store form-check-input p-2"
                       type="radio"
                       name="store"
-                      value="Store1"
+                      value="{{s.id}}"
                       id="store1"
                       required
                     />
@@ -440,10 +440,8 @@
                     
 
                       <div class="d-flex flex-wrap gap-3">
-                        <label
-                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black"
-                        >
+                        <label class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black">
                           <input
                             class="time opacity-0 position-absolute"
                             type="radio"
@@ -453,10 +451,8 @@
                           />
                           <div class="w-100 px-3 px-md-4 py-2">12am-2am</div>
                         </label>
-                        <label
-                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black"
-                        >
+                        <label class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black">
                           <input
                             class="time opacity-0 position-absolute"
                             type="radio"
@@ -466,10 +462,8 @@
                           />
                           <div class="w-100 px-3 px-md-4 py-2">2am-4am</div>
                         </label>
-                        <label
-                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black"
-                        >
+                        <label class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black">
                           <input
                             class="time opacity-0 position-absolute"
                             type="radio"
@@ -479,10 +473,8 @@
                           />
                           <div class="w-100 px-3 px-md-4 py-2">4am-6am</div>
                         </label>
-                        <label
-                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black"
-                        >
+                        <label class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black">
                           <input
                             class="time opacity-0 position-absolute"
                             type="radio"
@@ -492,10 +484,8 @@
                           />
                           <div class="w-100 px-3 px-md-4 py-2">6am-8am</div>
                         </label>
-                        <label
-                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black"
-                        >
+                        <label class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black">
                           <input
                             class="time opacity-0 position-absolute"
                             type="radio"
@@ -505,10 +495,8 @@
                           />
                           <div class="w-100 px-3 px-md-4 py-2">8am-10am</div>
                         </label>
-                        <label
-                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black"
-                        >
+                        <label class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                          style="border: 1px solid black">
                           <input
                             class="time opacity-0 position-absolute"
                             type="radio"
