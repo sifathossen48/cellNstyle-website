@@ -1,5 +1,6 @@
 from django.db import models
-
+from django.utils.timezone import now
+from ckeditor.fields import RichTextField
 # Create your models here.
 class WebsiteSettings(models.Model):
     site_name = models.CharField(max_length=100)
@@ -22,3 +23,22 @@ class Store(models.Model):
     google_map_iframe_link = models.TextField()
     def __str__(self):
         return self.area
+
+class TermsAndConditions(models.Model):
+    title = models.CharField(max_length=100)
+    subtext = RichTextField(config_name='all')
+    last_updated = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    description = RichTextField(config_name='all')
+
+    def __str__(self):
+        return self.title
+
+class PrivacyPolicy(models.Model):
+    title = models.CharField(max_length=100)
+    subtext = RichTextField(config_name='all')
+    last_updated = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    description = RichTextField(config_name='all')
+    def __str__(self):
+        return self.title

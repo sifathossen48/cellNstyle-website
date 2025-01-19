@@ -10,4 +10,6 @@ urlpatterns = [
     path('sell/', views.sell, name='device_submission_form'),
     path('contact/', views.ContactView.as_view(), name='contact'),
     path('franchise/', views.franchise, name='franchise'),
+    path('termsAndConditions/', views.TermsView.as_view(), name='terms'),
+    path('privacyPolicy/', views.PrivacyView.as_view(), name='privacy'),
 ]

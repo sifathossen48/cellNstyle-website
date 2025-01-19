@@ -124,3 +124,9 @@ def franchise(request):
     else:
         form = FranchiseContactForm()
     return render(request, 'franchise.html',{ 'section': section, 'form': form})
+
+class TermsView(TemplateView):
+    template_name = 'termsConditions.html'
+
+class PrivacyView(TemplateView):
+    template_name = 'privacyPolicy.html'
