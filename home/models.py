@@ -3,6 +3,7 @@ from ckeditor.fields import RichTextField
 from django.utils.html import strip_tags
 from django.core.exceptions import ValidationError
 from Website_Settings.models import Store
+from django.core.validators import MinValueValidator, MaxValueValidator
 # Create your models here.
 class Slider(models.Model):
     LINK_TYPE_CHOICES = [
@@ -10,7 +11,7 @@ class Slider(models.Model):
         ('tel', 'Phone Link'),
         ('scroll', 'Scroll to Section'),
     ]
-    title = RichTextField(max_length=150)
+    title = RichTextField(max_length=500)
     subtitle = models.TextField()
     image = models.ImageField(upload_to='slider/')
     button_text = models.CharField(max_length=100)
@@ -163,3 +164,16 @@ class Repair(models.Model):
                     raise ValidationError("Date2 is required when 'Come to me' is selected.")
             if self.date:
                 raise ValidationError("Date should be empty when 'Come to me' is selected.")
+
+class ProductCategory(models.Model):
+    title = models.CharField(max_length=50)
+    def __str__(self):
+        return self.title
+class Product(models.Model):
+    title = models.CharField(max_length=100)
+    category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='products/')
+    previous_price = models.PositiveIntegerField(validators=[MinValueValidator(0),MaxValueValidator(194)], blank=True, null=True)
+    original_price = models.PositiveIntegerField(validators=[MinValueValidator(0),MaxValueValidator(194)])
+    def __str__(self):
+        return self.title

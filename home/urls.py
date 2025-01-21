@@ -12,4 +12,6 @@ urlpatterns = [
     path('franchise/', views.franchise, name='franchise'),
     path('termsAndConditions/', views.TermsView.as_view(), name='terms'),
     path('privacyPolicy/', views.PrivacyView.as_view(), name='privacy'),
+    path('products/', views.ProductView.as_view(), name='products'),
+    path('search/', views.search_products, name='search_products'),
 ]

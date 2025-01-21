@@ -13,14 +13,16 @@ from datetime import datetime, timedelta
 from Website_Settings.models import Store
 from blog.models import Blog
 from home.forms import DeviceSellForm, FranchiseContactForm, RepairForm
-from home.models import Brand, Device, DeviceSellImage, DeviceProblem, DeviceSell, FranchiseSections, Model, Slider
+from home.models import Brand, Device, DeviceSellImage, DeviceProblem, DeviceSell, FranchiseSections, Model, Product, ProductCategory, Slider
 # Create your views here.
 class HomeView(TemplateView):
     template_name = 'index.html'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['sliders'] = Slider.objects.all()
-        context['blogs'] = Blog.objects.all().order_by('-date')[:3]  
+        context['blogs'] = Blog.objects.all().order_by('-date')[:3]
+        context['categories'] = ProductCategory.objects.all()
+        context['products'] = Product.objects.all()
         return context
 def device_detail(request, device_id): 
     device = get_object_or_404(Device, id=device_id)
@@ -130,3 +132,15 @@ class TermsView(TemplateView):
 
 class PrivacyView(TemplateView):
     template_name = 'privacyPolicy.html'
+
+class ProductView(TemplateView):
+    template_name = 'products.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories'] = ProductCategory.objects.all()
+        context['products'] = Product.objects.all()
+        return context
+def search_products(request):
+    query = request.GET.get('search', '')
+    products = Product.objects.filter(title__icontains=query) if query else []
+    return ({'products': products, 'query': query})

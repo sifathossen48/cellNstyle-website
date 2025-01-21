@@ -3,7 +3,7 @@
 {% load static %}
 {% block content %}
 
-    <main class="flex-shrink-0">
+  <main class="flex-shrink-0">
 
         <!-- Hero Section Start -->
 
@@ -20,7 +20,7 @@
                                         <h1 class="carousel-title pb-3">
                                             {{slider.title|safe}}</h1>
                                         <p class="section-subtext">{{slider.subtitle}}</p>
-                                        <a href="{% if slider.link_type == 'scroll' %}#{{ hero_section.button_link }}{% elif slider.link_type == 'tel' %}tel:{{ slider.button_link }}{% else %}{{ hero_section.button_link }}{% endif %}"><button class="carousel-inner-btn">{{slider.button_text}}</button></a>
+                                        <a href="{% if slider.link_type == 'scroll' %}#{{ hero_section.button_link }}{% elif slider.link_type == 'tel' %}tel:{{ slider.button_link }}{% else %}{{ hero_section.button_link }}{% endif %}"><button class="carousel-inner-btn">{{slider.button_text}} →</button></a>
                                         <div class="carousel-btn-box">
                                             <button class="slider-control-btn bg-transparent border-white text-white" type="button" data-bs-target="#carouselExampleIndicators"
                                                 data-bs-slide="prev">
@@ -177,185 +177,114 @@
 
         <section class="accessoriesSection py-5" style="background: #231f20; color: white !important;">
 
-            <div class="container">
-                <div class="d-flex flex-column align-items-center flex-md-row justify-content-between gap-2">
-                    <h1 class="section-title text-md-start">Get your <br class="d-none d-md-inline"> Favourite Accessories</h1>
-                    <a href="./products.html" class="carousel-inner-btn m-0">View More Products →</i></a>
-                </div>
-    
-                <div class="px-lg-5 py-4 my-4 rounded-3 accessoriesSliderWrapper">
-    
-                    <div class="d-flex justify-content-between align-items-center gap-3 pb-4 toggleAccesoryType">
-                        <label class="text-center eachAccessoryType pb-1">
-                            Case And Protection
-                            <input type="radio" name="accessoryType" value="caseAndProtection" id="caseAndProtection" checked>
-                        </label>
-                        <label class="text-center eachAccessoryType pb-1">
-                            Battery
-                            <input type="radio" name="accessoryType" value="battery" id="battery">
-                        </label>
-                        <label class="text-center eachAccessoryType pb-1">
-                            Headset And Speaker
-                            <input type="radio" name="accessoryType" value="headsetAndSpeaker" id="headsetAndSpeaker">
-                        </label>
-                        <label class="text-center eachAccessoryType pb-1">
-                            Power and Cable
-                            <input type="radio" name="accessoryType" value="powerAndCable" id="powerAndCable">
-                        </label>
-                    </div>
-        
-        
-                    <div
-                    class="hide-scrollbar d-flex gap-4 justify-content-between slider"
-                    style="
-                    overflow-x: auto;
-                    overflow-y: visible;
-                    scroll-snap-type: x proximity;
-                    "
-                  >
-                    <a href="./productDetails.html"
-                      class="card sliderCard rounded-3 firstCard "
-                      style="scroll-snap-align: start; background: var(--secondaryColor); color: inherit !important;"
-                    >
-                    <img src="{% static './asset/images/accessories/phoneCase.webp' %}" alt="Product Image" style="aspect-ratio: 3/2;" class="rounded-3">
-                      <div class="card-body d-flex gap-3 align-items-center">
-                        <div class="d-flex flex-column gap-3 align-items-center text-center">
-                            <p class="m-0">Xundd Protective Bumper Armor Case for iPhone 7 Plus/8 Plus</p>
-                            <div class="d-flex gap-2">
-                                <h5 class="card-title m-0">20$</h5>
-                                <h6 style="color: var(--primaryColor); text-decoration: line-through;">28$</h6>
-                            </div>
-                            
-                        </div>
-                      </div>
-                    </a>
-        
-                    <a href="./productDetails.html"
-                      class="card sliderCard rounded-3 "
-                      style="scroll-snap-align: start; background: var(--secondaryColor); color: inherit !important;"
-                    >
-                    <img src="{% static './asset/images/accessories/phoneCase.webp' %}" alt="Product Image" style="aspect-ratio: 3/2;" class="rounded-3">
-                      <div class="card-body d-flex gap-3 align-items-center">
-                        <div class="d-flex flex-column gap-3 align-items-center text-center">
-                            <p class="m-0">iPhone 13 Pro Silicone Case | Abyss Blue</p>
-                            <div class="d-flex gap-2">
-                                <h5 class="card-title m-0">20$</h5>
-                                <h6 style="color: var(--primaryColor); text-decoration: line-through;">28$</h6>
-                            </div>
-                            
-                        </div>
-                      </div>
-                    </a>    
-                    
-                    <a href="./productDetails.html"
-                      class="card sliderCard rounded-3 "
-                      style="scroll-snap-align: start; background: var(--secondaryColor); color: inherit !important;"
-                    >
-                    <img src="{% static './asset/images/accessories/phoneCase.webp' %}" alt="Product Image" style="aspect-ratio: 3/2;" class="rounded-3">
-                      <div class="card-body d-flex gap-3 align-items-center">
-                        <div class="d-flex flex-column gap-3 align-items-center text-center">
-                            <p class="m-0">iPhone 13 Pro Max Clear Case MagSafe Supported</p>
-                            <div class="d-flex gap-2">
-                                <h5 class="card-title m-0">20$</h5>
-                                <h6 style="color: var(--primaryColor); text-decoration: line-through;">28$</h6>
-                            </div>
-                            
-                        </div>
-                      </div>
-                    </a>  
-                    
-                    <a href="./productDetails.html"
-                      class="card sliderCard rounded-3 "
-                      style="scroll-snap-align: start; background: var(--secondaryColor); color: inherit !important;"
-                    >
-                    <img src="{% static './asset/images/accessories/phoneCase.webp' %}" alt="Product Image" style="aspect-ratio: 3/2;" class="rounded-3">
-                      <div class="card-body d-flex gap-3 align-items-center">
-                        <div class="d-flex flex-column gap-3 align-items-center text-center">
-                            <p class="m-0">iPhone 7 Plus / 8 Plus Leather Case | Saddle Brown</p>
-                            <div class="d-flex gap-2">
-                                <h5 class="card-title m-0">20$</h5>
-                                <h6 style="color: var(--primaryColor); text-decoration: line-through;">28$</h6>
-                            </div>
-                            
-                        </div>
-                      </div>
-                    </a>  
-        
-                    <a href="./productDetails.html"
-                      class="card sliderCard rounded-3 "
-                      style="scroll-snap-align: start; background: var(--secondaryColor); color: inherit !important;"
-                    >
-                    <img src="{% static './asset/images/accessories/phoneCase.webp' %}" alt="Product Image" style="aspect-ratio: 3/2;" class="rounded-3">
-                      <div class="card-body d-flex gap-3 align-items-center">
-                        <div class="d-flex flex-column gap-3 align-items-center text-center">
-                            <p class="m-0">iPhone 7 Plus / 8 Plus Full Covered Tempered Glass</p>
-                            <div class="d-flex gap-2">
-                                <h5 class="card-title m-0">20$</h5>
-                                <h6 style="color: var(--primaryColor); text-decoration: line-through;">28$</h6>
-                            </div>
-                            
-                        </div>
-                      </div>
-                    </a>  
-        
-                    <a href="./productDetails.html"
-                      class="card sliderCard rounded-3 "
-                      style="scroll-snap-align: start; background: var(--secondaryColor); color: inherit !important;"
-                    >
-                    <img src="{% static './asset/images/accessories/phoneCase.webp' %}" alt="Product Image" style="aspect-ratio: 3/2;" class="rounded-3">
-                      <div class="card-body d-flex gap-3 align-items-center">
-                        <div class="d-flex flex-column gap-3 align-items-center text-center">
-                            <p class="m-0">We offer same-day repairs, so you won't have to be without your device for long.</p>
-                            <div class="d-flex gap-2">
-                                <h5 class="card-title m-0">20$</h5>
-                                <h6 style="color: var(--primaryColor); text-decoration: line-through;">28$</h6>
-                            </div>
-                            
-                        </div>
-                      </div>
-                    </a>  
-        
-                    <a href="./productDetails.html"
-                      class="card sliderCard rounded-3 "
-                      style="scroll-snap-align: start; background: var(--secondaryColor); color: inherit !important;"
-                    >
-                    <img src="{% static './asset/images/accessories/phoneCase.webp' %}" alt="Product Image" style="aspect-ratio: 3/2;" class="rounded-3">
-                      <div class="card-body d-flex gap-3 align-items-center">
-                        <div class="d-flex flex-column gap-3 align-items-center text-center">
-                            <p class="m-0">We offer same-day repairs, so you won't have to be without your device for long.</p>
-                            <div class="d-flex gap-2">
-                                <h5 class="card-title m-0">20$</h5>
-                                <h6 style="color: var(--primaryColor); text-decoration: line-through;">28$</h6>
-                            </div>
-                            
-                        </div>
-                      </div>
-                    </a>  
-    
-                <div class="sliderCard d-flex align-items-center justify-content-start " style="scroll-snap-align: start;" >
-    
-                    <a href="./products.html" class="d-flex gap-2 align-items-center justify-content-center p-3 rounded-3" style="color: var(--primaryColor) !important;">
-                        <h4 class="m-0">MORE</h4>
-                        <i class="fa-duotone fa-solid fa-arrow-right fa-beat" style="font-size: 1rem;"></i>
-                    </a>
-    
-                </div>  
-        
-                  </div>
-    
-                </div>
-    
-    
-              <div class="heroNextPreBtn justify-content-center mx-auto" style="width: fit-content;">
-                <i class="fa-solid fa-angle-left sliderPrevButton slider-control-btn border-white text-white bg-transparent" style="padding: 10px 25px;" type="button"></i>
-                <i class="fa-solid fa-angle-right sliderNextButton slider-control-btn border-white text-white bg-transparent" style="padding: 10px 25px;" type="button"></i>
+          <div class="container">
+              <div class="d-flex flex-column align-items-center flex-md-row justify-content-between gap-2">
+                  <h1 class="section-title text-md-start">Get your <br class="d-none d-md-inline"> Favourite Accessories</h1>
+                  <a href="{% url 'products' %}" class="carousel-inner-btn m-0">View More Products →</i></a>
               </div>
+  
+              <div class="px-lg-5 py-4 my-4 rounded-3 accessoriesSliderWrapper">
+  
+                  <div class="d-flex justify-content-between align-items-center gap-3 pb-4 toggleAccesoryType">
+
+                    {% for category in categories %}
+                      <label class="text-center eachAccessoryType pb-1" id="product-categories">
+                        {{ category.title }}
+                          <input type="radio" name="accessoryType" value="{{ category.id }}" id="caseAndProtection"  {% if category.id|stringformat:'s' in request.GET.categories %}checked{% endif %} class="category-filter" data-category-id="{{ category.id }}">
+                      </label>
+                    {% endfor %}
+             
+                   
+                  </div>
+      
+      
+                  <div
+                  class="hide-scrollbar d-flex gap-4 justify-content-between slider"
+                  style="
+                  overflow-x: auto;
+                  overflow-y: visible;
+                  scroll-snap-type: x proximity;
+                  "
+                >
+              
+                   
+                   
+                   
+                            {% for product in products %}
+                                
+                            <a href="tel:{{web.whatsApp_number}}" class="card sliderCard rounded-3 product-item products " id="{{ category.id }}" data-category-id="{{ product.category.id }}" style="scroll-snap-align: start; background: var(--secondaryColor); color: inherit !important;">
+                              <img src="{{product.image.url}}" alt="Product Image" style="aspect-ratio: 3/2;" class="rounded-3">
+                                <div class="card-body d-flex gap-3 align-items-center">
+                                  <div class="d-flex flex-column gap-3 align-items-center text-center">
+                                      <p class="m-0">{{ product.title }}</p>
+                                      <div class="d-flex gap-2">
+                                          <h5 class="card-title m-0">{{product.original_price}}$</h5>
+                                          <h6 style="color: var(--primaryColor); text-decoration: line-through;">{{product.previous_price}}$</h6>
+                                      </div>
+                                      
+                                  </div>
+                                </div>
+                              </a>  
+                            
+                          {% endfor %}
+                
+                    
+                    
+             
+  
+              <div class="sliderCard d-flex align-items-center justify-content-start " style="scroll-snap-align: start;" >
+  
+                  <a href="{% url 'products' %}" class="d-flex gap-2 align-items-center justify-content-center p-3 rounded-3" style="color: var(--primaryColor) !important;">
+                      <h4 class="m-0">MORE</h4>
+                      <i class="fa-duotone fa-solid fa-arrow-right fa-beat" style="font-size: 1rem;"></i>
+                  </a>
+  
+              </div>  
+      
+                </div>
+  
+              </div>
+  
+  
+            <div class="heroNextPreBtn justify-content-center mx-auto" style="width: fit-content;">
+              <i class="fa-solid fa-angle-left sliderPrevButton slider-control-btn border-white text-white bg-transparent" style="padding: 10px 25px;" type="button"></i>
+              <i class="fa-solid fa-angle-right sliderNextButton slider-control-btn border-white text-white bg-transparent" style="padding: 10px 25px;" type="button"></i>
             </div>
+          </div>
 
 
 
-        </section>
-        
+      </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const categoryRadios = document.querySelectorAll('.category-filter');
+          const products = document.querySelectorAll('.product-item');
+      
+      
+          // Iterate over each product and remove any margin/padding
+          products.forEach(product => {
+              product.style.margin = '0';  // Remove margin
+              product.style.padding = '0'; // Remove padding
+          });
+      
+          // Listen for changes in category selection
+          categoryRadios.forEach(radio => {
+              radio.addEventListener('change', function() {
+                  const selectedCategoryId = this.value;
+      
+                  // Show/hide products based on selected category
+                  products.forEach(product => {
+                      if (product.getAttribute('data-category-id') === selectedCategoryId) {
+                          product.style.display = ''; // Show product
+                      } else {
+                          product.style.display = 'none'; // Hide product
+                      }
+                  });
+              });
+          });
+      });
+      
+    </script>
         <!-- Accessories section end-->
 
         <!-- Review section start-->
