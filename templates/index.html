@@ -20,7 +20,7 @@
                                         <h1 class="carousel-title pb-3">
                                             {{slider.title|safe}}</h1>
                                         <p class="section-subtext">{{slider.subtitle}}</p>
-                                        <a href="{% if slider.link_type == 'scroll' %}#{{ hero_section.button_link }}{% elif slider.link_type == 'tel' %}tel:{{ slider.button_link }}{% else %}{{ hero_section.button_link }}{% endif %}"><button class="carousel-inner-btn">{{slider.button_text}} →</button></a>
+                                        <a href="{% if slider.link_type == 'scroll' %}#{{ slider.button_link }}{% elif slider.link_type == 'tel' %}tel:{{ slider.button_link }}{% else %}{{ slider.button_link }}{% endif %}"><button class="carousel-inner-btn">{{slider.button_text}} →</button></a>
                                         <div class="carousel-btn-box">
                                             <button class="slider-control-btn bg-transparent border-white text-white" type="button" data-bs-target="#carouselExampleIndicators"
                                                 data-bs-slide="prev">
@@ -199,7 +199,7 @@
       
       
                   <div
-                  class="hide-scrollbar d-flex gap-4 justify-content-between slider"
+                  class="hide-scrollbar d-flex gap-4 justify-content-start slider "
                   style="
                   overflow-x: auto;
                   overflow-y: visible;
@@ -210,23 +210,27 @@
                    
                    
                    
-                            {% for product in products %}
+                 <div class="hide-scrollbar d-flex gap-4 justify-content-start " style="width: fit-content;">
+                  {% for product in products %}
                                 
-                            <a href="tel:{{web.whatsApp_number}}" class="card sliderCard rounded-3 product-item products " id="{{ category.id }}" data-category-id="{{ product.category.id }}" style="scroll-snap-align: start; background: var(--secondaryColor); color: inherit !important;">
-                              <img src="{{product.image.url}}" alt="Product Image" style="aspect-ratio: 3/2;" class="rounded-3">
-                                <div class="card-body d-flex gap-3 align-items-center">
-                                  <div class="d-flex flex-column gap-3 align-items-center text-center">
-                                      <p class="m-0">{{ product.title }}</p>
-                                      <div class="d-flex gap-2">
-                                          <h5 class="card-title m-0">{{product.original_price}}$</h5>
-                                          <h6 style="color: var(--primaryColor); text-decoration: line-through;">{{product.previous_price}}$</h6>
-                                      </div>
-                                      
-                                  </div>
-                                </div>
-                              </a>  
+                  <a href="tel:{{web.whatsApp_number}}" class="card sliderCard firstCard rounded-3 product-item products " id="{{ category.id }}" data-category-id="{{ product.category.id }}" style="scroll-snap-align: start; background: var(--secondaryColor); color: inherit !important;">
+                    <img src="{{product.image.url}}" alt="Product Image" style="aspect-ratio: 3/2;" class="rounded-3">
+                      <div class="card-body d-flex gap-3 align-items-center">
+                        <div class="d-flex flex-column gap-3 align-items-center text-center">
+                            <p class="m-0">{{ product.title }}</p>
+                            <div class="d-flex gap-2">
+                                <h5 class="card-title m-0">{{product.original_price}}$</h5>
+                                {% if product.previous_price %}
+                                <h6 style="color: var(--primaryColor); text-decoration: line-through;">{{product.previous_price}}$</h6>
+                                {% endif %}
+                            </div>
                             
-                          {% endfor %}
+                        </div>
+                      </div>
+                    </a>  
+                  
+                {% endfor %}
+                 </div>
                 
                     
                     
@@ -251,8 +255,6 @@
               <i class="fa-solid fa-angle-right sliderNextButton slider-control-btn border-white text-white bg-transparent" style="padding: 10px 25px;" type="button"></i>
             </div>
           </div>
-
-
 
       </section>
     <script>
@@ -328,7 +330,7 @@
                         <div class="card border-0 rounded-3 gap-3 p-3" style="background: var(--secondaryColor);">
                         
                                     <a href="https://g.co/kgs/vJ6HPWz" class="d-flex flex-row flex-wrap gap-3" style="width: fit-content;">
-                                        <div class="rounded-5" style="width: 2.5rem; aspect-ratio: 1/1; background: url(./asset/images/blog/blogImage1.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
+                                        <div class="rounded-5" style="width: 2.5rem; aspect-ratio: 1/1; background: url({% static './asset/images/blog/blogImage1.jpg'%}); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
                                         <div class="">
                                             <h6 class="mb-1" style="font-weight: 600;">Víctor Rico</h6>
                                                 <div class="d-flex" style="color: var(--primaryColor);">
@@ -354,7 +356,7 @@
                         
                                 
                                     <a href="https://g.co/kgs/cvCmjAg" class="d-flex flex-row flex-wrap gap-3" style="width: fit-content;">
-                                        <div class="rounded-5" style="width: 2.5rem; aspect-ratio: 1/1; background: url(./asset/images/blog/blogImage1.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
+                                        <div class="rounded-5" style="width: 2.5rem; aspect-ratio: 1/1; background: url({% static './asset/images/blog/blogImage1.jpg'%}); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
                                         <div class="">
                                             <h6 class="mb-1" style="font-weight: 600;">Jamie H</h6>
                                                 <div class="d-flex" style="color: var(--primaryColor);">
@@ -386,7 +388,7 @@
                         
                                 
                                     <a href="https://g.co/kgs/tvhH7Ww" class="d-flex flex-row flex-wrap gap-3" style="width: fit-content;">
-                                        <div class="rounded-5" style="width: 2.5rem; aspect-ratio: 1/1; background: url(./asset/images/blog/blogImage1.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
+                                        <div class="rounded-5" style="width: 2.5rem; aspect-ratio: 1/1; background: url({% static './asset/images/blog/blogImage1.jpg'%}); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
                                         <div class="">
                                             <h6 class="mb-1" style="font-weight: 600;">Pearl</h6>
                                                 <div class="d-flex" style="color: var(--primaryColor);">
@@ -411,7 +413,7 @@
                         
                                 
                                     <a href="https://g.co/kgs/MSsKzp1" class="d-flex flex-row flex-wrap gap-3" style="width: fit-content;">
-                                        <div class="rounded-5" style="width: 2.5rem; aspect-ratio: 1/1; background: url(./asset/images/blog/blogImage1.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
+                                        <div class="rounded-5" style="width: 2.5rem; aspect-ratio: 1/1; background: url({% static './asset/images/blog/blogImage1.jpg'%}); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
                                         <div class="">
                                             <h6 class="mb-1" style="font-weight: 600;">Johnathan Allgood</h6>
                                                 <div class="d-flex" style="color: var(--primaryColor);">
@@ -442,7 +444,7 @@
                         <div class="card border-0 rounded-3 gap-3 p-3" style="background: var(--secondaryColor);">
                                 
                                     <a href="https://g.co/kgs/r8Ke7CJ" class="d-flex flex-row flex-wrap gap-3" style="width: fit-content;">
-                                        <div class="rounded-5" style="width: 2.5rem; aspect-ratio: 1/1; background: url(./asset/images/blog/blogImage1.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
+                                        <div class="rounded-5" style="width: 2.5rem; aspect-ratio: 1/1; background: url({% static './asset/images/blog/blogImage1.jpg'%}); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
                                         <div class="">
                                             <h6 class="mb-1" style="font-weight: 600;">CROSSHOPE CLEANING LLC</h6>
                                                 <div class="d-flex" style="color: var(--primaryColor);">
@@ -466,7 +468,7 @@
                         <div class="card d-none d-md-flex border-0 rounded-3 gap-3 p-3" style="background: var(--secondaryColor);">
                                 
                                     <a href="https://g.co/kgs/grwZwoA" class="d-flex flex-row flex-wrap gap-3" style="width: fit-content;">
-                                        <div class="rounded-5" style="width: 2.5rem; aspect-ratio: 1/1; background: url(./asset/images/blog/blogImage1.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
+                                        <div class="rounded-5" style="width: 2.5rem; aspect-ratio: 1/1; background: url({% static './asset/images/blog/blogImage1.jpg'%}); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
                                         <div class="">
                                             <h6 class="mb-1" style="font-weight: 600;">Artia Hardy</h6>
                                                 <div class="d-flex" style="color: var(--primaryColor);">

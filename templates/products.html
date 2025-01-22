@@ -134,14 +134,15 @@
                       </p>
                       <div class="d-flex gap-2">
                         <h5 class="card-title m-0">{{product.original_price}}$</h5>
-                        <h6
-                          style="
-                            color: var(--primaryColor);
-                            text-decoration: line-through;
-                          "
-                        >
-                        {{product.previous_price}}$
-                        </h6>
+                        {% if product.previous_price %}
+                          <h6
+                            style="
+                              color: var(--primaryColor);
+                              text-decoration: line-through;
+                            ">
+                          {{product.previous_price}}$
+                          </h6>
+                        {% endif %}
                       </div>
                     </div>
                   </a>
