@@ -24,8 +24,8 @@ class HomeView(TemplateView):
         context['categories'] = ProductCategory.objects.all()
         context['products'] = Product.objects.all()
         return context
-def device_detail(request, device_id): 
-    device = get_object_or_404(Device, id=device_id)
+def device_detail(request, device_slug): 
+    device = get_object_or_404(Device, slug=device_slug)
     brand = Brand.objects.filter(device=device)
     device_problems = DeviceProblem.objects.all()
     has_brands = brand.exists()

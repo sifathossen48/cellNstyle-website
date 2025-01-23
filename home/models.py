@@ -2,6 +2,7 @@ from django.db import models
 from ckeditor.fields import RichTextField
 from django.utils.html import strip_tags
 from django.core.exceptions import ValidationError
+from django.utils.text import slugify
 from Website_Settings.models import Store
 from django.core.validators import MinValueValidator, MaxValueValidator
 # Create your models here.
@@ -28,7 +29,12 @@ class Slider(models.Model):
 class Device(models.Model):
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='devices/')
+    slug = models.SlugField(unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)  # Automatically generate slug from name
+        super().save(*args, **kwargs)
     def __str__(self):
         return self.name
     def brands(self):

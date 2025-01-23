@@ -12,7 +12,7 @@
             <form action="{% url 'repair_submit' %}" method="POST" class="d-flex flex-column gap-5">
              {% csrf_token %}
           
-                 <h2> {% for message in messages %}
+               <h2> {% for message in messages %}
                         {{message}}
                       {% endfor %}</h2>
                     
@@ -57,13 +57,20 @@
                       Select Model
                     </option>
                     <!-- Placeholder option -->
+                    {% with has_models=False %}
                       {%for b in brand %}
+                        {% if b.get_models.all %}
                           {% for m in b.get_models.all %}
                           <option value="{{m.id}}">{{m.name}}</option>
-                          {% empty %}
-                            <option value="1">No Model Found</option>
+                          {% with has_models=True %}
+                          {% endwith %}
                           {% endfor %}
+                        {% endif %}
                       {% endfor %}
+                      {% if not has_models %}
+                        <option value="1">No Model Found</option>
+                      {% endif %}
+                    {% endwith %}
                    
               
                   </select>
