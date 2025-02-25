@@ -9,11 +9,15 @@ class DeviceSellForm(forms.ModelForm):
         fields = "__all__"
 
 class DeviceSellImageForm(forms.ModelForm):
-    image = forms.ImageField(widget=forms.ClearableFileInput(attrs={"multiple":True}))
+    image = forms.ImageField(required=False)
+
     class Meta:
         model = DeviceSellImage
         fields = ['image']
 
+    def clean_image(self):
+        images = self.files.getlist('image')  # Still allows handling multiple files
+        return images
 class FranchiseContactForm(forms.ModelForm):
     class Meta:
         model = FranchiseContact

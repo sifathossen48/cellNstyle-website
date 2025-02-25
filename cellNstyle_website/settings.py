@@ -71,7 +71,7 @@ CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': [
             ['Bold', 'Italic', 'Underline'],  # Basic formatting
-            ['FontSize', 'TextColor', 'BGColor'],  # Font size, text color, and background color
+            ['TextColor', 'BGColor'],  # Font size, text color, and background color
             ['RemoveFormat'], 
         ],
         'extraPlugins': 'font,colorbutton',  

@@ -27,7 +27,7 @@ class Slider(models.Model):
     def __str__(self):
         return self.clean_title()
 class Device(models.Model):
-    si_no = models.PositiveIntegerField(max_length=5)
+    si_no = models.PositiveIntegerField()
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='devices/')
     slug = models.SlugField(unique=True)
