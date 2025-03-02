@@ -36,7 +36,7 @@
             </p>
 
             <div class="form-floating">
-              <select name="type" id="type" class="type form-select" required>
+              <select name="type" id="type" class="type form-select" required onchange="showBrands()">
                 <option value="" selected disabled hidden>
                   Select device type
                 </option>
@@ -54,12 +54,13 @@
                 id="brand"
                 class="brand form-select"
                 required
+                onchange="showModels()"
               >
                 <option value="" selected disabled hidden>Select Brand</option>
                 <!-- Placeholder option -->
-                {% for b in brands %}
+                {% comment %} {% for b in brands %}
                 <option value="{{b.id}}">{{b.name}}</option>
-                {% endfor %}
+                {% endfor %} {% endcomment %}
           
               </select>
               <label for="brand">Brand</label>
@@ -73,9 +74,7 @@
               >
                 <option value="" selected disabled hidden>Select Model</option>
                 <!-- Placeholder option -->
-                {% for m in models %}
-                <option value="{{m.id}}">{{m.name}}</option>
-                {% endfor %}
+      
         
               </select>
               <label for="model">Model</label>
@@ -205,4 +204,71 @@
 
       <!-- Floating Social Media End -->
     </main>
+  <!-- jQuery (required for AJAX) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    function showModels() {
+      var brandId = $("#brand").val(); // Get the selected brand ID
+      if (brandId) {
+        $.ajax({
+          url: '{% url "get_models" %}', // URL to the get_models view
+          data: {
+            brand_id: brandId, // Send the selected brand ID
+          },
+          success: function (data) {
+            // Clear the model dropdown
+            $("#model").html(
+              '<option value="">Select Model</option>'
+            );
+            // Populate the model dropdown with the fetched data
+            $.each(data, function (index, model) {
+              $("#model").append(
+                '<option value="' +
+                  model.id +
+                  '">' +
+                  model.name +
+                  "</option>"
+              );
+            });
+          },
+        });
+      } else {
+        // If no brand is selected, reset the model dropdown
+        $("#model").html('<option value="">Select Model</option>');
+      }
+    }
+  </script>
+
+  <script>
+    function showBrands() {
+      var DeviceId = $("#type").val(); // Get the selected brand ID
+      if (DeviceId) {
+        $.ajax({
+          url: '{% url "get_brands" %}', // URL to the get_models view
+          data: {
+            device_id: DeviceId, // Send the selected brand ID
+          },
+          success: function (data) {
+            // Clear the model dropdown
+            $("#brand").html(
+              '<option value="">Select Brand</option>'
+            );
+            // Populate the model dropdown with the fetched data
+            $.each(data, function (index, brand) {
+              $("#brand").append(
+                '<option value="' +
+                  brand.id +
+                  '">' +
+                  brand.name +
+                  "</option>"
+              );
+            });
+          },
+        });
+      } else {
+        // If no brand is selected, reset the model dropdown
+        $("#brand").html('<option value="">Select Brand</option>');
+      }
+    }
+  </script>
 {% endblock %}

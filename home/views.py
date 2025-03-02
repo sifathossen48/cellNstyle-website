@@ -53,25 +53,37 @@ def repair_form_submit(request):
         form = RepairForm(request.POST)
         if form.is_valid():
             repair_instance = form.save(commit=False)
-            
-            # Additional logic for handling specific fields
+            # Additional logic: set default store if needed.
             if repair_instance.serviceReceiveMethod == 'Visit Store' and not repair_instance.store:
-                # Assign a default store if none is provided
                 repair_instance.store = Store.objects.first()
-
-            repair_instance.save()
-            selected_problems = form.cleaned_data['problem']
-            if selected_problems:
-                repair_instance.problem.set(selected_problems)  # Associate selected problems with the repair
-            # Finally, save the changes (including the Many-to-Many relationship)
-            repair_instance.save()
-            messages.success(request,"Form Submitted Successfully")
             
+            repair_instance.save()
+            selected_problems = form.cleaned_data.get('problem')
+            if selected_problems:
+                repair_instance.problem.set(selected_problems)
+            repair_instance.save()
+            messages.success(request, "Form Submitted Successfully")
         else:
-            messages.error(request,"Invalid! Please Try Again.")
+            messages.error(request, "Invalid! Please Try Again.")
     else:
-        form = RepairForm
-    return render(request, 'repair.html', {'form': form})
+        form = RepairForm()
+
+    # Build the dynamic selector data:
+    brands = Brand.objects.all()
+    models_by_brand = {}
+    for brand in brands:
+        # Using the related name 'models' from the DeviceModel foreign key to DeviceBrand
+        models_by_brand[brand.name] = list(brand.models.values_list('name', flat=True))
+    
+    context = {
+        'form': form,
+        'brands': brands,
+        'models_by_brand': models_by_brand,
+    }
+    return render(request, 'repair.html', context)
+
+
+
 def sell(request):
     brands = Brand.objects.all()
     models = Model.objects.all()
@@ -144,3 +156,17 @@ def search_products(request):
     query = request.GET.get('search', '')
     products = Product.objects.filter(title__icontains=query) if query else []
     return ({'products': products, 'query': query})
+
+def custom_404_view(request, exception):
+    return render(request, 'error.html', status=404)
+
+
+def get_brands(request):
+    device_id = request.GET.get('device_id')
+    brands = Brand.objects.filter(device_id=device_id).values('id','name')
+    return JsonResponse(list(brands), safe=False)
+
+def get_models(request):
+    brand_id = request.GET.get('brand_id')
+    models = Model.objects.filter(brand_id=brand_id).values('id', 'name')
+    return JsonResponse(list(models), safe=False)

@@ -1,897 +1,927 @@
-{% extends "base.html" %}
-{% block title %}Repair{% endblock title %}
-{% load static %}  
+{% extends "base.html" %} {% block title %}Repair{% endblock title %} 
+{% load static %}
 {% block content %}
 
-    <main class="flex-shrink-0">
-      <!-- Main Content start -->
 
-      <section class="container" style="padding-block: 6rem">
-        <div class="serviceDetails d-flex flex-column flex-md-row">
-          <div class="serviceSelection" style="overflow-x: hidden;">
-            <form action="{% url 'repair_submit' %}" method="POST" class="d-flex flex-column gap-5">
-             {% csrf_token %}
-          
-               <h2> {% for message in messages %}
-                        {{message}}
-                      {% endfor %}</h2>
-                    
-              <input type="hidden" name="device" value="{{ device.id }}" />
-           
-              {% if has_brands %}
-              <div class="deviceBrandModel d-flex flex-column gap-3">
-                <h1 class="section-title text-start m-0">
-                  Which brand and model is it?
-                </h1>
-                <p class="section-subtext m-0 mb-3">
-                  Choose your device's brand and model to view a variety of repair options 
-                  tailored to your needs. We offer expert care for a wide range of devices, 
-                  ensuring top-notch service and support for your specific device.
-                </p>
-                <div class="form-floating">
-                  <select
-                    name="brand"
-                    id="brand"
-                    class="brand form-select"
-                    required
-                  >
-                    <option value="" selected disabled hidden>
-                      Select Brand
-                    </option>
-                    <!-- Placeholder option -->
-                    {% for b in brand %}
-                    <option value="{{b.id}}" >{{b.name}}</option>
-                    {% endfor %}
-                  </select>
-                  <label for="brand">Brand</label>
-                </div>
-             
-                <div class="form-floating">
-                  <select
-                    name="model"
-                    id="model"
-                    class="model form-select"
-                    required
-                  >
-                    <option value="" selected disabled hidden>
-                      Select Model
-                    </option>
-                    <!-- Placeholder option -->
-                    {% with has_models=False %}
-                      {%for b in brand %}
-                        {% if b.get_models.all %}
-                          {% for m in b.get_models.all %}
-                          <option value="{{m.id}}">{{m.name}}</option>
-                          {% with has_models=True %}
-                          {% endwith %}
-                          {% endfor %}
-                        {% endif %}
-                      {% endfor %}
-                      {% if not has_models %}
-                        <option value="1">No Model Found</option>
-                      {% endif %}
-                    {% endwith %}
-                   
-              
-                  </select>
-                  <label for="model">Model</label>
-                </div>
-             
-        
-             
-              </div>
-            
-              {% endif %}
-          
+<main class="flex-shrink-0">
+  <!-- Main Content start -->
 
-              <div class="DeviceProblem flex-column gap-3">
-                <h1 class="section-title text-start m-0">
-                  What's wrong with it?
-                </h1>
-                <p class="section-subtext m-0 mb-3">
-                  Identify your device's issues from the options below to help us provide 
-                  the best repair service. Choose at least one to ensure we address your 
-                  device's specific needs. We've got you covered!
-                </p>
+  <section class="container" style="padding-block: 6rem">
+    <div class="serviceDetails d-flex flex-column flex-md-row">
+      <div class="serviceSelection" style="overflow-x: hidden">
+        <form
+          action="{% url 'repair_submit' %}"
+          method="POST"
+          class="d-flex flex-column gap-5"
+        >
+          {% csrf_token %}
 
-                <div class="DeviceProblemWrapper">
-                  {% for d in device_problems %}
-                  <div class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
-                    style="border: 1px solid black">
-                    <input
-                      class="problem form-check-input p-2"
-                      type="checkbox"
-                      name="problem"
-                      value="{{d.id}}"
-                      id="{{d.problem}}"
-                    />
-                    <label
-                      class="form-check-label py-3 w-100"
-                      for="{{d.problem}}"
-                    >
-                      {{d.problem}}
-                    </label>
-                  </div>
+          <h2>{% for message in messages %} {{message}} {% endfor %}</h2>
+
+          <input type="hidden" name="device" value="{{ device.id }}" />
+
+          {% if has_brands %}
+          <div class="deviceBrandModel d-flex flex-column gap-3">
+            <h1 class="section-title text-start m-0">
+              Which brand and model is it?
+            </h1>
+            <p class="section-subtext m-0 mb-3">
+              Choose your device's brand and model to view a variety of repair
+              options tailored to your needs. We offer expert care for a wide
+              range of devices, ensuring top-notch service and support for your
+              specific device.
+            </p>
+            <div class="container mt-5">
+              <div class="form-floating">
+                <select
+                  name="brand"
+                  id="brand"
+                  class="brand form-select"
+                  required
+                  onchange="showModels()"
+                >
+                  <option value="" selected disabled hidden>
+                    Select Brand
+                  </option>
+                  <!-- Placeholder option -->
+                  {% for b in brand %}
+                  <option value="{{b.id}}">{{b.name}}</option>
                   {% endfor %}
-                  
-                </div>
-
-                <div class="form-floating">
-                  <textarea
-                    class="problemDispriction form-control"
-                    rows="8"
-                    name="description"
-                    id="problemDispriction"
-                    style="height: auto"
-                    placeholder="Describe the issue (optional)"
-                  ></textarea>
-                  <label for="problemDispriction"
-                    >Describe the issue (optional)</label
-                  >
-                </div>
+                </select>
+                <label for="brand">Brand</label>
+              </div>
+              <br>
+              <!-- Model Dropdown -->
+              <div class="form-floating">
+                <select
+                  name="model"
+                  id="model"
+                  class="model form-select"
+                  required
+                >
+                  <option value="">Select Model</option>
+                </select>
+                <label for="model">Model</label>
               </div>
 
-              <div class="method flex-column gap-3">
-                <h1 class="section-title">
-                  How Do you want to get the services?
-                </h1>
+              <!-- jQuery (required for AJAX) -->
+              <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+              <script>
+                function showModels() {
+                  var brandId = $("#brand").val(); // Get the selected brand ID
+                  if (brandId) {
+                    $.ajax({
+                      url: '{% url "get_models" %}', // URL to the get_models view
+                      data: {
+                        brand_id: brandId, // Send the selected brand ID
+                      },
+                      success: function (data) {
+                        // Clear the model dropdown
+                        $("#model").html(
+                          '<option value="">Select Model</option>'
+                        );
+                        // Populate the model dropdown with the fetched data
+                        $.each(data, function (index, model) {
+                          $("#model").append(
+                            '<option value="' +
+                              model.id +
+                              '">' +
+                              model.name +
+                              "</option>"
+                          );
+                        });
+                      },
+                    });
+                  } else {
+                    // If no brand is selected, reset the model dropdown
+                    $("#model").html('<option value="">Select Model</option>');
+                  }
+                }
+              </script>
+            </div>
+          </div>
 
-                <div class=""
-                  style="
-                    display: grid;
-                    gap: 1rem;
-                    grid-template-columns: repeat(3, 1fr);
-                  ">
-                  <label onclick="toogleMethods()"
-                    class="serviceReciveMethodWrapper d-flex flex-column flex-sm-row gap-2 align-items-center py-3 justify-content-center rounded-2">
-                    <input
-                      type="radio"
-                      name="serviceReceiveMethod"
-                      value="visitStore"
-                      id="serviceReciveMethod"
-                      class="serviceReciveMethod d-none"
-                      required
-                      checked
-                    />
-                    <i class="fa-duotone fa-solid fa-store"></i>
-                    Visit Store
-                  </label>
-                  <label onclick="toogleMethods()"
-                    class="serviceReciveMethodWrapper d-flex flex-column flex-sm-row gap-2 align-items-center py-3 justify-content-center rounded-2">
-                    <input
-                      type="radio"
-                      name="serviceReceiveMethod"
-                      value="mail"
-                      id="serviceReciveMethod"
-                      class="serviceReciveMethod d-none"
-                      required
-                    />
-                    <i class="fa-sharp-duotone fa-solid fa-mailbox-flag-up"></i>
-                    Mail in
-                  </label>
-                  <label onclick="toogleMethods()"
-                    class="serviceReciveMethodWrapper d-flex flex-column flex-sm-row gap-2 align-items-center py-3 justify-content-center rounded-2">
-                    <input
-                      type="radio"
-                      name="serviceReceiveMethod"
-                      value="comeToMe"
-                      id="serviceReciveMethod"
-                      class="serviceReciveMethod d-none"
-                      required
-                    />
-                    <i class="fa-duotone fa-solid fa-truck"></i>
-                    Come to me
-                  </label>
-                </div>
+          {% endif %}
 
-                <div
-                  class="serviceReciveMethodDetails visitStore mt-4 d-flex flex-column gap-3"
-                >
-                  <h1 class="section-title text-start mb-2">
-                    From which store you want to get the service?
-                  </h1>
-                  {% for s in store %}
-                  <div class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
-                    style="border: 1px solid black">
-                    <input
-                      class="store form-check-input p-2"
-                      type="radio"
-                      name="store"
-                      value="{{s.id}}"
-                      id="store1"
-                      required
-                    />
-                    <label class="form-check-label py-3 w-100" for="store1">
-                      <h5>Store {{ forloop.counter }}</h5>
-                      <div class="d-flex gap-2 align-items-center">
-                        <i
-                          class="fa-duotone fa-solid fa-map-location-dot"
-                          style="color: var(--primaryColor)"
-                        ></i>
-                        <span>{{s.address}}</span>
-                      </div>
-                    </label>
-                  </div>
-                  {% endfor %}
+          <div class="DeviceProblem flex-column gap-3">
+            <h1 class="section-title text-start m-0">What's wrong with it?</h1>
+            <p class="section-subtext m-0 mb-3">
+              Identify your device's issues from the options below to help us
+              provide the best repair service. Choose at least one to ensure we
+              address your device's specific needs. We've got you covered!
+            </p>
 
-              
-
-                  <div
-                    class="mt-4 serviceReciveMethodDetails visitStore d-flex flex-column gap-4"
-                  >
-                    <h1 class="section-title text-start m-0">
-                      What time works best for you?
-                    </h1>
-
-                    <div class="d-flex flex-column gap-2">
-                      <h5 style="color: var(--primaryColor)">Choose a date</h5>
-
-                      <div class="d-flex flex-wrap gap-3">
-                        {% for day_info in next_7_days %}
-                        <label class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black">
-                          <input
-                            class="date opacity-0 position-absolute"
-                            type="radio"
-                            name="date"
-                            value="{{ day_info.day }}, {{ day_info.date }}"
-                            required
-                          />
-                          <div class="w-100 p-4">
-                            <h5>{{ day_info.day }}</h5>
-                            <div class="d-flex gap-2 align-items-center">
-                              <span>{{ day_info.date }}</span>
-                            </div>
-                          </div>
-                        </label>
-                        {% endfor %}
-                 
-                      </div>
-                    </div>
-
-                    <div class="d-flex flex-column gap-2">
-                      <h5 style="color: var(--primaryColor)">
-                        Choose a preferred time window on
-                        <b id='selected-date'>{{ next_7_days.0.day }}, {{ next_7_days.0.date }}</b>
-                      </h5>
-                   
-                      
-
-                      <div class="d-flex flex-wrap gap-3">
-                        <label
-                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black"
-                        >
-                          <input
-                            class="time opacity-0 position-absolute"
-                            type="radio"
-                            name="time"
-                            value="12am-2am"
-                            required
-                          />
-                          <div class="w-100 px-3 px-md-4 py-2">12am-2am</div>
-                        </label>
-                        <label
-                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black"
-                        >
-                          <input
-                            class="time opacity-0 position-absolute"
-                            type="radio"
-                            name="time"
-                            value="2am-4am"
-                            required
-                          />
-                          <div class="w-100 px-3 px-md-4 py-2">2am-4am</div>
-                        </label>
-                        <label
-                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black"
-                        >
-                          <input
-                            class="time opacity-0 position-absolute"
-                            type="radio"
-                            name="time"
-                            value="4am-6am"
-                            required
-                          />
-                          <div class="w-100 px-3 px-md-4 py-2">4am-6am</div>
-                        </label>
-                        <label
-                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black"
-                        >
-                          <input
-                            class="time opacity-0 position-absolute"
-                            type="radio"
-                            name="time"
-                            value="6am-8am"
-                            required
-                          />
-                          <div class="w-100 px-3 px-md-4 py-2">6am-8am</div>
-                        </label>
-                        <label
-                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black"
-                        >
-                          <input
-                            class="time opacity-0 position-absolute"
-                            type="radio"
-                            name="time"
-                            value="8am-10am"
-                            required
-                          />
-                          <div class="w-100 px-3 px-md-4 py-2">8am-10am</div>
-                        </label>
-                        <label
-                          class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black"
-                        >
-                          <input
-                            class="time opacity-0 position-absolute"
-                            type="radio"
-                            name="time"
-                            value="10am-12am"
-                            required
-                          />
-                          <div class="w-100 px-3 px-md-4 py-2">10am-12am</div>
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  class="serviceReciveMethodDetails mail mt-4 d-flex flex-column gap-2"
-                >
-                  <h1 class="section-title text-start mb-2">
-                    Mail in your device
-                  </h1>
-                  <h5 class="m-0">Enter your shipping address</h5>
-                  <p>
-                    We'll provide a free label. We'll call you with a quote once
-                    we get your device, then send it back in less than a week.
-                  </p>
-
-                  <div class="form-floating">
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="streetAddress"
-                      id="streetAddress"
-                      placeholder="Street address"
-                      required
-                    />
-                    <label
-                      for="streetAddress"
-                      class="d-flex align-items-center gap-2"
-                    >
-                      <i
-                        class="fa-duotone fa-solid fa-map-location-dot"
-                        style="color: var(--primaryColor)"
-                      ></i>
-                      <span>Street address</span>
-                    </label>
-                  </div>
-                </div>
-
-                <div
-                  class="serviceReciveMethodDetails comeToMe mt-4 d-flex flex-column gap-2"
-                >
-                  <h1 class="section-title text-start mb-2">We come to you</h1>
-                  <h5 class="m-0">Where should we meet you?</h5>
-                  <p>
-                    We'll come to your home, work, or anywhere else. Heads up:
-                    there's a $30 convenience fee.
-                  </p>
-
-                  <div class="form-floating">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="streetAddress"
-                      name="streetAddress"
-                      placeholder="Street address"
-                      required
-                    />
-                    <label
-                      for="streetAddress"
-                      class="d-flex align-items-center gap-2"
-                    >
-                      <i
-                        class="fa-duotone fa-solid fa-map-location-dot"
-                        style="color: var(--primaryColor)"
-                      ></i>
-                      <span>Street address</span>
-                    </label>
-                  </div>
-
-                  <div
-                    class="mt-4 serviceReciveMethodDetails visitStore d-flex flex-column gap-4"
-                  >
-                    <h1 class="section-title text-start m-0">
-                      What time works best for you?
-                    </h1>
-
-                    <div class="d-flex flex-column gap-2">
-                      <h5 style="color: var(--primaryColor)">Choose a date</h5>
-
-                      <div class="d-flex flex-wrap gap-3">
-                        {% for day_info in next_7_days %}
-                        <label class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black">
-                          <input
-                            class="date opacity-0 position-absolute"
-                            type="radio"
-                            name="date2"
-                            value="{{ day_info.day }}, {{ day_info.date }}"
-                            required
-                          />
-                          <div class="w-100 p-4">
-                            <h5>{{ day_info.day }}</h5>
-                            <div class="d-flex gap-2 align-items-center">
-                              <span>{{ day_info.date }}</span>
-                            </div>
-                          </div>
-                        </label>
-                        {% endfor %}
-                      
-                      </div>
-                    </div>
-
-                    <div class="d-flex flex-column gap-2">
-                      <h5 style="color: var(--primaryColor)">
-                        Choose a preferred time window on
-                        <b id="selected-date2">{{ next_7_days.0.day }}, {{ next_7_days.0.date }}</b>
-                      </h5>
-                    
-
-                      <div class="d-flex flex-wrap gap-3">
-                        <label class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black">
-                          <input
-                            class="time opacity-0 position-absolute"
-                            type="radio"
-                            name="time"
-                            value="12am-2am"
-                            required
-                          />
-                          <div class="w-100 px-3 px-md-4 py-2">12am-2am</div>
-                        </label>
-                        <label class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black">
-                          <input
-                            class="time opacity-0 position-absolute"
-                            type="radio"
-                            name="time"
-                            value="2am-4am"
-                            required
-                          />
-                          <div class="w-100 px-3 px-md-4 py-2">2am-4am</div>
-                        </label>
-                        <label class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black">
-                          <input
-                            class="time opacity-0 position-absolute"
-                            type="radio"
-                            name="time"
-                            value="4am-6am"
-                            required
-                          />
-                          <div class="w-100 px-3 px-md-4 py-2">4am-6am</div>
-                        </label>
-                        <label class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black">
-                          <input
-                            class="time opacity-0 position-absolute"
-                            type="radio"
-                            name="time"
-                            value="6am-8am"
-                            required
-                          />
-                          <div class="w-100 px-3 px-md-4 py-2">6am-8am</div>
-                        </label>
-                        <label class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black">
-                          <input
-                            class="time opacity-0 position-absolute"
-                            type="radio"
-                            name="time"
-                            value="8am-10am"
-                            required
-                          />
-                          <div class="w-100 px-3 px-md-4 py-2">8am-10am</div>
-                        </label>
-                        <label class="serviceReciveMethodWrapper position-relative text-center rounded-2"
-                          style="border: 1px solid black">
-                          <input
-                            class="time opacity-0 position-absolute"
-                            type="radio"
-                            name="time"
-                            value="10am-12am"
-                            required
-                          />
-                          <div class="w-100 px-3 px-md-4 py-2">10am-12am</div>
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="customerInfo flex-column gap-3">
-                <h1 class="section-title text-start m-0">
-                  Enter your contact info
-                </h1>
-                <p class="section-subtext m-0 mb-3">
-                  This'll speed up check-in when you get here.
-                </p>
-
-                <div class="d-flex flex-column flex-sm-row gap-3">
-                  <div class="form-floating w-100">
-                    <input
-                      type="text"
-                      class="customerFirstName form-control"
-                      id="customerFirstName"
-                      name="customerFirstName"
-                      placeholder="First Name"
-                      required
-                    />
-                    <label for="customerFirstName">First Name</label>
-                  </div>
-                  <div class="form-floating w-100">
-                    <input
-                      type="text"
-                      class="customerLastName form-control"
-                      id="customerLastName"
-                      name="customerLastName"
-                      placeholder="Last Name"
-                      required
-                    />
-                    <label for="customerLastName">Last Name</label>
-                  </div>
-                </div>
-
-                <div class="form-floating">
-                  <input
-                    type="email"
-                    class="customerEmail form-control"
-                    id="customerEmail"
-                    name="customerEmail"
-                    placeholder="Email"
-                    required
-                  />
-                  <label for="customerEmail">Email address</label>
-                </div>
-
-                <div class="form-floating">
-                  <input
-                    type="number"
-                    class="customerPhone form-control"
-                    id="customerPhone"
-                    name="customerPhone"
-                    placeholder="Phone Numder"
-                    required
-                  />
-                  <label for="customerPhone">Phone number to reach you</label>
-                </div>
-              </div>
-
-              <div class="termsConditon form-check align-items-center gap-2">
+            <div class="DeviceProblemWrapper">
+              {% for d in device_problems %}
+              <div
+                class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
+                style="border: 1px solid black"
+              >
                 <input
-                  class="termsAndConditions form-check-input p-2"
+                  class="problem form-check-input p-2"
                   type="checkbox"
-                  value="termsAndConditions"
-                  name="termsAndConditions"
-                  id="termsAndConditions"
+                  name="problem"
+                  value="{{d.id}}"
+                  id="{{d.problem}}"
+                />
+                <label class="form-check-label py-3 w-100" for="{{d.problem}}">
+                  {{d.problem}}
+                </label>
+              </div>
+              {% endfor %}
+            </div>
+
+            <div class="form-floating">
+              <textarea
+                class="problemDispriction form-control"
+                rows="8"
+                name="description"
+                id="problemDispriction"
+                style="height: auto"
+                placeholder="Describe the issue (optional)"
+              ></textarea>
+              <label for="problemDispriction"
+                >Describe the issue (optional)</label
+              >
+            </div>
+          </div>
+
+          <div class="method flex-column gap-3">
+            <h1 class="section-title">How Do you want to get the services?</h1>
+
+            <div
+              class=""
+              style="
+                display: grid;
+                gap: 1rem;
+                grid-template-columns: repeat(3, 1fr);
+              "
+            >
+              <label
+                onclick="toogleMethods()"
+                class="serviceReciveMethodWrapper d-flex flex-column flex-sm-row gap-2 align-items-center py-3 justify-content-center rounded-2"
+              >
+                <input
+                  type="radio"
+                  name="serviceReceiveMethod"
+                  value="visitStore"
+                  id="serviceReciveMethod"
+                  class="serviceReciveMethod d-none"
+                  required
+                  checked
+                />
+                <i class="fa-duotone fa-solid fa-store"></i>
+                Visit Store
+              </label>
+              <label
+                onclick="toogleMethods()"
+                class="serviceReciveMethodWrapper d-flex flex-column flex-sm-row gap-2 align-items-center py-3 justify-content-center rounded-2"
+              >
+                <input
+                  type="radio"
+                  name="serviceReceiveMethod"
+                  value="mail"
+                  id="serviceReciveMethod"
+                  class="serviceReciveMethod d-none"
                   required
                 />
-                <label class="form-check-label" for="termsAndConditions">
-                  Agree to
-                  <a
-                    href="{% url 'terms' %}"
-                    style="color: var(--primaryColor) !important"
-                    >Terms & Conditions</a
-                  >
+                <i class="fa-sharp-duotone fa-solid fa-mailbox-flag-up"></i>
+                Mail in
+              </label>
+              <label
+                onclick="toogleMethods()"
+                class="serviceReciveMethodWrapper d-flex flex-column flex-sm-row gap-2 align-items-center py-3 justify-content-center rounded-2"
+              >
+                <input
+                  type="radio"
+                  name="serviceReceiveMethod"
+                  value="comeToMe"
+                  id="serviceReciveMethod"
+                  class="serviceReciveMethod d-none"
+                  required
+                />
+                <i class="fa-duotone fa-solid fa-truck"></i>
+                Come to me
+              </label>
+            </div>
+
+            <div
+              class="serviceReciveMethodDetails visitStore mt-4 d-flex flex-column gap-3"
+            >
+              <h1 class="section-title text-start mb-2">
+                From which store you want to get the service?
+              </h1>
+              {% for s in store %}
+              <div
+                class="form-check d-flex align-items-center gap-2 ps-3 rounded-2"
+                style="border: 1px solid black"
+              >
+                <input
+                  class="store form-check-input p-2"
+                  type="radio"
+                  name="store"
+                  value="{{s.id}}"
+                  id="store1"
+                  required
+                />
+                <label class="form-check-label py-3 w-100" for="store1">
+                  <h5>Store {{ forloop.counter }}</h5>
+                  <div class="d-flex gap-2 align-items-center">
+                    <i
+                      class="fa-duotone fa-solid fa-map-location-dot"
+                      style="color: var(--primaryColor)"
+                    ></i>
+                    <span>{{s.address}}</span>
+                  </div>
+                </label>
+              </div>
+              {% endfor %}
+
+              <div
+                class="mt-4 serviceReciveMethodDetails visitStore d-flex flex-column gap-4"
+              >
+                <h1 class="section-title text-start m-0">
+                  What time works best for you?
+                </h1>
+
+                <div class="d-flex flex-column gap-2">
+                  <h5 style="color: var(--primaryColor)">Choose a date</h5>
+
+                  <div class="d-flex flex-wrap gap-3">
+                    {% for day_info in next_7_days %}
+                    <label
+                      class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                      style="border: 1px solid black"
+                    >
+                      <input
+                        class="date opacity-0 position-absolute"
+                        type="radio"
+                        name="date"
+                        value="{{ day_info.day }}, {{ day_info.date }}"
+                        required
+                      />
+                      <div class="w-100 p-4">
+                        <h5>{{ day_info.day }}</h5>
+                        <div class="d-flex gap-2 align-items-center">
+                          <span>{{ day_info.date }}</span>
+                        </div>
+                      </div>
+                    </label>
+                    {% endfor %}
+                  </div>
+                </div>
+
+                <div class="d-flex flex-column gap-2">
+                  <h5 style="color: var(--primaryColor)">
+                    Choose a preferred time window on
+                    <b id="selected-date"
+                      >{{ next_7_days.0.day }}, {{ next_7_days.0.date }}</b
+                    >
+                  </h5>
+
+                  <div class="d-flex flex-wrap gap-3">
+                    <label
+                      class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                      style="border: 1px solid black"
+                    >
+                      <input
+                        class="time opacity-0 position-absolute"
+                        type="radio"
+                        name="time"
+                        value="12am-2am"
+                        required
+                      />
+                      <div class="w-100 px-3 px-md-4 py-2">12am-2am</div>
+                    </label>
+                    <label
+                      class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                      style="border: 1px solid black"
+                    >
+                      <input
+                        class="time opacity-0 position-absolute"
+                        type="radio"
+                        name="time"
+                        value="2am-4am"
+                        required
+                      />
+                      <div class="w-100 px-3 px-md-4 py-2">2am-4am</div>
+                    </label>
+                    <label
+                      class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                      style="border: 1px solid black"
+                    >
+                      <input
+                        class="time opacity-0 position-absolute"
+                        type="radio"
+                        name="time"
+                        value="4am-6am"
+                        required
+                      />
+                      <div class="w-100 px-3 px-md-4 py-2">4am-6am</div>
+                    </label>
+                    <label
+                      class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                      style="border: 1px solid black"
+                    >
+                      <input
+                        class="time opacity-0 position-absolute"
+                        type="radio"
+                        name="time"
+                        value="6am-8am"
+                        required
+                      />
+                      <div class="w-100 px-3 px-md-4 py-2">6am-8am</div>
+                    </label>
+                    <label
+                      class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                      style="border: 1px solid black"
+                    >
+                      <input
+                        class="time opacity-0 position-absolute"
+                        type="radio"
+                        name="time"
+                        value="8am-10am"
+                        required
+                      />
+                      <div class="w-100 px-3 px-md-4 py-2">8am-10am</div>
+                    </label>
+                    <label
+                      class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                      style="border: 1px solid black"
+                    >
+                      <input
+                        class="time opacity-0 position-absolute"
+                        type="radio"
+                        name="time"
+                        value="10am-12am"
+                        required
+                      />
+                      <div class="w-100 px-3 px-md-4 py-2">10am-12am</div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="serviceReciveMethodDetails mail mt-4 d-flex flex-column gap-2"
+            >
+              <h1 class="section-title text-start mb-2">Mail in your device</h1>
+              <h5 class="m-0">Enter your shipping address</h5>
+              <p>
+                We'll provide a free label. We'll call you with a quote once we
+                get your device, then send it back in less than a week.
+              </p>
+
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="streetAddress"
+                  id="streetAddress"
+                  placeholder="Street address"
+                  required
+                />
+                <label
+                  for="streetAddress"
+                  class="d-flex align-items-center gap-2"
+                >
+                  <i
+                    class="fa-duotone fa-solid fa-map-location-dot"
+                    style="color: var(--primaryColor)"
+                  ></i>
+                  <span>Street address</span>
+                </label>
+              </div>
+            </div>
+
+            <div
+              class="serviceReciveMethodDetails comeToMe mt-4 d-flex flex-column gap-2"
+            >
+              <h1 class="section-title text-start mb-2">We come to you</h1>
+              <h5 class="m-0">Where should we meet you?</h5>
+              <p>
+                We'll come to your home, work, or anywhere else. Heads up:
+                there's a $30 convenience fee.
+              </p>
+
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="streetAddress"
+                  name="streetAddress"
+                  placeholder="Street address"
+                  required
+                />
+                <label
+                  for="streetAddress"
+                  class="d-flex align-items-center gap-2"
+                >
+                  <i
+                    class="fa-duotone fa-solid fa-map-location-dot"
+                    style="color: var(--primaryColor)"
+                  ></i>
+                  <span>Street address</span>
                 </label>
               </div>
 
-              <div class="formButtons d-flex justify-content-end gap-3">
-                <button
-                  type="reset"
-                  class="text-center py-2 px-4 rounded-2 resetBtn"
-                  style="background-color: transparent"
-                >
-                  Reset
-                </button>
-                <button
-                  type="submit"
-                  class="carousel-inner-btn py-2 rounded-2 submitButton"
-                >
-                  Submit
-                </button>
-                <button
-                  type="submit"
-                  class="carousel-inner-btn py-2 rounded-2 nextButton"
-                >
-                  Next
-                </button>
+              <div
+                class="mt-4 serviceReciveMethodDetails visitStore d-flex flex-column gap-4"
+              >
+                <h1 class="section-title text-start m-0">
+                  What time works best for you?
+                </h1>
+
+                <div class="d-flex flex-column gap-2">
+                  <h5 style="color: var(--primaryColor)">Choose a date</h5>
+
+                  <div class="d-flex flex-wrap gap-3">
+                    {% for day_info in next_7_days %}
+                    <label
+                      class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                      style="border: 1px solid black"
+                    >
+                      <input
+                        class="date opacity-0 position-absolute"
+                        type="radio"
+                        name="date2"
+                        value="{{ day_info.day }}, {{ day_info.date }}"
+                        required
+                      />
+                      <div class="w-100 p-4">
+                        <h5>{{ day_info.day }}</h5>
+                        <div class="d-flex gap-2 align-items-center">
+                          <span>{{ day_info.date }}</span>
+                        </div>
+                      </div>
+                    </label>
+                    {% endfor %}
+                  </div>
+                </div>
+
+                <div class="d-flex flex-column gap-2">
+                  <h5 style="color: var(--primaryColor)">
+                    Choose a preferred time window on
+                    <b id="selected-date2"
+                      >{{ next_7_days.0.day }}, {{ next_7_days.0.date }}</b
+                    >
+                  </h5>
+
+                  <div class="d-flex flex-wrap gap-3">
+                    <label
+                      class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                      style="border: 1px solid black"
+                    >
+                      <input
+                        class="time opacity-0 position-absolute"
+                        type="radio"
+                        name="time"
+                        value="12am-2am"
+                        required
+                      />
+                      <div class="w-100 px-3 px-md-4 py-2">12am-2am</div>
+                    </label>
+                    <label
+                      class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                      style="border: 1px solid black"
+                    >
+                      <input
+                        class="time opacity-0 position-absolute"
+                        type="radio"
+                        name="time"
+                        value="2am-4am"
+                        required
+                      />
+                      <div class="w-100 px-3 px-md-4 py-2">2am-4am</div>
+                    </label>
+                    <label
+                      class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                      style="border: 1px solid black"
+                    >
+                      <input
+                        class="time opacity-0 position-absolute"
+                        type="radio"
+                        name="time"
+                        value="4am-6am"
+                        required
+                      />
+                      <div class="w-100 px-3 px-md-4 py-2">4am-6am</div>
+                    </label>
+                    <label
+                      class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                      style="border: 1px solid black"
+                    >
+                      <input
+                        class="time opacity-0 position-absolute"
+                        type="radio"
+                        name="time"
+                        value="6am-8am"
+                        required
+                      />
+                      <div class="w-100 px-3 px-md-4 py-2">6am-8am</div>
+                    </label>
+                    <label
+                      class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                      style="border: 1px solid black"
+                    >
+                      <input
+                        class="time opacity-0 position-absolute"
+                        type="radio"
+                        name="time"
+                        value="8am-10am"
+                        required
+                      />
+                      <div class="w-100 px-3 px-md-4 py-2">8am-10am</div>
+                    </label>
+                    <label
+                      class="serviceReciveMethodWrapper position-relative text-center rounded-2"
+                      style="border: 1px solid black"
+                    >
+                      <input
+                        class="time opacity-0 position-absolute"
+                        type="radio"
+                        name="time"
+                        value="10am-12am"
+                        required
+                      />
+                      <div class="w-100 px-3 px-md-4 py-2">10am-12am</div>
+                    </label>
+                  </div>
+                </div>
               </div>
-            </form>
+            </div>
           </div>
 
-          <div class="serviceSummary d-flex flex-column gap-4 pt-5 pt-md-0">
-            <div
-              class="d-flex flex-column gap-3 p-3 rounded-2"
-              style="background: var(--primaryColor); color: white"
+          <div class="customerInfo flex-column gap-3">
+            <h1 class="section-title text-start m-0">
+              Enter your contact info
+            </h1>
+            <p class="section-subtext m-0 mb-3">
+              This'll speed up check-in when you get here.
+            </p>
+
+            <div class="d-flex flex-column flex-sm-row gap-3">
+              <div class="form-floating w-100">
+                <input
+                  type="text"
+                  class="customerFirstName form-control"
+                  id="customerFirstName"
+                  name="customerFirstName"
+                  placeholder="First Name"
+                  required
+                />
+                <label for="customerFirstName">First Name</label>
+              </div>
+              <div class="form-floating w-100">
+                <input
+                  type="text"
+                  class="customerLastName form-control"
+                  id="customerLastName"
+                  name="customerLastName"
+                  placeholder="Last Name"
+                  required
+                />
+                <label for="customerLastName">Last Name</label>
+              </div>
+            </div>
+
+            <div class="form-floating">
+              <input
+                type="email"
+                class="customerEmail form-control"
+                id="customerEmail"
+                name="customerEmail"
+                placeholder="Email"
+                required
+              />
+              <label for="customerEmail">Email address</label>
+            </div>
+
+            <div class="form-floating">
+              <input
+                type="number"
+                class="customerPhone form-control"
+                id="customerPhone"
+                name="customerPhone"
+                placeholder="Phone Numder"
+                required
+              />
+              <label for="customerPhone">Phone number to reach you</label>
+            </div>
+          </div>
+
+          <div class="termsConditon form-check align-items-center gap-2">
+            <input
+              class="termsAndConditions form-check-input p-2"
+              type="checkbox"
+              value="termsAndConditions"
+              name="termsAndConditions"
+              id="termsAndConditions"
+              required
+            />
+            <label class="form-check-label" for="termsAndConditions">
+              Agree to
+              <a
+                href="{% url 'terms' %}"
+                style="color: var(--primaryColor) !important"
+                >Terms & Conditions</a
+              >
+            </label>
+          </div>
+
+          <div class="formButtons d-flex justify-content-end gap-3">
+            <button
+              type="reset"
+              class="text-center py-2 px-4 rounded-2 resetBtn"
+              style="background-color: transparent"
             >
-              <!-- <p class="p-3 mb-0 rounded-2" style="background: var(--primaryColor); color: white;">
+              Reset
+            </button>
+            <button
+              type="submit"
+              class="carousel-inner-btn py-2 rounded-2 submitButton"
+            >
+              Submit
+            </button>
+            <button
+              type="submit"
+              class="carousel-inner-btn py-2 rounded-2 nextButton"
+            >
+              Next
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="serviceSummary d-flex flex-column gap-4 pt-5 pt-md-0">
+        <div
+          class="d-flex flex-column gap-3 p-3 rounded-2"
+          style="background: var(--primaryColor); color: white"
+        >
+          <!-- <p class="p-3 mb-0 rounded-2" style="background: var(--primaryColor); color: white;">
                             Repair costs depend on the device type and the nature of the issue. After diagnosing the problem, we will inform you of the final cost either by phone or discuss in-store.
                         </p> -->
 
-              <i
-                class="fa-duotone fa-solid fa-quote-left"
-                style="font-size: 1.5rem"
-              ></i>
-              <p class="m-0">
-                There's no need to book an appointment—feel free to visit our
-                store whenever it suits you!
-              </p>
-              <i
-                class="fa-duotone fa-solid fa-quote-right text-end"
-                style="font-size: 1.5rem"
-              ></i>
+          <i
+            class="fa-duotone fa-solid fa-quote-left"
+            style="font-size: 1.5rem"
+          ></i>
+          <p class="m-0">
+            There's no need to book an appointment—feel free to visit our store
+            whenever it suits you!
+          </p>
+          <i
+            class="fa-duotone fa-solid fa-quote-right text-end"
+            style="font-size: 1.5rem"
+          ></i>
 
-              <!-- <p class="p-3 mb-0 rounded-2" style="background: var(--primaryColor); color: white;">
+          <!-- <p class="p-3 mb-0 rounded-2" style="background: var(--primaryColor); color: white;">
                             There's no need to book an appointment—feel free to visit our store whenever it suits you!
                         </p> -->
-            </div>
+        </div>
 
-            <div>
-              <h5>Phone</h5>
-              <div class="d-flex flex-wrap gap-3 align-items-center">
-                <img
-                  src="{% static './asset/images/categories-images/mobile.webp' %}"
-                  alt="Device Image"
-                  style="width: 70px; aspect-ratio: 3/2"
-                  class=""
-                />
-                <div class="">
-                  <p class="mb-1">iPhone 15 Pro Max</p>
-                  <div class="d-flex flex-wrap gap-2">
-                    <b>Broken Screen</b>
-                    <b>Short Battery Life</b>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div
-              class="d-flex flex-column gap-3 py-4"
-              style="border-block: 2px solid var(--accentColor)"
-            >
-              <h5>Visit Store</h5>
-              <div class="d-flex gap-3 align-items-center">
-                <i
-                  class="fa-duotone fa-solid fa-map-location-dot"
-                  style="font-size: 1rem"
-                ></i>
-                <div class="">
-                  <h6 style="color: var(--primaryColor)">
-                    Your chosen location
-                  </h6>
-                  <p class="m-0">2201 S Interstate 35, Denton, TX 76205</p>
-                </div>
-              </div>
-
-              <div class="d-flex gap-3 align-items-center">
-                <i
-                  class="fa-duotone fa-solid fa-calendar-clock"
-                  style="font-size: 1rem"
-                ></i>
-                <div class="">
-                  <h6 style="color: var(--primaryColor)">Date and time</h6>
-                  <b>12am-2am</b>
-                  <p class="m-0">Mon, sep 9, 2024</p>
-                </div>
-              </div>
-
-              <div class="d-flex gap-3 align-items-center">
-                <i
-                  class="fa-duotone fa-solid fa-messages"
-                  style="font-size: 1rem"
-                ></i>
-                <div class="">
-                  <h6 style="color: var(--primaryColor)">Contact details</h6>
-                  <b>emonhassan895@gmail.com</b>
-                  <p class="m-0">213-876-5432</p>
-                </div>
-              </div>
-              <div class="d-flex gap-3 align-items-center">
-                <i
-                  class="fa-duotone fa-solid fa-hexagon-exclamation"
-                  style="font-size: 1.3rem"
-                ></i>
-                <b class="" style="color: var(--primaryColor)">
-                  Repair costs depend on the device type and the nature of the
-                  issue. After diagnosing the problem, we will inform you of the
-                  final cost either by phone or discuss in-store.
-                </b>
-              </div>
-            </div>
-
+        <div>
+          <h5>Phone</h5>
+          <div class="d-flex flex-wrap gap-3 align-items-center">
+            <img
+              src="{% static './asset/images/categories-images/mobile.webp' %}"
+              alt="Device Image"
+              style="width: 70px; aspect-ratio: 3/2"
+              class=""
+            />
             <div class="">
-              <h5 class="mb-3">About our Repairs</h5>
-              <div
-                class="hide-scrollbar d-flex gap-4 justify-content-between pb-4 slider"
-                style="
-                  overflow-x: auto;
-                  overflow-y: visible;
-                  scroll-snap-type: x proximity;
-                "
-              >
-                <div
-                  class="card sliderCard rounded-3 firstCard"
-                  style="scroll-snap-align: start; background: #f7791e"
-                >
-                  <div class="card-body d-flex gap-3 align-items-center">
-                    <i
-                      class="fa-duotone fa-solid fa-gauge-max"
-                      style="font-size: 3rem"
-                    ></i>
-                    <div class="d-flex flex-column gap-3">
-                      <h5 class="card-title m-0">Instant Repair</h5>
-                      <p>
-                        We offer same-day repairs, so you won't have to be
-                        without your device for long.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="card sliderCard rounded-3"
-                  style="scroll-snap-align: start; background: #ff5758"
-                >
-                  <div class="card-body d-flex gap-3 align-items-center">
-                    <i
-                      class="fa-duotone fa-solid fa-hand-holding-circle-dollar"
-                      style="font-size: 3rem"
-                    ></i>
-                    <div class="d-flex flex-column gap-3">
-                      <h5 class="card-title m-0">Affordable Pricing</h5>
-                      <p>
-                        Our repair services are priced competitively, ensuring
-                        you get quality without breaking the bank.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="card sliderCard rounded-3"
-                  style="scroll-snap-align: start; background: #acc157"
-                >
-                  <div class="card-body d-flex gap-3 align-items-center">
-                    <i
-                      class="fa-duotone fa-solid fa-user-doctor"
-                      style="font-size: 3rem"
-                    ></i>
-                    <div class="d-flex flex-column gap-3">
-                      <h5 class="card-title m-0">Expert Technicians</h5>
-                      <p>
-                        Our certified technicians are skilled in handling all
-                        types of repairs, ensuring your device is fixed right.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="card sliderCard rounded-3"
-                  style="scroll-snap-align: start; background: #b36fcb"
-                >
-                  <div class="card-body d-flex gap-3 align-items-center">
-                    <i
-                      class="fa-duotone fa-solid fa-shield-check"
-                      style="font-size: 3rem"
-                    ></i>
-                    <div class="d-flex flex-column gap-3">
-                      <h5 class="card-title m-0">Special Warranty</h5>
-                      <p>
-                        Enjoy peace of mind with our special warranty, covering
-                        all repairs and ensuring top-notch service.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="card sliderCard rounded-3"
-                  style="scroll-snap-align: start; background: #d9c616"
-                >
-                  <div class="card-body d-flex gap-3 align-items-center">
-                    <i
-                      class="fa-duotone fa-solid fa-award"
-                      style="font-size: 3rem"
-                    ></i>
-                    <div class="d-flex flex-column gap-3">
-                      <h5 class="card-title m-0">Genuine Spare Parts</h5>
-                      <p>
-                        We use only genuine parts for every repair, ensuring the
-                        longevity and performance of your device.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="card sliderCard rounded-3"
-                  style="scroll-snap-align: start; background: #2abd76"
-                >
-                  <div class="card-body d-flex gap-3 align-items-center">
-                    <i
-                      class="fa-duotone fa-solid fa-magnifying-glass-plus"
-                      style="font-size: 3rem"
-                    ></i>
-                    <div class="d-flex flex-column gap-3">
-                      <h5 class="card-title m-0">Free Diagnostic Service</h5>
-                      <p>
-                        We provide a free diagnostic service to identify the
-                        problem, so you know exactly what your device needs.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="heroNextPreBtn justify-content-center mx-auto"
-                style="width: fit-content"
-              >
-                <i
-                  class="fa-solid fa-angle-left sliderPrevButton slider-control-btn"
-                  style="padding: 10px 25px"
-                  type="button"
-                ></i>
-                <i
-                  class="fa-solid fa-angle-right sliderNextButton slider-control-btn"
-                  style="padding: 10px 25px"
-                  type="button"
-                ></i>
+              <p class="mb-1">iPhone 15 Pro Max</p>
+              <div class="d-flex flex-wrap gap-2">
+                <b>Broken Screen</b>
+                <b>Short Battery Life</b>
               </div>
             </div>
           </div>
         </div>
-      </section>
 
-      <!-- Main Content End -->
+        <div
+          class="d-flex flex-column gap-3 py-4"
+          style="border-block: 2px solid var(--accentColor)"
+        >
+          <h5>Visit Store</h5>
+          <div class="d-flex gap-3 align-items-center">
+            <i
+              class="fa-duotone fa-solid fa-map-location-dot"
+              style="font-size: 1rem"
+            ></i>
+            <div class="">
+              <h6 style="color: var(--primaryColor)">Your chosen location</h6>
+              <p class="m-0">2201 S Interstate 35, Denton, TX 76205</p>
+            </div>
+          </div>
 
-      <!-- Floating Social Media Start -->
+          <div class="d-flex gap-3 align-items-center">
+            <i
+              class="fa-duotone fa-solid fa-calendar-clock"
+              style="font-size: 1rem"
+            ></i>
+            <div class="">
+              <h6 style="color: var(--primaryColor)">Date and time</h6>
+              <b>12am-2am</b>
+              <p class="m-0">Mon, sep 9, 2024</p>
+            </div>
+          </div>
 
-      {% include "socialMedia.html" %}
+          <div class="d-flex gap-3 align-items-center">
+            <i
+              class="fa-duotone fa-solid fa-messages"
+              style="font-size: 1rem"
+            ></i>
+            <div class="">
+              <h6 style="color: var(--primaryColor)">Contact details</h6>
+              <b>emonhassan895@gmail.com</b>
+              <p class="m-0">213-876-5432</p>
+            </div>
+          </div>
+          <div class="d-flex gap-3 align-items-center">
+            <i
+              class="fa-duotone fa-solid fa-hexagon-exclamation"
+              style="font-size: 1.3rem"
+            ></i>
+            <b class="" style="color: var(--primaryColor)">
+              Repair costs depend on the device type and the nature of the
+              issue. After diagnosing the problem, we will inform you of the
+              final cost either by phone or discuss in-store.
+            </b>
+          </div>
+        </div>
 
-      <!-- Floating Social Media End -->
+        <div class="">
+          <h5 class="mb-3">About our Repairs</h5>
+          <div
+            class="hide-scrollbar d-flex gap-4 justify-content-between pb-4 slider"
+            style="
+              overflow-x: auto;
+              overflow-y: visible;
+              scroll-snap-type: x proximity;
+            "
+          >
+            <div
+              class="card sliderCard rounded-3 firstCard"
+              style="scroll-snap-align: start; background: #f7791e"
+            >
+              <div class="card-body d-flex gap-3 align-items-center">
+                <i
+                  class="fa-duotone fa-solid fa-gauge-max"
+                  style="font-size: 3rem"
+                ></i>
+                <div class="d-flex flex-column gap-3">
+                  <h5 class="card-title m-0">Instant Repair</h5>
+                  <p>
+                    We offer same-day repairs, so you won't have to be without
+                    your device for long.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="card sliderCard rounded-3"
+              style="scroll-snap-align: start; background: #ff5758"
+            >
+              <div class="card-body d-flex gap-3 align-items-center">
+                <i
+                  class="fa-duotone fa-solid fa-hand-holding-circle-dollar"
+                  style="font-size: 3rem"
+                ></i>
+                <div class="d-flex flex-column gap-3">
+                  <h5 class="card-title m-0">Affordable Pricing</h5>
+                  <p>
+                    Our repair services are priced competitively, ensuring you
+                    get quality without breaking the bank.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="card sliderCard rounded-3"
+              style="scroll-snap-align: start; background: #acc157"
+            >
+              <div class="card-body d-flex gap-3 align-items-center">
+                <i
+                  class="fa-duotone fa-solid fa-user-doctor"
+                  style="font-size: 3rem"
+                ></i>
+                <div class="d-flex flex-column gap-3">
+                  <h5 class="card-title m-0">Expert Technicians</h5>
+                  <p>
+                    Our certified technicians are skilled in handling all types
+                    of repairs, ensuring your device is fixed right.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="card sliderCard rounded-3"
+              style="scroll-snap-align: start; background: #b36fcb"
+            >
+              <div class="card-body d-flex gap-3 align-items-center">
+                <i
+                  class="fa-duotone fa-solid fa-shield-check"
+                  style="font-size: 3rem"
+                ></i>
+                <div class="d-flex flex-column gap-3">
+                  <h5 class="card-title m-0">Special Warranty</h5>
+                  <p>
+                    Enjoy peace of mind with our special warranty, covering all
+                    repairs and ensuring top-notch service.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="card sliderCard rounded-3"
+              style="scroll-snap-align: start; background: #d9c616"
+            >
+              <div class="card-body d-flex gap-3 align-items-center">
+                <i
+                  class="fa-duotone fa-solid fa-award"
+                  style="font-size: 3rem"
+                ></i>
+                <div class="d-flex flex-column gap-3">
+                  <h5 class="card-title m-0">Genuine Spare Parts</h5>
+                  <p>
+                    We use only genuine parts for every repair, ensuring the
+                    longevity and performance of your device.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="card sliderCard rounded-3"
+              style="scroll-snap-align: start; background: #2abd76"
+            >
+              <div class="card-body d-flex gap-3 align-items-center">
+                <i
+                  class="fa-duotone fa-solid fa-magnifying-glass-plus"
+                  style="font-size: 3rem"
+                ></i>
+                <div class="d-flex flex-column gap-3">
+                  <h5 class="card-title m-0">Free Diagnostic Service</h5>
+                  <p>
+                    We provide a free diagnostic service to identify the
+                    problem, so you know exactly what your device needs.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="heroNextPreBtn justify-content-center mx-auto"
+            style="width: fit-content"
+          >
+            <i
+              class="fa-solid fa-angle-left sliderPrevButton slider-control-btn"
+              style="padding: 10px 25px"
+              type="button"
+            ></i>
+            <i
+              class="fa-solid fa-angle-right sliderNextButton slider-control-btn"
+              style="padding: 10px 25px"
+              type="button"
+            ></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    </main>
-    <script>
-      // Select all date radio inputs and the <b> element
-      const dateRadios = document.querySelectorAll('input[name="date"]');
-      const dateRadios2 = document.querySelectorAll('input[name="date2"]');
-      const selectedDateElement = document.getElementById('selected-date');
-      const selectedDate2Element = document.getElementById('selected-date2');
-   
-    
-      // Update the <b> element when a date is selected
-      dateRadios.forEach(radio => {
-        radio.addEventListener('change', () => {
-          if (radio.checked) {
-            selectedDateElement.textContent = radio.value; 
-          }
-        });
-      });
-      dateRadios2.forEach(radio => {
-        radio.addEventListener('change', () => {
-          if (radio.checked) {
-            selectedDate2Element.textContent = radio.value; 
-          }
-        });
-      });
-    </script>
+  <!-- Main Content End -->
+
+  <!-- Floating Social Media Start -->
+
+  {% include "socialMedia.html" %}
+
+  <!-- Floating Social Media End -->
+</main>
+<script>
+  // Select all date radio inputs and the <b> element
+  const dateRadios = document.querySelectorAll('input[name="date"]');
+  const dateRadios2 = document.querySelectorAll('input[name="date2"]');
+  const selectedDateElement = document.getElementById("selected-date");
+  const selectedDate2Element = document.getElementById("selected-date2");
+
+  // Update the <b> element when a date is selected
+  dateRadios.forEach((radio) => {
+    radio.addEventListener("change", () => {
+      if (radio.checked) {
+        selectedDateElement.textContent = radio.value;
+      }
+    });
+  });
+  dateRadios2.forEach((radio) => {
+    radio.addEventListener("change", () => {
+      if (radio.checked) {
+        selectedDate2Element.textContent = radio.value;
+      }
+    });
+  });
+</script>
+
 
 {% endblock %}
- 

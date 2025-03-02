@@ -16,7 +16,7 @@ SECRET_KEY = 'django-insecure-cm0qiha029zth*pxz$2@5i!#unkms6xzu1-$s5lt19$gy%#+0(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -47,12 +47,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'cellNstyle_website.urls'
 
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [   
-            BASE_DIR / 'templates', # Path to the templates folder
-        ],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

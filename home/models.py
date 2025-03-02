@@ -53,7 +53,7 @@ class Brand(models.Model):
     
 class Model(models.Model):
     name = models.CharField(max_length=25)
-    brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
+    brand = models.ForeignKey(Brand, related_name='models', on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.name} ({self.brand.name})"
@@ -180,7 +180,7 @@ class Product(models.Model):
     title = models.CharField(max_length=100)
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='products/')
-    previous_price = models.PositiveIntegerField(validators=[MinValueValidator(0),MaxValueValidator(194)], blank=True, null=True)
-    original_price = models.PositiveIntegerField(validators=[MinValueValidator(0),MaxValueValidator(194)])
+    previous_price = models.PositiveIntegerField(validators=[MinValueValidator(0),MaxValueValidator(1000)], blank=True, null=True)
+    original_price = models.PositiveIntegerField(validators=[MinValueValidator(0),MaxValueValidator(1000)])
     def __str__(self):
         return self.title
